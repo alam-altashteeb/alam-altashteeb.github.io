@@ -171,7 +171,24 @@
   .brand-logo img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.26);transform-origin:50% 43%}
   @media (max-width:640px){.brand-logo{width:44px;height:44px}}
   .brand-text{min-width:0;text-align:start}
-  .brand-name{font-size:clamp(20px,3.4vw,24px);font-weight:900;line-height:1.25;white-space:nowrap;color:var(--ink)}
+  .brand-name{font-size:clamp(20px,3.4vw,24px);font-weight:900;line-height:1.25;white-space:nowrap}
+  /* اسم العلامة «عالم التشطيب» — ذهبي معدني لامع أينما ظهر كاسم للموقع */
+  .brand-name,.brand-gold{
+    background:linear-gradient(100deg,#8a6420 0%,#c9a24d 18%,#f4dc7e 36%,#fff7c2 50%,#f4dc7e 64%,#c9a24d 82%,#8a6420 100%);
+    background-size:220% 100%;background-position:50% 0;
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;color:transparent;
+    filter:drop-shadow(0 1px 1px rgba(96,68,8,.45)) drop-shadow(0 0 10px rgba(212,175,55,.18));
+    animation:goldSheen 7s ease-in-out infinite alternate;
+  }
+  @keyframes goldSheen{from{background-position:0% 0}to{background-position:100% 0}}
+  @media (prefers-reduced-motion: reduce){.brand-name,.brand-gold{animation:none}}
+  :root[data-theme="dark"] .brand-name,:root[data-theme="dark"] .brand-gold{
+    filter:drop-shadow(0 1px 2px rgba(0,0,0,.65)) drop-shadow(0 0 12px rgba(212,175,55,.28));
+  }
+  @supports not ((-webkit-background-clip:text) or (background-clip:text)){
+    .brand-name,.brand-gold{background:none;color:var(--gold-deep);-webkit-text-fill-color:currentColor;filter:none;animation:none}
+  }
   .brand-sub{font-size:14px;color:var(--aqua2);line-height:1.4;letter-spacing:.2px}
   nav.main{display:flex;gap:2px;flex-wrap:wrap;justify-content:center}
   nav.main a{
@@ -678,13 +695,21 @@
   .cta-band .btn-gold{background:#ffffff;color:var(--green-deep);box-shadow:0 14px 30px -14px rgba(0,0,0,.5)}
   .cta-band .btn-gold:hover{box-shadow:0 18px 36px -14px rgba(0,0,0,.55)}
 
-  /* Lightbox */
-  dialog#lb{border:1px solid var(--line);background:#ffffff;border-radius:16px;padding:10px;max-width:min(96vw,1180px);width:100%;color:var(--ink)}
-  dialog#lb::backdrop{background:rgba(13,35,22,.6)}
-  dialog#lb img{border-radius:10px;width:100%;max-height:80vh;object-fit:contain;background:#eef0e2}
-  dialog#lb .lb-cap{display:flex;align-items:center;gap:12px;padding:10px 6px 4px}
-  dialog#lb .lb-cap p{margin:0;font-weight:700;flex:1}
-  dialog#lb button{background:#eff3e4;border:1px solid var(--line);color:var(--ink);padding:9px 18px;font-weight:800;cursor:pointer;min-height:44px}
+  /* Lightbox — fullscreen viewer */
+  dialog#lb{border:none;background:#08130b;padding:0;margin:0;width:100%;height:100%;height:100dvh;max-width:none;max-height:none;color:#f2f7ee;overflow:hidden}
+  dialog#lb::backdrop{background:rgba(3,8,5,.94)}
+  dialog#lb .lb-stage{position:absolute;inset:0}
+  dialog#lb img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+  dialog#lb .lb-btn{position:absolute;z-index:3;display:flex;align-items:center;justify-content:center;width:52px;height:52px;min-height:52px;border-radius:50%;border:1px solid rgba(255,255,255,.4);background:rgba(10,26,16,.55);color:#fff;cursor:pointer;padding:0}
+  dialog#lb .lb-btn svg{width:26px;height:26px;flex:none}
+  dialog#lb .lb-btn:active{background:rgba(30,122,60,.85)}
+  dialog#lb #lbClose{top:calc(12px + env(safe-area-inset-top,0px));right:14px}
+  dialog#lb #lbPrev{top:50%;transform:translateY(-50%);right:12px}
+  dialog#lb #lbNext{top:50%;transform:translateY(-50%);left:12px}
+  dialog#lb .lb-cap{position:absolute;z-index:3;left:0;right:0;bottom:0;display:flex;align-items:flex-end;gap:14px;padding:38px 18px calc(14px + env(safe-area-inset-bottom,0px));background:linear-gradient(to top,rgba(4,10,6,.8),rgba(4,10,6,0));pointer-events:none}
+  dialog#lb .lb-cap p{margin:0;font-weight:700;flex:1;font-size:16px;line-height:1.7;text-shadow:0 1px 6px rgba(0,0,0,.55)}
+  dialog#lb .lb-count{font-weight:800;font-size:14px;background:rgba(10,26,16,.55);border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:4px 12px;white-space:nowrap}
+  .slider .s-slide img{cursor:zoom-in}
 
   /* ---------- Dark theme ---------- */
   :root[data-theme="dark"]{
@@ -813,7 +838,7 @@
         <span class="open-badge"><span class="open-dot"></span> مفتوح الآن — متوفرون على مدار اليوم</span>
         <p class="hero-eyebrow">الهفوف · الأحساء · المنطقة الشرقية</p>
         <span class="hero-owner">أبو فهد وشركاه</span>
-        <h1>عالم <span class="accent">التشطيب</span><br />لتنسيق الحدائق والديكورات الداخلية</h1>
+        <h1><span class="brand-gold">عالم التشطيب</span><br />لتنسيق الحدائق والديكورات الداخلية</h1>
         <p class="tag">نبيع ونصنّع ونركّب — من الحديقة إلى آخر جدار في بيتك</p>
         <p class="lead">من مقرّنا في الهفوف بمحافظة الأحساء نخدم الأحساء والمنطقة الشرقية كاملة: تنسيق حدائق، جبس بورد، بديل الخشب وبديل الرخام، شلالات ونوافير، مظلات، تكسيات جدارية، وعشب أرضي وجداري — بخامات نبيعها ونصنّعها ونركّبها بأنفسنا.</p>
         <div class="hero-cta">
@@ -1033,7 +1058,7 @@
         </article>
 
         <article id="svc-15" class="svc rv">
-          <figure><div class="slider" data-slider data-autoplay="4600" ><div class="s-track"><div class="s-slide"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="غرفة زجاجية حديثة بهيكل ألمنيوم داكن ملحقة بمنزل" loading="lazy" / data-a="k62" onload="this.onload=null;window.__S(this)"></div><div class="s-slide"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="غرفة شمسية زجاجية مشرقة ملحقة بواجهة منزل" loading="lazy" / data-a="k63" onload="this.onload=null;window.__S(this)"></div><div class="s-slide"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="غرفة زجاجية بأثاث جلسة وإطلالة على الحديقة" loading="lazy" / data-a="k64" onload="this.onload=null;window.__S(this)"></div><div class="s-slide"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="غرفة زجاجية مشرقة بجلسة أنيقة وإطلالة على الحديقة" loading="lazy" / data-a="k65" onload="this.onload=null;window.__S(this)"></div><div class="s-slide v-slide svc-vid"><video src="https://videos.pexels.com/video-files/34208855/14499033_540_960_24fps.mp4" muted loop playsinline preload="none" aria-label="فيديو توضيحي: غرفة زجاجية بجلسة داخلية وسقف وجدار زجاجيان يطلان على الحديقة"></video><img class="v-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="غرفة زجاجية بجلسة داخلية وسقف وجدار زجاجيان يطلان على الحديقة" loading="lazy" / data-a="k66" onload="this.onload=null;window.__S(this)"><span class="demo-chip">فيديو توضيحي</span><span class="svc-vid-tag"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>فيديو</span></div></div><button class="s-nav s-prev" type="button" aria-label="الصورة السابقة"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button><button class="s-nav s-next" type="button" aria-label="الصورة التالية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><div class="s-dots"></div></div><span class="svc-num">١٥</span></figure>
+          <figure><div class="slider" data-slider data-autoplay="4600" ><div class="s-track"><div class="s-slide"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="غرفة زجاجية حديثة بهيكل ألمنيوم داكن ملحقة بمنزل" loading="lazy" / data-a="k62" onload="this.onload=null;window.__S(this)"></div><div class="s-slide"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="غرفة شمسية زجاجية مشرقة ملحقة بواجهة منزل" loading="lazy" / data-a="k63" onload="this.onload=null;window.__S(this)"></div><div class="s-slide"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="غرفة زجاجية ملحقة بمنزل بهيكل ألمنيوم داكن وجدران زجاجية كاملة" loading="lazy" / data-a="k64" onload="this.onload=null;window.__S(this)"></div><div class="s-slide"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="غرفة زجاجية مشرقة بجلسة أنيقة وإطلالة على الحديقة" loading="lazy" / data-a="k65" onload="this.onload=null;window.__S(this)"></div><div class="s-slide v-slide svc-vid"><video src="https://videos.pexels.com/video-files/34208855/14499033_540_960_24fps.mp4" muted loop playsinline preload="none" aria-label="فيديو توضيحي: غرفة زجاجية بجلسة داخلية وسقف وجدار زجاجيان يطلان على الحديقة"></video><img class="v-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="غرفة زجاجية بجلسة داخلية وسقف وجدار زجاجيان يطلان على الحديقة" loading="lazy" / data-a="k66" onload="this.onload=null;window.__S(this)"><span class="demo-chip">فيديو توضيحي</span><span class="svc-vid-tag"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>فيديو</span></div></div><button class="s-nav s-prev" type="button" aria-label="الصورة السابقة"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button><button class="s-nav s-next" type="button" aria-label="الصورة التالية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><div class="s-dots"></div></div><span class="svc-num">١٥</span></figure>
           <div class="body">
             <h3>غرف زجاجية</h3>
             <p>غرفة شمسية (Sunroom) تعيش فيها الحديقة طوال العام — ضوء طبيعي كامل وجوّ معزول:</p>
@@ -1099,7 +1124,7 @@
         </article>
 
         <article id="svc-21" class="svc rv">
-          <figure><div class="slider" data-slider data-autoplay="4600" ><div class="s-track"><div class="s-slide"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="صفوف أشجار مثمرة صغيرة مغروسة في أرض مشمسة مرتبة" loading="lazy" / data-a="k86" onload="this.onload=null;window.__S(this)"></div><div class="s-slide"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="أشجار صغيرة مصفوفة في أحواض زرع بين مسطحات خضراء" loading="lazy" / data-a="k87" onload="this.onload=null;window.__S(this)"></div><div class="s-slide v-slide svc-vid"><video src="https://videos.pexels.com/video-files/5121695/5121695-sd_960_540_25fps.mp4" muted loop playsinline preload="none" aria-label="فيديو توضيحي: شتلات أشجار صغيرة في أكياس زراعة داخل مشتل"></video><img class="v-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="شتلات أشجار صغيرة في أكياس زراعة داخل مشتل" loading="lazy" / data-a="k88" onload="this.onload=null;window.__S(this)"><span class="demo-chip">فيديو توضيحي</span><span class="svc-vid-tag"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>فيديو</span></div></div><button class="s-nav s-prev" type="button" aria-label="الصورة السابقة"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button><button class="s-nav s-next" type="button" aria-label="الصورة التالية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><div class="s-dots"></div></div><span class="svc-num">٢١</span></figure>
+          <figure><div class="slider" data-slider data-autoplay="4600" ><div class="s-track"><div class="s-slide"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="صفوف أشجار مثمرة صغيرة مغروسة في أرض مشمسة مرتبة" loading="lazy" / data-a="k86" onload="this.onload=null;window.__S(this)"></div><div class="s-slide"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="أشجار صغيرة مغروسة في صفوف منتظمة على أرض مغطاة بالنشارة بين مسطحات خضراء" loading="lazy" / data-a="k87" onload="this.onload=null;window.__S(this)"></div><div class="s-slide v-slide svc-vid"><video src="https://videos.pexels.com/video-files/5121695/5121695-sd_960_540_25fps.mp4" muted loop playsinline preload="none" aria-label="فيديو توضيحي: شتلات أشجار صغيرة في أكياس زراعة داخل مشتل"></video><img class="v-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="شتلات أشجار صغيرة في أكياس زراعة داخل مشتل" loading="lazy" / data-a="k88" onload="this.onload=null;window.__S(this)"><span class="demo-chip">فيديو توضيحي</span><span class="svc-vid-tag"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>فيديو</span></div></div><button class="s-nav s-prev" type="button" aria-label="الصورة السابقة"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button><button class="s-nav s-next" type="button" aria-label="الصورة التالية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><div class="s-dots"></div></div><span class="svc-num">٢١</span></figure>
           <div class="body">
             <h3>توريد وزراعة الأشجار</h3>
             <p>شجرة اليوم ظلّ الغد وثمار الموسم: نوصل الشجرة الصحيحة لمكانها الصحيح ونغرسها بضمان:</p>
@@ -1110,7 +1135,7 @@
         </article>
 
         <article id="svc-22" class="svc rv">
-          <figure><div class="slider" data-slider data-autoplay="4600" ><div class="s-track"><div class="s-slide"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="فريق صيانة يعتني بحديقة منزل خضراء مرتبة" loading="lazy" / data-a="k89" onload="this.onload=null;window.__S(this)"></div><div class="s-slide"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="عامل صيانة يقص ويشذّب سياجًا نباتيًا في حديقة" loading="lazy" / data-a="k90" onload="this.onload=null;window.__S(this)"></div><div class="s-slide"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="عاملان يصونان حديقة: قص مسطح وتشذيب نباتات" loading="lazy" / data-a="k91" onload="this.onload=null;window.__S(this)"></div><div class="s-slide v-slide svc-vid"><video src="https://videos.pexels.com/video-files/40188605/17167994_540_960_29fps.mp4" muted loop playsinline preload="none" aria-label="فيديو توضيحي: عاملا صيانة يشذّبان نباتات عالية عند فيلا في يوم مشمس"></video><img class="v-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="عاملا صيانة يشذّبان نباتات عالية عند فيلا في يوم مشمس" loading="lazy" / data-a="k92" onload="this.onload=null;window.__S(this)"><span class="demo-chip">فيديو توضيحي</span><span class="svc-vid-tag"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>فيديو</span></div></div><button class="s-nav s-prev" type="button" aria-label="الصورة السابقة"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button><button class="s-nav s-next" type="button" aria-label="الصورة التالية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><div class="s-dots"></div></div><span class="svc-num">٢٢</span></figure>
+          <figure><div class="slider" data-slider data-autoplay="4600" ><div class="s-track"><div class="s-slide"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="عامل صيانة يقص مسطحًا أخضر في حديقة منزل وبجواره معدات التشذيب" loading="lazy" / data-a="k89" onload="this.onload=null;window.__S(this)"></div><div class="s-slide"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="عامل صيانة يقص ويشذّب سياجًا نباتيًا في حديقة" loading="lazy" / data-a="k90" onload="this.onload=null;window.__S(this)"></div><div class="s-slide"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="عاملان يصونان حديقة: قص مسطح وتشذيب نباتات" loading="lazy" / data-a="k91" onload="this.onload=null;window.__S(this)"></div><div class="s-slide v-slide svc-vid"><video src="https://videos.pexels.com/video-files/40188605/17167994_540_960_29fps.mp4" muted loop playsinline preload="none" aria-label="فيديو توضيحي: عاملا صيانة يشذّبان نباتات عالية عند فيلا في يوم مشمس"></video><img class="v-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="عاملا صيانة يشذّبان نباتات عالية عند فيلا في يوم مشمس" loading="lazy" / data-a="k92" onload="this.onload=null;window.__S(this)"><span class="demo-chip">فيديو توضيحي</span><span class="svc-vid-tag"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>فيديو</span></div></div><button class="s-nav s-prev" type="button" aria-label="الصورة السابقة"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button><button class="s-nav s-next" type="button" aria-label="الصورة التالية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><div class="s-dots"></div></div><span class="svc-num">٢٢</span></figure>
           <div class="body">
             <h3>صيانة الحدائق الدورية</h3>
             <p>حديقتك تبقى كيوم تسليمها طوال السنة بعقود صيانة مرنة للفلل والاستراحات والمجمعات:</p>
@@ -1140,7 +1165,7 @@
     <div class="wrap">
       <div class="sec-head rv">
         <span class="orn"><i></i></span>
-        <h2>لماذا <span class="accent">عالم التشطيب</span>؟</h2>
+        <h2>لماذا <span class="brand-gold">عالم التشطيب</span>؟</h2>
         <p>لأننا لا نركّب خامات غيرنا — نبيعها ونصنّعها ونركّبها، فتأخذ السعر الأفضل والجودة المضمونة من مصدر واحد.</p>
       </div>
       </div>
@@ -1469,11 +1494,22 @@
 </div>
 
 <!-- Lightbox -->
-<dialog id="lb" aria-label="عرض الصورة مكبّرة">
-  <img id="lbImg" alt="" />
+<dialog id="lb" aria-label="عرض الصورة مكبّرة بملء الشاشة">
+  <div class="lb-stage">
+    <img id="lbImg" alt="" />
+  </div>
+  <button type="button" class="lb-btn" id="lbClose" aria-label="إغلاق">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+  <button type="button" class="lb-btn" id="lbPrev" aria-label="الصورة السابقة">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+  </button>
+  <button type="button" class="lb-btn" id="lbNext" aria-label="الصورة التالية">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+  </button>
   <div class="lb-cap">
     <p id="lbCap"></p>
-    <button type="button" id="lbClose">إغلاق</button>
+    <span class="lb-count" id="lbCount"></span>
   </div>
 </dialog>
 
@@ -1641,7 +1677,7 @@
     track.addEventListener("pointerdown", function(e){
       if (e.pointerType === "mouse" && e.button !== 0) return;
       dragging = true; startX = e.clientX; startY = e.clientY; dx = 0; dy = 0;
-      downFig = (e.target && e.target.closest) ? e.target.closest(".g-slide") : null;
+      downFig = (e.target && e.target.closest) ? e.target.closest(".s-slide") : null;
       track.classList.add("dragging");
       track.style.transition = "none";
       try { track.setPointerCapture(e.pointerId); } catch (err) {}
@@ -1661,7 +1697,7 @@
       if (Math.abs(dx) > 45) go(idx + (dx < 0 ? 1 : -1)); else render();
       root._dragged = Math.abs(dx) > 8;
       dx = 0; dy = 0;
-      if (wasTap && downFig) openLb(downFig);
+      if (wasTap && downFig) openLbFromSlide(downFig);
       downFig = null;
     }
     track.addEventListener("pointerup", function(){ endDrag(false); });
@@ -1730,27 +1766,74 @@
     rszT = setTimeout(function(){ sliderInstances.forEach(function(s){ s.render(); }); }, 150);
   });
 
-  // Lightbox (gallery slides)
+  // Lightbox — fullscreen viewer: tap any photo in the gallery or a service
+  // slider to open it full screen, then move with the arrows or a swipe.
   var lb = document.getElementById("lb");
   var lbImg = document.getElementById("lbImg");
   var lbCap = document.getElementById("lbCap");
-  function openLb(fig){
-    if (lb.open) return;
-    var img = fig.querySelector("img");
-    var cap = fig.querySelector("figcaption");
-    lbImg.src = img.currentSrc || img.src;
-    lbImg.alt = img.alt;
-    lbCap.textContent = cap ? cap.textContent.trim() : img.alt;
+  var lbCount = document.getElementById("lbCount");
+  var lbPrevB = document.getElementById("lbPrev");
+  var lbNextB = document.getElementById("lbNext");
+  var lbItems = [], lbIdx = 0;
+  function lbRender(){
+    var it = lbItems[lbIdx];
+    if (!it) return;
+    lbImg.src = it.src;
+    lbImg.alt = it.alt;
+    lbCap.textContent = it.cap;
+    lbCount.textContent = (lbIdx + 1) + " / " + lbItems.length;
+    var multi = lbItems.length > 1;
+    lbPrevB.style.display = multi ? "" : "none";
+    lbNextB.style.display = multi ? "" : "none";
+  }
+  function lbGo(d){
+    if (lbItems.length < 2) return;
+    lbIdx = (((lbIdx + d) % lbItems.length) + lbItems.length) % lbItems.length;
+    lbRender();
+  }
+  function openLbFromSlide(slide){
+    if (lb.open || !slide) return;
+    if (slide.querySelector("video")) return;
+    var root = slide.closest("[data-slider]");
+    var slides = root ? Array.prototype.slice.call(root.querySelectorAll(".s-slide")) : [slide];
+    lbItems = [];
+    var start = 0;
+    slides.forEach(function(s){
+      if (s.classList.contains("s-hide") || s.querySelector("video")) return;
+      var img = s.querySelector("img");
+      if (!img) return;
+      if (s === slide) start = lbItems.length;
+      var cap = s.querySelector("figcaption");
+      lbItems.push({ src: img.currentSrc || img.src, alt: img.alt || "", cap: cap ? cap.textContent.trim() : (img.alt || "") });
+    });
+    if (!lbItems.length) return;
+    lbIdx = start;
+    lbRender();
     if (typeof lb.showModal === "function") lb.showModal();
   }
   document.querySelectorAll(".g-slide").forEach(function(fig){
-    fig.addEventListener("click", function(){ openLb(fig); });
     fig.addEventListener("keydown", function(e){
-      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openLb(fig); }
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openLbFromSlide(fig); }
     });
   });
   document.getElementById("lbClose").addEventListener("click", function(){ lb.close(); });
+  lbPrevB.addEventListener("click", function(){ lbGo(-1); });
+  lbNextB.addEventListener("click", function(){ lbGo(1); });
   lb.addEventListener("click", function(e){ if (e.target === lb) lb.close(); });
+  lb.addEventListener("keydown", function(e){
+    if (e.key === "ArrowLeft") lbGo(1);
+    else if (e.key === "ArrowRight") lbGo(-1);
+  });
+  var lbTx = null;
+  lb.addEventListener("touchstart", function(e){
+    if (e.changedTouches.length) lbTx = e.changedTouches[0].clientX;
+  }, { passive: true });
+  lb.addEventListener("touchend", function(e){
+    if (lbTx === null || !e.changedTouches.length) return;
+    var d = e.changedTouches[0].clientX - lbTx;
+    lbTx = null;
+    if (Math.abs(d) > 45) lbGo(d < 0 ? 1 : -1);
+  }, { passive: true });
 })();
 </script>
 <script>
