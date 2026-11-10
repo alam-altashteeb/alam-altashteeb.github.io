@@ -63,7 +63,8 @@
     .rv{opacity:1;transform:none;transition:none}
     html{scroll-behavior:auto}
     .hero-bg img{transition:none;animation:none !important}
-    .svc,.svc figure img,.gal img{transition:none}
+    .svc,.svc figure img{transition:none}
+    .s-track{transition:none}
     .svc:hover{transform:none}
     .open-dot{animation:none}
   }
@@ -225,7 +226,8 @@
   }
   .svc:hover{transform:translateY(-6px);border-color:var(--line-accent);box-shadow:0 30px 48px -24px rgba(0,0,0,.85),0 0 0 1px #2fae6233}
   .svc figure{margin:0;aspect-ratio:16/10;overflow:hidden;position:relative}
-  .svc figure::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(10,11,9,.5),transparent 55%)}
+  .svc figure .slider{position:absolute;inset:0}
+  .svc figure::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(10,11,9,.5),transparent 55%);z-index:1;pointer-events:none}
   .svc figure img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
   .svc:hover figure img{transform:scale(1.07)}
   .svc-num{
@@ -265,6 +267,7 @@
     border:1px solid var(--teal);border-radius:16px;z-index:0;
   }
   .why-photo .ph{border-radius:16px;overflow:hidden;position:relative;z-index:1;min-height:420px}
+  .why-photo .ph .slider{position:absolute;inset:0}
   .why-photo .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
   .why-photo figcaption{
     position:absolute;bottom:0;inset-inline:0;z-index:2;padding:44px 22px 16px;margin:0;
@@ -281,33 +284,59 @@
   .why-item h3{margin:0 0 3px;font-size:20px;font-weight:800;color:var(--ink)}
   .why-item p{margin:0;color:var(--muted);font-size:15.5px;grid-column:2}
 
-  /* Gallery */
-  .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;justify-content:center}
-  .filters button{
-    border:1px solid var(--line);background:var(--panel);color:var(--muted);
-    font-weight:800;font-size:15px;font-family:"Cairo";border-radius:999px;padding:9px 22px;cursor:pointer;min-height:44px;
+  /* ---------- Sliders (shared) ---------- */
+  .slider{position:relative;overflow:hidden;direction:ltr;height:100%}
+  .s-track{display:flex;height:100%;transition:transform .55s cubic-bezier(.22,.8,.3,1);touch-action:pan-y;cursor:grab}
+  .s-track.dragging{cursor:grabbing}
+  .s-slide{flex:0 0 100%;height:100%;position:relative;overflow:hidden;margin:0}
+  .s-slide img{width:100%;height:100%;object-fit:cover;display:block;-webkit-user-drag:none;user-select:none}
+  .s-nav{
+    position:absolute;top:50%;transform:translateY(-50%);z-index:5;
+    width:42px;height:42px;min-height:42px;border-radius:50%;padding:0;
+    border:1px solid #ffffff30;background:rgba(5,12,8,.55);color:#eafff3;
+    display:grid;place-items:center;cursor:pointer;backdrop-filter:blur(4px);
+    transition:background .2s ease;
   }
-  .filters button:hover{border-color:var(--line-accent);color:var(--aqua2)}
-  .filters button[aria-pressed="true"]{background:linear-gradient(120deg,var(--green),var(--teal));border-color:transparent;color:#03170c}
-  .gal{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:225px;gap:14px}
-  .gal figure{
-    margin:0;border-radius:14px;overflow:hidden;position:relative;border:1px solid var(--line);
-    cursor:zoom-in;background:var(--panel);
+  .s-nav:hover{background:rgba(23,122,68,.82)}
+  .s-nav svg{width:20px;height:20px}
+  .s-prev{right:10px}
+  .s-next{left:10px}
+  .s-dots{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:5}
+  .s-dots button{width:20px;height:5px;min-height:0;border:0;padding:0;border-radius:3px;background:#ffffff45;cursor:pointer;transition:background .3s ease,width .3s ease}
+  .s-dots button[aria-current="true"]{background:var(--aqua);width:32px}
+  .s-count{
+    position:absolute;bottom:12px;right:14px;z-index:5;direction:ltr;
+    background:rgba(4,10,7,.72);border:1px solid var(--line);color:var(--aqua2);
+    font-family:"Cairo";font-weight:800;font-size:13px;padding:3px 12px;border-radius:999px;
   }
-  .gal figure.wide{grid-column:span 2}
-  .gal figure.tall{grid-row:span 2}
-  .gal img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
-  .gal figure:hover{border-color:var(--line-accent)}
-  .gal figure:hover img{transform:scale(1.06)}
-  .gal figcaption{
-    position:absolute;bottom:0;inset-inline:0;padding:40px 16px 13px;
-    background:linear-gradient(0deg,rgba(5,6,4,.9),transparent);
-    font-weight:700;font-size:15.5px;color:#f5f1e4;
+  .real-badge{
+    position:absolute;top:12px;right:12px;z-index:4;
+    background:linear-gradient(120deg,var(--green),var(--teal));color:#03170c;
+    font-family:"Cairo";font-weight:800;font-size:13.5px;padding:5px 14px;border-radius:999px;
+    box-shadow:0 8px 20px -8px rgba(0,0,0,.7);
   }
-  .gal figcaption small{display:block;color:var(--aqua2);font-size:12.5px;font-family:"Cairo";font-weight:800}
-  .gal [hidden]{display:none}
-  @media (max-width:900px){.gal{grid-template-columns:repeat(3,1fr);grid-auto-rows:190px}}
-  @media (max-width:600px){.gal{grid-template-columns:repeat(2,1fr);grid-auto-rows:158px}.gal figcaption{font-size:13.5px;padding:30px 12px 10px}}
+  .svc .s-nav{width:34px;height:34px;min-height:34px}
+  .svc .s-nav svg{width:16px;height:16px}
+  .svc .s-dots{bottom:8px}
+  .svc .s-dots button{width:15px;height:4px}
+  .svc .s-dots button[aria-current="true"]{width:24px}
+  @media (max-width:640px){
+    .s-nav{width:37px;height:37px;min-height:37px}
+    .svc .s-nav{width:32px;height:32px;min-height:32px}
+  }
+
+  /* Gallery slider */
+  .gslider{border:1px solid var(--line);border-radius:16px;background:var(--panel);height:clamp(330px,56vw,580px)}
+  @media (max-width:640px){.gslider{height:min(74vw,430px)}}
+  .g-slide{cursor:zoom-in}
+  .g-slide:hover{border-color:var(--line-accent)}
+  .gslide-cap{
+    position:absolute;bottom:0;left:0;right:0;padding:56px 20px 16px;direction:rtl;text-align:right;
+    background:linear-gradient(0deg,rgba(5,6,4,.92),transparent);
+    font-weight:700;font-size:17.5px;color:#f5f1e4;pointer-events:none;
+  }
+  .gslide-cap small{display:block;color:var(--aqua2);font-size:13px;font-family:"Cairo";font-weight:800;margin-bottom:2px}
+  @media (max-width:600px){.gslide-cap{font-size:15px;padding:40px 14px 12px}}
 
   /* Instagram band */
   .ig-band{margin-top:28px;border-radius:18px;overflow:hidden;position:relative;isolation:isolate;border:1px solid var(--line-accent)}
@@ -428,7 +457,7 @@
   dialog#lb .lb-cap p{margin:0;font-weight:700;flex:1}
   dialog#lb button{background:rgba(255,255,255,.08);border:1px solid var(--line);color:var(--ink);padding:9px 18px;font-weight:800;cursor:pointer;min-height:44px}
 </style>
-<script src="a0.js"></script><script src="a1.js"></script><script src="a2.js"></script><script src="a3.js"></script></head>
+<script src="a0.js"></script><script src="a1.js"></script><script src="a2.js"></script><script src="a3.js"></script><script src="a4.js"></script><script src="a5.js"></script><script src="a6.js"></script></head>
 <body>
 
 <header>
@@ -452,6 +481,8 @@
       <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="" loading="lazy" / data-a="k2" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]">
       <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="" loading="lazy" / data-a="k3" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]">
       <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="" loading="lazy" / data-a="k4" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]">
+      <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="" loading="lazy" / data-a="k5" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]">
+      <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="" loading="lazy" / data-a="k6" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]">
     </div>
     <span class="hero-frame" aria-hidden="true"></span>
     <div class="wrap">
@@ -482,13 +513,7 @@
         </div>
       </div>
     </div>
-    <div class="hero-dots" id="heroDots" role="group" aria-label="صور الواجهة">
-      <button type="button" aria-current="true" aria-label="الصورة ١"></button>
-      <button type="button" aria-current="false" aria-label="الصورة ٢"></button>
-      <button type="button" aria-current="false" aria-label="الصورة ٣"></button>
-      <button type="button" aria-current="false" aria-label="الصورة ٤"></button>
-      <button type="button" aria-current="false" aria-label="الصورة ٥"></button>
-    </div>
+    <div class="hero-dots" id="heroDots" role="group" aria-label="صور الواجهة"></div>
     <div class="hero-stats" aria-label="طبيعة عملنا">
       <div class="wrap">
         <div><b>بيع</b><span>خامات أصلية بأسعار الجملة</span></div>
@@ -537,7 +562,7 @@
       <div class="svc-grid">
 
         <article class="svc rv">
-          <figure><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="حديقة فيلا منسّقة بالنخيل والمسطحات الخضراء" loading="lazy" / data-a="k5" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"><span class="svc-num">٠١</span></figure>
+          <figure><div class="slider" data-slider data-autoplay="4600" ><div class="s-track"><div class="s-slide"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="حديقة فيلا منسّقة بالنخيل والمسطحات الخضراء" loading="lazy" / data-a="k7" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"></div><div class="s-slide"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="حديقة فيلا عند الغروب بممر حجري ومسبح ونخيل مضاء" loading="lazy" / data-a="k3" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"></div><div class="s-slide"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="ممر حجري وسط حديقة مزهرة بألوان زاهية" loading="lazy" / data-a="k8" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"></div></div><button class="s-nav s-prev" type="button" aria-label="الصورة السابقة"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button><button class="s-nav s-next" type="button" aria-label="الصورة التالية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><div class="s-dots"></div></div><span class="svc-num">٠١</span></figure>
           <div class="body">
             <h3>تنسيق حدائق</h3>
             <p>تصميم وتنفيذ حدائق الفلل والاستراحات والقصور: مسطحات خضراء، نخيل وأشجار، ممرات حجرية، وإضاءة ليلية تبرز جمال المكان.</p>
@@ -547,7 +572,7 @@
         </article>
 
         <article class="svc rv">
-          <figure><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="بنتهاوس فاخر بإطلالة ليلية وتشطيبات رخامية راقية وإضاءة مخفية" loading="lazy" / data-a="k2" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"><span class="svc-num">٠٢</span></figure>
+          <figure><div class="slider" data-slider data-autoplay="4600" ><div class="s-track"><div class="s-slide"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="غرفة زجاجية مشرقة بجلسة أنيقة وإطلالة على الحديقة" loading="lazy" / data-a="k9" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"></div><div class="s-slide"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="مجلس قصر فاخر بثريات كريستال وأرضيات رخام لامعة" loading="lazy" / data-a="k4" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"></div><div class="s-slide"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="بنتهاوس فاخر بإطلالة ليلية وتشطيبات رخامية راقية" loading="lazy" / data-a="k10" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"></div></div><button class="s-nav s-prev" type="button" aria-label="الصورة السابقة"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button><button class="s-nav s-next" type="button" aria-label="الصورة التالية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><div class="s-dots"></div></div><span class="svc-num">٠٢</span></figure>
           <div class="body">
             <h3>ديكورات داخلية</h3>
             <p>تشطيبات وديكورات داخلية متكاملة للمجالس والصالات والفلل: أسقف، جدران، إضاءة مخفية، وغرف زجاجية — بذوق راقٍ وتفاصيل مدروسة.</p>
@@ -557,7 +582,7 @@
         </article>
 
         <article class="svc rv">
-          <figure><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="سقف جبس بورد بإضاءة مخفية منحنية في صالة فاخرة" loading="lazy" / data-a="k6" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"><span class="svc-num">٠٣</span></figure>
+          <figure><div class="slider" data-slider data-autoplay="4600" ><div class="s-track"><div class="s-slide"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="صالة فاخرة بسقف جبس بورد متدرج وإضاءة مخفية دافئة" loading="lazy" / data-a="k11" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"></div><div class="s-slide"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="سقف جبس بورد متعدد المستويات بإضاءة مخفية في صالة حديثة" loading="lazy" / data-a="k12" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"></div><div class="s-slide"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="سقف جبس بورد بإضاءة مخفية منحنية في صالة فاخرة" loading="lazy" / data-a="k13" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"></div></div><button class="s-nav s-prev" type="button" aria-label="الصورة السابقة"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button><button class="s-nav s-next" type="button" aria-label="الصورة التالية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><div class="s-dots"></div></div><span class="svc-num">٠٣</span></figure>
           <div class="body">
             <h3>جبس بورد</h3>
             <p>أسقف مستعارة وديكورات جبس بورد بتصاميم عصرية وكلاسيكية، مع إضاءة مخفية وسبوتات موزعة باحتراف للمجالس والصالات وغرف النوم.</p>
@@ -567,7 +592,7 @@
         </article>
 
         <article class="svc rv">
-          <figure><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="جدار مكسو بألواح بديل الخشب الشرائحية خلف أريكة" loading="lazy" / data-a="k7" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"><span class="svc-num">٠٤</span></figure>
+          <figure><div class="slider" data-slider data-autoplay="4600" ><div class="s-track"><div class="s-slide"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="جدار مكسو بألواح بديل الخشب الشرائحية خلف أريكة" loading="lazy" / data-a="k14" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"></div><div class="s-slide"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="واجهة تلفاز ببديل الرخام محاطة بشرائح بديل الخشب المضيئة" loading="lazy" / data-a="k15" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"></div><div class="s-slide"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="واجهة تلفاز رخامية بإطار من شرائح بديل الخشب الداكنة" loading="lazy" / data-a="k16" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"></div></div><button class="s-nav s-prev" type="button" aria-label="الصورة السابقة"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button><button class="s-nav s-next" type="button" aria-label="الصورة التالية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><div class="s-dots"></div></div><span class="svc-num">٠٤</span></figure>
           <div class="body">
             <h3>بديل الخشب</h3>
             <p>ألواح بديل الخشب (WPC) للجدران والأسقف وواجهات التلفاز: مظهر الخشب الطبيعي الفاخر، بمقاومة كاملة للماء والرطوبة وبدون صيانة.</p>
@@ -577,7 +602,7 @@
         </article>
 
         <article class="svc rv">
-          <figure><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="جدار تلفاز مكسو بألواح بديل الرخام بعروق فاخرة مع تكسية بديل الخشب" loading="lazy" / data-a="k8" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"><span class="svc-num">٠٥</span></figure>
+          <figure><div class="slider" data-slider data-autoplay="4600" ><div class="s-track"><div class="s-slide"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="جدار تلفاز مكسو بألواح بديل الرخام بعروق فاخرة" loading="lazy" / data-a="k17" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"></div><div class="s-slide"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="واجهة تلفاز ببديل الرخام الأبيض بعروق رمادية" loading="lazy" / data-a="k18" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"></div><div class="s-slide"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="بهو فاخر بسلالم رخامية مزدوجة ودرابزين مزخرف" loading="lazy" / data-a="k19" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"></div></div><button class="s-nav s-prev" type="button" aria-label="الصورة السابقة"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button><button class="s-nav s-next" type="button" aria-label="الصورة التالية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><div class="s-dots"></div></div><span class="svc-num">٠٥</span></figure>
           <div class="body">
             <h3>بديل الرخام</h3>
             <p>ألواح بديل الرخام بعروق طبيعية المظهر للجدران وواجهات التلفاز والمداخل: فخامة الرخام بوزن أخف وتكلفة أقل وتركيب أسرع.</p>
@@ -587,7 +612,7 @@
         </article>
 
         <article class="svc rv">
-          <figure><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="شلال جداري حجري داكن ينساب في حوض مائي بالحديقة" loading="lazy" / data-a="k9" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"><span class="svc-num">٠٦</span></figure>
+          <figure><div class="slider" data-slider data-autoplay="4600" ><div class="s-track"><div class="s-slide"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="نافورة شلال صخرية متدرجة تنساب بجوار مسبح فيلا" loading="lazy" / data-a="k20" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"></div><div class="s-slide"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="شلال جداري ينساب على تكسية حجرية طبيعية إلى حوض مائي" loading="lazy" / data-a="k21" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"></div><div class="s-slide"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="شلال جداري حجري داكن ينساب في حوض مائي بالحديقة" loading="lazy" / data-a="k22" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"></div></div><button class="s-nav s-prev" type="button" aria-label="الصورة السابقة"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button><button class="s-nav s-next" type="button" aria-label="الصورة التالية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><div class="s-dots"></div></div><span class="svc-num">٠٦</span></figure>
           <div class="body">
             <h3>شلالات ونوافير</h3>
             <p>شلالات جدارية ونوافير حجرية وحديثة للحدائق والمداخل والصالات، مع مضخات وإضاءة مائية آمنة تعطي المكان صوتًا ومنظرًا لا يُنسى.</p>
@@ -597,7 +622,7 @@
         </article>
 
         <article class="svc rv">
-          <figure><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="برجولا خشبية تظلل جلسة خارجية في حديقة" loading="lazy" / data-a="k10" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"><span class="svc-num">٠٧</span></figure>
+          <figure><div class="slider" data-slider data-autoplay="4600" ><div class="s-track"><div class="s-slide"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="برجولا حديثة بإضاءة مخفية دافئة فوق جلسة خارجية ليلية" loading="lazy" / data-a="k23" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"></div><div class="s-slide"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="مظلة برجولا بإضاءة مخفية فوق جلسة خارجية بجوار مسبح مضاء ليلًا" loading="lazy" / data-a="k6" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"></div><div class="s-slide"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="برجولا خشبية تظلل جلسة خارجية في حديقة" loading="lazy" / data-a="k24" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"></div></div><button class="s-nav s-prev" type="button" aria-label="الصورة السابقة"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button><button class="s-nav s-next" type="button" aria-label="الصورة التالية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><div class="s-dots"></div></div><span class="svc-num">٠٧</span></figure>
           <div class="body">
             <h3>مظلات</h3>
             <p>مظلات وبرجولات للحدائق والأسطح ومواقف السيارات: خشب معالج، حديد، ولكسان — تصاميم تتحمل شمس الأحساء وتجمّل المكان.</p>
@@ -607,7 +632,7 @@
         </article>
 
         <article class="svc rv">
-          <figure><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="تكسية جدارية شرائحية داكنة في ركن داخلي أنيق" loading="lazy" / data-a="k11" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"><span class="svc-num">٠٨</span></figure>
+          <figure><div class="slider" data-slider data-autoplay="4600" ><div class="s-track"><div class="s-slide"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="تكسية جدارية شرائحية داكنة في ركن داخلي أنيق" loading="lazy" / data-a="k25" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"></div><div class="s-slide"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="تكسية جدارية بشرائح خشبية مضيئة حول واجهة تلفاز رخامية" loading="lazy" / data-a="k15" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"></div><div class="s-slide"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="تكسية جدارية ببديل الخشب الشرائحي بلون طبيعي" loading="lazy" / data-a="k14" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"></div></div><button class="s-nav s-prev" type="button" aria-label="الصورة السابقة"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button><button class="s-nav s-next" type="button" aria-label="الصورة التالية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><div class="s-dots"></div></div><span class="svc-num">٠٨</span></figure>
           <div class="body">
             <h3>تكسيات جدارية</h3>
             <p>تكسيات جدارية داخلية وخارجية بألواح وشرائح حديثة تخفي عيوب الجدران وتمنح أي فراغ هوية فاخرة — للمجالس والواجهات والمداخل.</p>
@@ -617,7 +642,7 @@
         </article>
 
         <article class="svc rv">
-          <figure><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="مسطح عشب أرضي أخضر مرتب في حديقة منزل" loading="lazy" / data-a="k12" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"><span class="svc-num">٠٩</span></figure>
+          <figure><div class="slider" data-slider data-autoplay="4600" ><div class="s-track"><div class="s-slide"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="حديقة خلفية بعشب أرضي أخضر ومسار حجري وجلسة خارجية" loading="lazy" / data-a="k26" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"></div><div class="s-slide"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="مسطح عشب أرضي أخضر مرتب في حديقة منزل" loading="lazy" / data-a="k27" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"></div><div class="s-slide"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="نظام ري أوتوماتيكي يسقي مسطحًا أخضر" loading="lazy" / data-a="k28" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"></div></div><button class="s-nav s-prev" type="button" aria-label="الصورة السابقة"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button><button class="s-nav s-next" type="button" aria-label="الصورة التالية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><div class="s-dots"></div></div><span class="svc-num">٠٩</span></figure>
           <div class="body">
             <h3>عشب أرضي</h3>
             <p>توريد وتركيب العشب الصناعي الأرضي بكثافات وارتفاعات متعددة للحدائق والملاعب والأسطح، مع طبقات تصريف وتثبيت تدوم سنوات.</p>
@@ -627,7 +652,7 @@
         </article>
 
         <article class="svc rv">
-          <figure><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="جدار عشب صناعي أخضر كثيف داخل فراغ حديث" loading="lazy" / data-a="k13" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"><span class="svc-num">١٠</span></figure>
+          <figure><div class="slider" data-slider data-autoplay="4600" ><div class="s-track"><div class="s-slide"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="جدار نباتي أخضر كثيف متنوع داخل فراغ حديث" loading="lazy" / data-a="k29" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"></div><div class="s-slide"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="جدار عشب صناعي أخضر كثيف داخل فراغ حديث" loading="lazy" / data-a="k30" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"></div><div class="s-slide"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="ألواح جدار أخضر نباتية بأوراق متنوعة" loading="lazy" / data-a="k31" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"></div></div><button class="s-nav s-prev" type="button" aria-label="الصورة السابقة"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button><button class="s-nav s-next" type="button" aria-label="الصورة التالية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><div class="s-dots"></div></div><span class="svc-num">١٠</span></figure>
           <div class="body">
             <h3>عشب جداري</h3>
             <p>جدران خضراء بالعشب الصناعي الجداري للواجهات والمحلات والمقاهي والمنازل: خضرة دائمة بلا ريّ ولا قصّ، وبكثافة طبيعية المظهر.</p>
@@ -642,7 +667,7 @@
 
   <!-- Cinematic banner -->
   <div class="banner rv">
-    <img class="bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="" loading="lazy" / data-a="k14" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]">
+    <img class="bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="" loading="lazy" / data-a="k32" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]">
     <div class="banner-in">
       <span class="orn"><i></i></span>
       <blockquote>نحوّل مساحتك الخارجية إلى <span class="accent">لوحة تعيش فيها</span>… وإضاءة الليل عندنا فنّ</blockquote>
@@ -660,12 +685,7 @@
         <p>لأننا لا نركّب خامات غيرنا — نبيعها ونصنّعها ونركّبها، فتأخذ السعر الأفضل والجودة المضمونة من مصدر واحد.</p>
       </div>
       <div class="why">
-        <figure class="why-photo rv">
-          <div class="ph">
-            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="جلسة خارجية بمظلة وعشب أرضي وإضاءة ليلية من تنفيذ عالم التشطيب" / data-a="k15" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]">
-            <figcaption><b>من أعمالنا</b> — جلسة خارجية بمظلة وعشب أرضي وإضاءة مخفية</figcaption>
-          </div>
-        </figure>
+        <figure class="why-photo rv"><div class="ph"><div class="slider" data-slider data-autoplay="5000" ><div class="s-track"><figure class="s-slide"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="مظلة برجولا بإضاءة مخفية فوق جلسة خارجية بجوار مسبح مضاء ليلًا" loading="lazy" / data-a="k6" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"><figcaption>برجولا بإضاءة مخفية ومسبح ليلي — من تصاميمنا</figcaption></figure><figure class="s-slide"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="جلسة خارجية بمظلة وعشب أرضي وإضاءة ليلية من تنفيذ عالم التشطيب" loading="lazy" / data-a="k33" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"><span class="real-badge">من أعمالنا</span><figcaption><b>من أعمالنا</b> — جلسة خارجية بمظلة وعشب أرضي وإضاءة مخفية</figcaption></figure><figure class="s-slide"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="مسبح فيلا حديث مضاء ليلًا بإضاءة زرقاء" loading="lazy" / data-a="k34" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"><figcaption>مسابح ليلية بإضاءة مائية — من تصاميمنا</figcaption></figure><figure class="s-slide"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="حديقة خلفية بعشب أرضي أخضر ومسار حجري" loading="lazy" / data-a="k26" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"><figcaption>عشب أرضي ومسارات حجرية — من تصاميمنا</figcaption></figure></div><button class="s-nav s-prev" type="button" aria-label="الصورة السابقة"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button><button class="s-nav s-next" type="button" aria-label="الصورة التالية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><div class="s-dots"></div></div></div></figure>
         <div class="why-list rv">
           <div class="why-item">
             <span class="n">٠١</span>
@@ -698,95 +718,12 @@
       <div class="sec-head rv">
         <span class="orn"><i></i></span>
         <h2>أعمالنا <span class="accent">بالصور</span></h2>
-        <p>نماذج مصوّرة للأعمال التي ننفّذها يوميًا في الحدائق والديكورات — وأول صورة عمل حقيقي من تنفيذنا. اضغط أي صورة لتكبيرها، واطلب تنفيذًا مثلها عبر واتساب.</p>
+        <p>تصاميم ونماذج ملهمة لما ننفّذه في الحدائق والديكورات الداخلية — والصورة الموسومة «من أعمالنا» تنفيذ حقيقي لفريقنا. اسحب يمينًا ويسارًا لتصفّح الصور، واضغط أي صورة لتكبيرها، واطلب تنفيذًا مثلها عبر واتساب.</p>
       </div>
-      <div class="filters" role="group" aria-label="تصفية المعرض">
-        <button type="button" data-filter="all" aria-pressed="true">الكل</button>
-        <button type="button" data-filter="garden" aria-pressed="false">حدائق خارجية</button>
-        <button type="button" data-filter="interior" aria-pressed="false">ديكورات داخلية</button>
-        <button type="button" data-filter="water" aria-pressed="false">شلالات ومسابح</button>
-      </div>
-      <div class="gal" id="galGrid">
-        <figure class="wide tall" data-cat="garden" tabindex="0">
-          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="جلسة خارجية بمظلة وعشب أرضي من تنفيذ عالم التشطيب" loading="eager" / data-a="k15" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]">
-          <figcaption><small>من أعمالنا</small>جلسة خارجية بمظلة وعشب أرضي</figcaption>
-        </figure>
-        <figure data-cat="garden" tabindex="0">
-          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="مظلة برجولا بإضاءة مخفية فوق جلسة خارجية بجوار مسبح مضاء ليلًا" loading="eager" / data-a="k4" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]">
-          <figcaption>برجولا بإضاءة مخفية ومسبح ليلي</figcaption>
-        </figure>
-        <figure class="tall" data-cat="water" tabindex="0">
-          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="مسبح فاخر مضاء ليلًا مع جلسة خارجية وبرجولا" loading="eager" / data-a="k14" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]">
-          <figcaption>مسبح وجلسة خارجية بإضاءة ليلية</figcaption>
-        </figure>
-        <figure data-cat="garden" tabindex="0">
-          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="حديقة فيلا فاخرة مضاءة ليلًا" loading="eager" / data-a="k3" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]">
-          <figcaption>تنسيق حديقة فيلا بإضاءة ليلية</figcaption>
-        </figure>
-        <figure data-cat="interior" tabindex="0">
-          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="واجهة تلفاز ببديل الرخام مع تكسية بديل الخشب الداكنة" loading="eager" / data-a="k8" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]">
-          <figcaption>واجهة تلفاز ببديل الرخام والخشب</figcaption>
-        </figure>
-        <figure class="wide" data-cat="interior" tabindex="0">
-          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="بهو فاخر بسلالم رخامية مزدوجة ودرابزين ذهبي مزخرف" loading="eager" / data-a="k16" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]">
-          <figcaption>تشطيبات بهو بسلالم رخامية فاخرة</figcaption>
-        </figure>
-        <figure data-cat="interior" tabindex="0">
-          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="مجلس قصر فاخر بثريات كريستال وأرضيات رخام لامعة" loading="eager" / data-a="k1" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]">
-          <figcaption>مجلس قصر بثريات كريستال ورخام</figcaption>
-        </figure>
-        <figure data-cat="interior" tabindex="0">
-          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="بنتهاوس ليلي فاخر بنوافذ ممتدة وإضاءة مخفية دافئة" loading="eager" / data-a="k2" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]">
-          <figcaption>بنتهاوس بإضاءة مخفية وإطلالة ليلية</figcaption>
-        </figure>
-        <figure class="wide" data-cat="water" tabindex="0">
-          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="شلال جداري ينساب على تكسية حجرية طبيعية إلى حوض مائي" loading="eager" / data-a="k17" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]">
-          <figcaption>شلال جداري على تكسية حجرية</figcaption>
-        </figure>
-        <figure data-cat="garden" tabindex="0">
-          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="برجولا خشبية بجلسة خارجية" loading="eager" / data-a="k10" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]">
-          <figcaption>مظلة برجولا لجلسة خارجية</figcaption>
-        </figure>
-        <figure data-cat="interior" tabindex="0">
-          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="سقف جبس بورد بإضاءة مخفية" loading="eager" / data-a="k6" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]">
-          <figcaption>جبس بورد بإضاءة مخفية</figcaption>
-        </figure>
-        <figure data-cat="interior" tabindex="0">
-          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="واجهة تلفاز ببديل الرخام" loading="eager" / data-a="k18" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]">
-          <figcaption>واجهة تلفاز ببديل الرخام</figcaption>
-        </figure>
-        <figure data-cat="interior" tabindex="0">
-          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="تكسية جدارية ببديل الخشب" loading="eager" / data-a="k7" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]">
-          <figcaption>تكسية ببديل الخشب الشرائحي</figcaption>
-        </figure>
-        <figure class="tall" data-cat="interior" tabindex="0">
-          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="جدار عشب صناعي أخضر" loading="eager" / data-a="k13" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]">
-          <figcaption>عشب جداري أخضر كثيف</figcaption>
-        </figure>
-        <figure data-cat="water" tabindex="0">
-          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="شلال جداري حجري" loading="eager" / data-a="k9" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]">
-          <figcaption>شلال جداري بحجر داكن</figcaption>
-        </figure>
-        <figure data-cat="water" tabindex="0">
-          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="مسبح حديقة مضاء ليلًا بين النباتات" loading="eager" / data-a="k19" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]">
-          <figcaption>مسبح حديقة بإضاءة ليلية</figcaption>
-        </figure>
-        <figure class="wide" data-cat="garden" tabindex="0">
-          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="مسطح عشب أرضي مرتب" loading="eager" / data-a="k12" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]">
-          <figcaption>عشب أرضي بمسطح متكامل</figcaption>
-        </figure>
-        <figure data-cat="garden" tabindex="0">
-          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="ممر حديقة مضاء ليلًا" loading="eager" / data-a="k20" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]">
-          <figcaption>إضاءة ممرات حدائق ليلية</figcaption>
-        </figure>
-        <figure data-cat="garden" tabindex="0">
-          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="نظام ري أوتوماتيكي يسقي مسطحًا أخضر" loading="eager" / data-a="k21" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]">
-          <figcaption>شبكات ريّ أوتوماتيكية</figcaption>
-        </figure>
-      </div>
+      <div class="slider gslider" data-slider data-autoplay="5200" role="group" aria-label="معرض الصور"><div class="s-track"><figure class="s-slide g-slide" tabindex="0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="قناة مائية طويلة مضيئة بمياه فيروزية في حديقة فيلا ليلًا" loading="lazy" / data-a="k0" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"><figcaption class="gslide-cap"><small>شلالات ومسابح</small>قناة مائية مضيئة في حديقة فيلا</figcaption></figure><figure class="s-slide g-slide" tabindex="0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="قصر فاخر مضاء عند الغروب خلف مسطح عشب أخضر واسع ونخلة" loading="lazy" / data-a="k35" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"><figcaption class="gslide-cap"><small>حدائق خارجية</small>واجهة قصر بمسطح أخضر واسع</figcaption></figure><figure class="s-slide g-slide" tabindex="0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="مدخل فيلا متوسطية عند الغروب بممر حجري مضاء ونخيل" loading="lazy" / data-a="k1" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"><figcaption class="gslide-cap"><small>حدائق خارجية</small>مدخل فيلا بممر حجري مضاء</figcaption></figure><figure class="s-slide g-slide" tabindex="0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="صالة حديثة بسقف جبس بورد متعدد المستويات وإضاءة مخفية" loading="lazy" / data-a="k12" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"><figcaption class="gslide-cap"><small>ديكورات داخلية</small>صالة بسقف جبس بورد متعدد المستويات</figcaption></figure><figure class="s-slide g-slide" tabindex="0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="مسبح مضاء ليلًا مع كراسي استرخاء ومنطقة جلوس" loading="lazy" / data-a="k36" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"><figcaption class="gslide-cap"><small>شلالات ومسابح</small>مسبح ليلي بجلسات استرخاء</figcaption></figure><figure class="s-slide g-slide" tabindex="0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="حديقة فيلا استوائية عند الغروب بممر حجري ومسبح" loading="lazy" / data-a="k3" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"><figcaption class="gslide-cap"><small>حدائق خارجية</small>حديقة فيلا عند الغروب</figcaption></figure><figure class="s-slide g-slide" tabindex="0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="واجهة تلفاز ببديل الرخام محاطة بشرائح بديل الخشب وأرفف مضيئة" loading="lazy" / data-a="k15" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"><figcaption class="gslide-cap"><small>ديكورات داخلية</small>واجهة تلفاز ببديل الرخام والخشب</figcaption></figure><figure class="s-slide g-slide" tabindex="0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="نافورة شلال صخرية متدرجة بجوار مسبح فيلا" loading="lazy" / data-a="k20" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"><figcaption class="gslide-cap"><small>شلالات ومسابح</small>نافورة شلال صخرية بجوار مسبح</figcaption></figure><figure class="s-slide g-slide" tabindex="0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="جلسة خارجية بمظلة وعشب أرضي من تنفيذ عالم التشطيب" loading="lazy" / data-a="k33" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"><span class="real-badge">من أعمالنا</span><figcaption class="gslide-cap"><small>حدائق خارجية</small>جلسة خارجية بمظلة وعشب أرضي</figcaption></figure><figure class="s-slide g-slide" tabindex="0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="برجولا حديثة بإضاءة مخفية دافئة فوق جلسة خارجية ليلية" loading="lazy" / data-a="k23" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"><figcaption class="gslide-cap"><small>حدائق خارجية</small>برجولا حديثة بإضاءة مخفية</figcaption></figure><figure class="s-slide g-slide" tabindex="0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="مجلس قصر فاخر بثريات كريستال وأرضيات رخام لامعة" loading="lazy" / data-a="k4" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"><figcaption class="gslide-cap"><small>ديكورات داخلية</small>مجلس قصر بثريات كريستال</figcaption></figure><figure class="s-slide g-slide" tabindex="0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="مسبح فيلا حديث مضاء ليلًا بإضاءة زرقاء" loading="lazy" / data-a="k34" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"><figcaption class="gslide-cap"><small>شلالات ومسابح</small>مسبح فيلا بإضاءة زرقاء ليلية</figcaption></figure><figure class="s-slide g-slide" tabindex="0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="صالة فاخرة بسقف جبس بورد متدرج وإضاءة مخفية" loading="lazy" / data-a="k11" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"><figcaption class="gslide-cap"><small>ديكورات داخلية</small>سقف جبس بورد متدرج بإضاءة مخفية</figcaption></figure><figure class="s-slide g-slide" tabindex="0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="شلال حجري طبيعي ينساب إلى بركة مائية وسط خضرة" loading="lazy" / data-a="k37" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"><figcaption class="gslide-cap"><small>شلالات ومسابح</small>شلال حجري ينساب إلى بركة</figcaption></figure><figure class="s-slide g-slide" tabindex="0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="حديقة فيلا فاخرة مضاءة ليلًا" loading="lazy" / data-a="k5" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"><figcaption class="gslide-cap"><small>حدائق خارجية</small>تنسيق حديقة فيلا بإضاءة ليلية</figcaption></figure><figure class="s-slide g-slide" tabindex="0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="بهو فاخر بسلالم رخامية مزدوجة ودرابزين ذهبي مزخرف" loading="lazy" / data-a="k19" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"><figcaption class="gslide-cap"><small>ديكورات داخلية</small>تشطيبات بهو بسلالم رخامية</figcaption></figure><figure class="s-slide g-slide" tabindex="0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="مسبح فاخر مضاء ليلًا مع جلسة خارجية وبرجولا" loading="lazy" / data-a="k32" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"><figcaption class="gslide-cap"><small>شلالات ومسابح</small>مسبح وجلسة خارجية بإضاءة ليلية</figcaption></figure><figure class="s-slide g-slide" tabindex="0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="جدار نباتي أخضر كثيف متنوع داخل فراغ حديث" loading="lazy" / data-a="k29" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"><figcaption class="gslide-cap"><small>حدائق خارجية</small>جدار أخضر نباتي كثيف</figcaption></figure><figure class="s-slide g-slide" tabindex="0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="واجهة تلفاز ببديل الرخام مع تكسية بديل الخشب الداكنة" loading="lazy" / data-a="k17" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"><figcaption class="gslide-cap"><small>ديكورات داخلية</small>واجهة تلفاز ببديل الرخام والخشب</figcaption></figure><figure class="s-slide g-slide" tabindex="0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="مظلة برجولا بإضاءة مخفية فوق جلسة خارجية بجوار مسبح مضاء ليلًا" loading="lazy" / data-a="k6" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"><figcaption class="gslide-cap"><small>حدائق خارجية</small>برجولا بإضاءة مخفية ومسبح ليلي</figcaption></figure><figure class="s-slide g-slide" tabindex="0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="شلال صخري داخلي أسفل درج خشبي بدرابزين زجاجي" loading="lazy" / data-a="k38" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"><figcaption class="gslide-cap"><small>شلالات ومسابح</small>شلال داخلي أسفل درج فاخر</figcaption></figure><figure class="s-slide g-slide" tabindex="0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="حديقة خلفية بعشب أرضي أخضر ومسار حجري وجلسة خارجية" loading="lazy" / data-a="k26" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"><figcaption class="gslide-cap"><small>حدائق خارجية</small>عشب أرضي بمسار حجري</figcaption></figure><figure class="s-slide g-slide" tabindex="0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="بنتهاوس ليلي فاخر بنوافذ ممتدة وإضاءة مخفية دافئة" loading="lazy" / data-a="k10" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"><figcaption class="gslide-cap"><small>ديكورات داخلية</small>بنتهاوس بإضاءة مخفية وإطلالة ليلية</figcaption></figure><figure class="s-slide g-slide" tabindex="0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="ممر حديقة مضاء ليلًا بين النباتات" loading="lazy" / data-a="k39" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"><figcaption class="gslide-cap"><small>حدائق خارجية</small>إضاءة ممرات حدائق ليلية</figcaption></figure><figure class="s-slide g-slide" tabindex="0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="مسطح عشب أرضي مرتب في حديقة منزل" loading="lazy" / data-a="k27" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"><figcaption class="gslide-cap"><small>حدائق خارجية</small>عشب أرضي بمسطح متكامل</figcaption></figure><figure class="s-slide g-slide" tabindex="0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="نظام ري أوتوماتيكي يسقي مسطحًا أخضر" loading="lazy" / data-a="k28" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"><figcaption class="gslide-cap"><small>حدائق خارجية</small>شبكات ريّ أوتوماتيكية</figcaption></figure><figure class="s-slide g-slide" tabindex="0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="برجولا خشبية بستائر وإضاءة دافئة فوق جلسة خارجية" loading="lazy" / data-a="k40" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"><figcaption class="gslide-cap"><small>حدائق خارجية</small>برجولا خشبية بجلسة خارجية</figcaption></figure><figure class="s-slide g-slide" tabindex="0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="ألواح جدار أخضر نباتية بأوراق متنوعة داخل مكتب" loading="lazy" / data-a="k31" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]"><figcaption class="gslide-cap"><small>حدائق خارجية</small>ألواح جدار أخضر نباتية</figcaption></figure></div><button class="s-nav s-prev" type="button" aria-label="الصورة السابقة"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button><button class="s-nav s-next" type="button" aria-label="الصورة التالية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><div class="s-count" aria-hidden="true"></div></div>
 
       <div class="ig-band rv">
-        <img class="bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="" loading="lazy" / data-a="k4" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]">
+        <img class="bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="" loading="lazy" / data-a="k6" onload="this.onload=null;this.src=window.__A[this.getAttribute('data-a')]">
         <div class="ig-band-in">
           <span class="ig-ic">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
@@ -1007,79 +944,176 @@
 <script>
 (function(){
   "use strict";
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
   // Scroll reveal
   var rvEls = document.querySelectorAll(".rv");
-  if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches){
+  if ("IntersectionObserver" in window && !reduced){
     var io = new IntersectionObserver(function(entries){
       entries.forEach(function(en){
         if (en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); }
       });
     }, { threshold: 0.08 });
     rvEls.forEach(function(el){ io.observe(el); });
-    // Failsafe: never leave a section hidden
-    setTimeout(function(){
-      rvEls.forEach(function(el){ el.classList.add("in"); });
-    }, 2200);
+    setTimeout(function(){ rvEls.forEach(function(el){ el.classList.add("in"); }); }, 2200);
   } else {
     rvEls.forEach(function(el){ el.classList.add("in"); });
   }
 
-  // Hero slideshow
-  var slides = document.querySelectorAll("#heroBg img");
-  var dots = document.querySelectorAll("#heroDots button");
-  var cur = 0, timer = null;
-  function show(i){
-    slides[cur].classList.remove("on");
-    dots[cur].setAttribute("aria-current","false");
-    cur = (i + slides.length) % slides.length;
-    slides[cur].classList.add("on");
-    dots[cur].setAttribute("aria-current","true");
+  // Hero slideshow (crossfade + generated dots + touch swipe)
+  var heroSlides = document.querySelectorAll("#heroBg img");
+  var dotsWrap = document.getElementById("heroDots");
+  var heroDots = [];
+  var cur = 0, heroTimer = null;
+  function heroShow(i){
+    heroSlides[cur].classList.remove("on");
+    if (heroDots[cur]) heroDots[cur].setAttribute("aria-current","false");
+    cur = (i + heroSlides.length) % heroSlides.length;
+    heroSlides[cur].classList.add("on");
+    if (heroDots[cur]) heroDots[cur].setAttribute("aria-current","true");
   }
-  function auto(){
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    timer = setInterval(function(){ show(cur + 1); }, 5200);
+  function heroAuto(){
+    if (reduced || heroSlides.length < 2) return;
+    if (heroTimer) clearInterval(heroTimer);
+    heroTimer = setInterval(function(){ heroShow(cur + 1); }, 5200);
   }
-  if (slides.length > 1){
-    dots.forEach(function(d, i){
-      d.addEventListener("click", function(){
-        show(i);
-        if (timer){ clearInterval(timer); auto(); }
-      });
+  if (heroSlides.length > 1 && dotsWrap){
+    heroSlides.forEach(function(_, i){
+      var b = document.createElement("button");
+      b.type = "button";
+      b.setAttribute("aria-current", i === 0 ? "true" : "false");
+      b.setAttribute("aria-label", "الصورة " + (i + 1));
+      b.addEventListener("click", function(){ heroShow(i); heroAuto(); });
+      dotsWrap.appendChild(b);
+      heroDots.push(b);
     });
-    auto();
+    heroAuto();
     document.addEventListener("visibilitychange", function(){
-      if (!timer && !document.hidden) auto();
-      if (document.hidden && timer){ clearInterval(timer); timer = null; }
+      if (document.hidden){ if (heroTimer){ clearInterval(heroTimer); heroTimer = null; } }
+      else if (!heroTimer) heroAuto();
     });
+    var heroEl = document.querySelector(".hero");
+    var tx = null;
+    heroEl.addEventListener("touchstart", function(e){ tx = e.changedTouches[0].clientX; }, { passive: true });
+    heroEl.addEventListener("touchend", function(e){
+      if (tx === null) return;
+      var dx = e.changedTouches[0].clientX - tx; tx = null;
+      if (Math.abs(dx) > 45){ heroShow(cur + (dx < 0 ? 1 : -1)); heroAuto(); }
+    }, { passive: true });
   }
 
-  // Gallery filter
-  var filterBtns = document.querySelectorAll(".filters button");
-  var figures = document.querySelectorAll("#galGrid figure");
-  filterBtns.forEach(function(btn){
-    btn.addEventListener("click", function(){
-      filterBtns.forEach(function(b){ b.setAttribute("aria-pressed","false"); });
-      btn.setAttribute("aria-pressed","true");
-      var f = btn.getAttribute("data-filter");
-      figures.forEach(function(fig){
-        fig.hidden = !(f === "all" || fig.getAttribute("data-cat") === f);
-      });
+  // Generic sliders: swipe / drag, arrows, dots or counter, autoplay that pauses on interaction
+  var sliderInstances = [];
+  function makeSlider(root){
+    var track = root.querySelector(".s-track");
+    if (!track) return;
+    var n = track.children.length;
+    if (n < 2){
+      root.querySelectorAll(".s-nav").forEach(function(b){ b.style.display = "none"; });
+      return;
+    }
+    var idx = 0, timer = null, resumeT = null, hold = false, visible = false;
+    var delay = parseInt(root.getAttribute("data-autoplay") || "4500", 10);
+    var dotsWrap = root.querySelector(".s-dots");
+    var countEl = root.querySelector(".s-count");
+    var dots = [];
+    if (dotsWrap){
+      for (var k = 0; k < n; k++){
+        (function(k){
+          var b = document.createElement("button");
+          b.type = "button";
+          b.setAttribute("aria-current", k === 0 ? "true" : "false");
+          b.setAttribute("aria-label", "الصورة " + (k + 1));
+          b.addEventListener("click", function(){ go(k); pauseBriefly(); });
+          dotsWrap.appendChild(b);
+          dots.push(b);
+        })(k);
+      }
+    }
+    function render(){
+      track.style.transform = "translateX(" + (-idx * root.clientWidth) + "px)";
+      dots.forEach(function(d, i){ d.setAttribute("aria-current", i === idx ? "true" : "false"); });
+      if (countEl) countEl.textContent = (idx + 1) + " / " + n;
+    }
+    function go(i){ idx = ((i % n) + n) % n; render(); }
+    function play(){
+      if (reduced) return;
+      stop();
+      timer = setInterval(function(){ if (visible && !hold && !document.hidden) go(idx + 1); }, delay);
+    }
+    function stop(){ if (timer){ clearInterval(timer); timer = null; } }
+    function pauseBriefly(){
+      hold = true;
+      if (resumeT) clearTimeout(resumeT);
+      resumeT = setTimeout(function(){ hold = false; }, 7000);
+    }
+    var prevB = root.querySelector(".s-prev"), nextB = root.querySelector(".s-next");
+    if (prevB) prevB.addEventListener("click", function(){ go(idx - 1); pauseBriefly(); });
+    if (nextB) nextB.addEventListener("click", function(){ go(idx + 1); pauseBriefly(); });
+    root.addEventListener("pointerenter", function(){ hold = true; });
+    root.addEventListener("pointerleave", function(){ hold = false; });
+    root.addEventListener("focusin", pauseBriefly);
+    track.addEventListener("dragstart", function(e){ e.preventDefault(); });
+    var startX = 0, dx = 0, dragging = false;
+    track.addEventListener("pointerdown", function(e){
+      if (e.pointerType === "mouse" && e.button !== 0) return;
+      dragging = true; startX = e.clientX; dx = 0;
+      track.classList.add("dragging");
+      track.style.transition = "none";
+      try { track.setPointerCapture(e.pointerId); } catch (err) {}
+      pauseBriefly();
     });
+    track.addEventListener("pointermove", function(e){
+      if (!dragging) return;
+      dx = e.clientX - startX;
+      track.style.transform = "translateX(" + (-idx * root.clientWidth + dx) + "px)";
+    });
+    function endDrag(){
+      if (!dragging) return;
+      dragging = false;
+      track.classList.remove("dragging");
+      track.style.transition = "";
+      if (Math.abs(dx) > 45) go(idx + (dx < 0 ? 1 : -1)); else render();
+      root._dragged = Math.abs(dx) > 8;
+      dx = 0;
+    }
+    track.addEventListener("pointerup", endDrag);
+    track.addEventListener("pointercancel", endDrag);
+    track.addEventListener("click", function(e){
+      if (root._dragged){ e.preventDefault(); e.stopPropagation(); root._dragged = false; }
+    }, true);
+    if ("IntersectionObserver" in window){
+      var sio = new IntersectionObserver(function(entries){
+        entries.forEach(function(en){
+          visible = en.isIntersecting;
+          if (visible) play(); else stop();
+        });
+      }, { threshold: 0.25 });
+      sio.observe(root);
+    } else { visible = true; play(); }
+    render();
+    sliderInstances.push({ render: render });
+  }
+  document.querySelectorAll("[data-slider]").forEach(makeSlider);
+  var rszT = null;
+  window.addEventListener("resize", function(){
+    if (rszT) clearTimeout(rszT);
+    rszT = setTimeout(function(){ sliderInstances.forEach(function(s){ s.render(); }); }, 150);
   });
 
-  // Lightbox
+  // Lightbox (gallery slides)
   var lb = document.getElementById("lb");
   var lbImg = document.getElementById("lbImg");
   var lbCap = document.getElementById("lbCap");
   function openLb(fig){
     var img = fig.querySelector("img");
     var cap = fig.querySelector("figcaption");
-    lbImg.src = img.src;
+    lbImg.src = img.currentSrc || img.src;
     lbImg.alt = img.alt;
     lbCap.textContent = cap ? cap.textContent.trim() : img.alt;
     if (typeof lb.showModal === "function") lb.showModal();
   }
-  figures.forEach(function(fig){
+  document.querySelectorAll(".g-slide").forEach(function(fig){
     fig.addEventListener("click", function(){ openLb(fig); });
     fig.addEventListener("keydown", function(e){
       if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openLb(fig); }
@@ -1087,7 +1121,6 @@
   });
   document.getElementById("lbClose").addEventListener("click", function(){ lb.close(); });
   lb.addEventListener("click", function(e){ if (e.target === lb) lb.close(); });
-
 })();
 </script>
 </body>
