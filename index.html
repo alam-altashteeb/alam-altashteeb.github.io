@@ -619,7 +619,7 @@
     }
     .mobilebar a{
       display:flex;align-items:center;justify-content:center;gap:7px;text-decoration:none;
-      font-family:"Cairo";font-weight:800;font-size:14.5px;min-height:46px;color:var(--green-deep);
+      font-family:"Cairo";font-weight:800;font-size:14.5px;min-height:46px;white-space:nowrap;color:var(--green-deep);
     }
     .mobilebar a svg{width:20px;height:20px;flex:none}
     .mobilebar a.mb-wa{background:var(--wa);color:var(--wa-ink)}
@@ -928,13 +928,13 @@ body.dt-lock{overflow:hidden}
 [data-theme="dark"] .dtl-btn{color:var(--mint)}
 .dtl-btn:hover{background:var(--panel2)}
 article.svc .body h3{cursor:pointer}
-.dt{position:fixed;inset:0;background:var(--bg);color:var(--ink);z-index:320;display:flex;flex-direction:column;overflow:hidden;opacity:0;visibility:hidden;transform:translateY(14px);transition:opacity .28s ease,transform .28s ease,visibility .28s}
-.dt-scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.dt{position:fixed;inset:0;background:var(--bg);color:var(--ink);z-index:320;display:flex;flex-direction:column;padding:0;overflow:hidden;opacity:0;visibility:hidden;transform:translateY(14px);transition:opacity .28s ease,transform .28s ease,visibility .28s}
+.dt-scroll{flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch}
 .dt.open{opacity:1;visibility:visible;transform:translateY(0)}
-.dt-bar{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:10px;padding:12px 16px;background:var(--panel);border-bottom:1px solid var(--line)}
-.dt-bar .dt-name{font-weight:800;font-size:1.02rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dt-bar{position:sticky;top:0;z-index:5;flex:0 0 auto;box-sizing:border-box;min-height:58px;display:flex;align-items:center;gap:10px;padding:8px 12px;background:var(--panel);border-bottom:1px solid var(--line)}
+.dt-bar .dt-name{font-weight:800;font-size:1.02rem;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .dt-bar .sp{flex:1}
-.dt-back,.dt-x{flex:0 0 auto;display:inline-flex;align-items:center;gap:6px;padding:9px 14px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit;font-weight:700;cursor:pointer}
+.dt-back,.dt-x{flex:0 0 auto;height:44px;display:inline-flex;align-items:center;gap:6px;padding:0 14px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit;font-weight:700;cursor:pointer}
 .dt-wrap{max-width:880px;margin:0 auto;padding:18px 16px 30px}
 .dt-hero{width:100%;aspect-ratio:16/9.5;object-fit:cover;border-radius:18px;border:1px solid var(--line);display:block;background:var(--bg2)}
 .dt h1{font-size:1.65rem;line-height:1.35;margin:16px 0 6px}
@@ -982,13 +982,13 @@ span.dt-chip{cursor:default}
 .dt-cta-box h2{margin:0 0 8px;font-size:1.3rem}
 .dt-cta-box p{color:var(--muted);margin:0 0 14px;line-height:1.9}
 .dt-cta-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
-.dt-cta-row a{flex:1;min-width:150px;text-align:center;padding:13px 10px;border-radius:12px;font-weight:800;text-decoration:none}
+.dt-cta-row a{flex:1;min-width:150px;height:52px;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 10px;border-radius:12px;font-weight:800;white-space:nowrap;text-decoration:none}
 .dt-cta-row .wa1{background:var(--wa);color:#fff}
 .dt-cta-row .wa2{border:1.5px solid var(--wa);color:var(--green-deep)}
 [data-theme="dark"] .dt-cta-row .wa2{color:var(--mint-bright)}
 .dt-cta-row .tel{border:1.5px solid var(--line);color:var(--ink)}
-.dt-sticky{display:flex;gap:10px;padding:12px 16px;background:var(--panel);border-top:1px solid var(--line)}
-.dt-sticky a{flex:1;text-align:center;padding:12px 8px;border-radius:12px;font-weight:800;text-decoration:none;background:var(--wa);color:#fff}
+.dt-sticky{flex:0 0 auto;display:flex;gap:10px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:var(--panel);border-top:1px solid var(--line)}
+.dt-sticky a{flex:1 1 0;min-width:0;height:54px;min-height:54px;max-height:54px;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 8px;border-radius:12px;font-weight:800;font-size:.98rem;line-height:1.2;white-space:nowrap;overflow:hidden;text-decoration:none;background:var(--wa);color:#fff}
 .dt-sticky a.tel{background:var(--green)}
 .vw{position:fixed;inset:0;z-index:340;background:rgba(4,10,6,.95);display:none;align-items:center;justify-content:center;flex-direction:column}
 .vw.open{display:flex}
@@ -2469,7 +2469,7 @@ span.dt-chip{cursor:default}
   </div>
   <div class="dt-scroll" id="dtScroll"><div class="dt-wrap" id="dtBody"></div></div>
   <div class="dt-sticky" id="dtSticky" style="display:none">
-    <a class="wa" id="dtWa" href="#" target="_blank" rel="noopener">💬 اطلب معاينة عبر واتساب</a>
+    <a class="wa" id="dtWa" href="#" target="_blank" rel="noopener">💬 اطلب معاينة</a>
     <a class="tel" href="tel:+966541679046">📞 اتصال</a>
   </div>
 </section>
