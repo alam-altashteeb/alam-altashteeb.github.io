@@ -878,9 +878,26 @@
   </style>
 <script>window.__S=function(e){var k=e.getAttribute('data-a');(function t(){if(window.__A&&window.__A[k]){e.src=window.__A[k]}else{setTimeout(t,120)}})()};</script><script src="a0.js"></script><style id="dtl-css">
 /* ===== عالم التشطيب: القائمة الجانبية + صفحات تفاصيل الخدمات (2026-11-11) ===== */
-.menu-btn{width:42px;height:42px;flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:12px;cursor:pointer}
-.menu-btn svg{width:22px;height:22px}
+.menu-btn{width:auto;height:42px;flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding-inline:13px;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:12px;cursor:pointer;font-family:"Cairo";font-weight:800;font-size:15px}
+.menu-btn svg{width:22px;height:22px;flex:none}
+.menu-btn .mb-txt{line-height:1;white-space:nowrap}
 .menu-btn:hover{border-color:var(--line-accent)}
+/* ===== شريط العدادات (أرقام حقيقية فقط) ===== */
+.stats-band{background:linear-gradient(180deg,var(--panel) 0%,var(--bg2) 100%);border-bottom:1px solid var(--line);padding:54px 0 50px}
+.stats-band + section{padding-top:76px}
+.stats-in{max-width:1080px;margin-inline:auto;padding-inline:24px;display:grid;grid-template-columns:repeat(3,1fr);text-align:center}
+.stat{padding:6px 18px}
+.stat + .stat{border-inline-start:1px solid var(--line-gold)}
+.stat-numrow{font-family:"Amiri",serif;font-weight:700;font-size:clamp(54px,6.4vw,80px);line-height:1.15;color:var(--green-deep);display:flex;justify-content:center;align-items:baseline;direction:ltr}
+.stat-plus{font-size:.5em;color:var(--gold);margin-inline-start:3px}
+.stat-cap{display:block;margin-top:8px;font-family:"Cairo";font-weight:800;font-size:clamp(15.5px,1.6vw,18.5px);color:var(--gold-deep);line-height:1.7}
+:root[data-theme="dark"] .stat-numrow{color:var(--mint-bright)}
+:root[data-theme="dark"] .stat-cap{color:var(--gold)}
+@media (max-width:640px){
+  .stats-band{padding:44px 0 40px}
+  .stats-in{grid-template-columns:1fr;gap:30px}
+  .stat + .stat{border-inline-start:0;border-top:1px solid var(--line-gold);padding-top:28px}
+}
 body.dt-lock{overflow:hidden}
 .dr-scrim{position:fixed;inset:0;background:rgba(8,18,12,.52);opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s;z-index:290}
 .dr-scrim.open{opacity:1;visibility:visible}
@@ -997,7 +1014,7 @@ span.dt-chip{cursor:default}
       <svg class="ic-moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.1 22c-5.5 0-10-4.5-10-10 0-4.4 2.9-8.2 6.9-9.5.5-.2 1 .1 1.2.6.1.4 0 .9-.4 1.1A8.4 8.4 0 0 0 5.6 12c0 3.6 2.9 6.5 6.5 6.5 2.9 0 5.5-1.9 6.3-4.6.1-.5.6-.8 1.1-.7.5.1.8.6.7 1.1-.9 4.4-4.9 7.7-9.1 7.7z"/></svg>
       <svg class="ic-sun" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 17a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-15l1.2 2.6h-2.4L12 2zM12 22l-1.2-2.6h2.4L12 22zM2 12l2.6-1.2v2.4L2 12zm20 0l-2.6 1.2v-2.4L22 12zM4.9 4.9l2.5 1-1.5 2-1-3zm14.2 14.2l-2.5-1 1.5-2 1 3zm0-14.2l-1 3-2-1.5 2.5-1 .5.5zm-14.2 14.2l1-3 2 1.5-2.5 1-.5-.5z"/></svg>
     </button>
-    <button class="menu-btn" id="menuBtn" type="button" aria-label="فتح القائمة الجانبية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg></button>
+    <button class="menu-btn" id="menuBtn" type="button" aria-label="فتح القائمة الجانبية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg><span class="mb-txt">القائمة</span></button>
   </div>
 </header>
 <div class="dr-scrim" id="drScrim"></div>
@@ -1114,6 +1131,24 @@ span.dt-chip{cursor:default}
         <span dir="ltr">0541 679 046</span>
       </a>
     </div>
+    </div>
+  </div>
+
+  <!-- Stats band — real, verifiable numbers only -->
+  <div class="stats-band" aria-label="أرقام عالم التشطيب">
+    <div class="stats-in">
+      <div class="stat">
+        <span class="stat-numrow"><span class="stat-num" data-count="370">370</span><span class="stat-plus">+</span></span>
+        <span class="stat-cap">مشروع منفذ في الفلل والمنازل والحدائق</span>
+      </div>
+      <div class="stat">
+        <span class="stat-numrow"><span class="stat-num" data-count="13">13</span><span class="stat-plus">+</span></span>
+        <span class="stat-cap">سنة من العمل في المجال، منذ 2012</span>
+      </div>
+      <div class="stat">
+        <span class="stat-numrow"><span class="stat-num" data-count="13">13</span></span>
+        <span class="stat-cap">منطقة نصل إليها في الأحساء والمنطقة الشرقية</span>
+      </div>
     </div>
   </div>
 
@@ -2661,6 +2696,38 @@ span.dt-chip{cursor:default}
   });
 })();
 
+</script>
+<script>
+/* Stats band count-up (runs once, respects reduced motion) */
+(function(){
+  "use strict";
+  var band = document.querySelector(".stats-band");
+  var nums = document.querySelectorAll(".stat-num[data-count]");
+  if (!band || !nums.length) return;
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduced || !("IntersectionObserver" in window)) return;
+  function animate(el){
+    var target = parseInt(el.getAttribute("data-count"), 10) || 0;
+    var t0 = null, dur = 1300;
+    function frame(ts){
+      if (!t0) t0 = ts;
+      var p = Math.min((ts - t0) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = String(Math.round(target * eased));
+      if (p < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (en.isIntersecting){
+        io.disconnect();
+        nums.forEach(function(el){ el.textContent = "0"; animate(el); });
+      }
+    });
+  }, { threshold: 0.3 });
+  io.observe(band);
+})();
 </script>
 </body>
 </html>
