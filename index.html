@@ -876,7 +876,109 @@
   .owner-actions .btn-cancel{background:var(--panel2);border:1px solid var(--line);color:var(--ink);font-family:"Cairo";font-weight:800;cursor:pointer;border-radius:0}
 
   </style>
-<script>window.__S=function(e){var k=e.getAttribute('data-a');(function t(){if(window.__A&&window.__A[k]){e.src=window.__A[k]}else{setTimeout(t,120)}})()};</script><script src="a0.js"></script></head>
+<script>window.__S=function(e){var k=e.getAttribute('data-a');(function t(){if(window.__A&&window.__A[k]){e.src=window.__A[k]}else{setTimeout(t,120)}})()};</script><script src="a0.js"></script><style id="dtl-css">
+/* ===== عالم التشطيب: القائمة الجانبية + صفحات تفاصيل الخدمات (2026-11-11) ===== */
+.menu-btn{width:42px;height:42px;flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:12px;cursor:pointer}
+.menu-btn svg{width:22px;height:22px}
+.menu-btn:hover{border-color:var(--line-accent)}
+body.dt-lock{overflow:hidden}
+.dr-scrim{position:fixed;inset:0;background:rgba(8,18,12,.52);opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s;z-index:290}
+.dr-scrim.open{opacity:1;visibility:visible}
+.dr{position:fixed;top:0;bottom:0;inset-inline-start:0;width:min(86vw,344px);background:var(--panel);color:var(--ink);z-index:300;transform:translateX(-106%);transition:transform .34s ease;display:flex;flex-direction:column;box-shadow:0 0 44px rgba(0,0,0,.28)}
+[dir="rtl"] .dr{transform:translateX(106%)}
+.dr.open{transform:translateX(0)!important}
+.dr-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 18px;border-bottom:1px solid var(--line)}
+.dr-head .dr-title{font-weight:800;font-size:1.08rem}
+.dr-head .dr-sub{display:block;font-weight:400;font-size:.78rem;color:var(--muted);margin-top:2px}
+.dr-close{width:38px;height:38px;flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:10px;cursor:pointer;font-size:1rem;line-height:1}
+.dr-list{flex:1;overflow-y:auto;padding:8px 10px;-webkit-overflow-scrolling:touch}
+.dr-link{display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;padding:12px 10px;border:0;border-bottom:1px solid var(--line);background:none;color:var(--ink);font:inherit;font-weight:700;text-align:start;cursor:pointer}
+.dr-link:last-child{border-bottom:0}
+.dr-link .chev{color:var(--gold);font-weight:800;transition:transform .25s}
+.dr-group.open .dr-link .chev{transform:rotate(-90deg)}
+.dr-sub{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.dr-group.open .dr-sub{max-height:1600px}
+.dr-svc{display:block;width:100%;padding:9px 14px 9px 10px;border:0;background:none;color:var(--muted);font:inherit;font-size:.94rem;text-align:start;cursor:pointer;border-radius:8px}
+.dr-svc:hover,.dr-link:hover{color:var(--green)}
+[dir="rtl"] .dr-svc{padding:9px 10px 9px 14px}
+.dr-area{display:inline-block;margin:3px 2px;padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:var(--panel2);color:var(--ink);font:inherit;font-size:.85rem;cursor:pointer}
+.dr-cta{display:flex;gap:10px;padding:14px;border-top:1px solid var(--line)}
+.dr-cta a{flex:1;text-align:center;padding:12px 8px;border-radius:12px;font-weight:800;text-decoration:none}
+.dr-cta .call{background:var(--green);color:#fff}
+.dr-cta .wa{border:1.5px solid var(--wa);color:var(--green-deep);background:transparent}
+[data-theme="dark"] .dr-cta .wa{color:var(--mint-bright)}
+.dtl-btn{display:block;width:100%;margin-top:10px;padding:11px 10px;border:1.5px solid var(--green);border-radius:12px;background:transparent;color:var(--green-deep);font:inherit;font-weight:800;cursor:pointer}
+[data-theme="dark"] .dtl-btn{color:var(--mint)}
+.dtl-btn:hover{background:var(--panel2)}
+article.svc .body h3{cursor:pointer}
+.dt{position:fixed;inset:0;background:var(--bg);color:var(--ink);z-index:320;display:flex;flex-direction:column;overflow:hidden;opacity:0;visibility:hidden;transform:translateY(14px);transition:opacity .28s ease,transform .28s ease,visibility .28s}
+.dt-scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.dt.open{opacity:1;visibility:visible;transform:translateY(0)}
+.dt-bar{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:10px;padding:12px 16px;background:var(--panel);border-bottom:1px solid var(--line)}
+.dt-bar .dt-name{font-weight:800;font-size:1.02rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dt-bar .sp{flex:1}
+.dt-back,.dt-x{flex:0 0 auto;display:inline-flex;align-items:center;gap:6px;padding:9px 14px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit;font-weight:700;cursor:pointer}
+.dt-wrap{max-width:880px;margin:0 auto;padding:18px 16px 30px}
+.dt-hero{width:100%;aspect-ratio:16/9.5;object-fit:cover;border-radius:18px;border:1px solid var(--line);display:block;background:var(--bg2)}
+.dt h1{font-size:1.65rem;line-height:1.35;margin:16px 0 6px}
+.dt .dt-intro{color:var(--muted);font-size:1.04rem;line-height:1.9;margin:0 0 8px}
+.dt-sec{margin-top:28px}
+.dt-sec>h2{font-size:1.28rem;margin:0 0 12px;padding-inline-start:12px;border-inline-start:4px solid var(--gold);line-height:1.5}
+.dt-sec p.txt{line-height:2;color:var(--ink);margin:0}
+.dt-types{display:flex;flex-direction:column;gap:10px}
+.dt-type{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:13px 15px}
+.dt-type b{display:block;color:var(--green-deep);margin-bottom:3px}
+[data-theme="dark"] .dt-type b{color:var(--mint)}
+.dt-type span{color:var(--muted);line-height:1.85}
+.dt-ul{margin:0;padding-inline-start:20px;line-height:2}
+.dt-ul li{margin-bottom:6px}
+.dt-ul li::marker{color:var(--green);font-weight:800}
+.dt-steps{display:flex;flex-direction:column;gap:12px}
+.dt-step{display:flex;gap:12px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:13px 15px}
+.dt-step .num{flex:0 0 auto;width:40px;height:40px;border-radius:50%;background:var(--gold);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:1.02rem}
+.dt-step b{display:block;margin-bottom:2px}
+.dt-step span{color:var(--muted);line-height:1.85}
+.dt-gal{display:flex;gap:12px;overflow-x:auto;padding-bottom:8px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+.dt-gal figure{flex:0 0 auto;width:min(72vw,320px);margin:0;scroll-snap-align:start}
+.dt-gal img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:14px;border:1px solid var(--line);display:block;cursor:zoom-in;background:var(--bg2)}
+.dt-gal figcaption{font-size:.83rem;color:var(--muted);margin-top:6px;line-height:1.7}
+.dt-gal .dt-vid{flex:0 0 auto;width:min(72vw,320px);scroll-snap-align:start}
+.dt-gal video{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:14px;border:1px solid var(--line);display:block;background:#000}
+.dt-gal .dt-vid span{font-size:.83rem;color:var(--muted);display:block;margin-top:6px}
+.dt-faq details{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:6px 15px;margin-bottom:10px}
+.dt-faq summary{font-weight:800;cursor:pointer;padding:9px 0;list-style:none}
+.dt-faq summary::-webkit-details-marker{display:none}
+.dt-faq details p{margin:0 0 12px;color:var(--muted);line-height:1.95}
+.dt-chips{display:flex;flex-wrap:wrap;gap:8px}
+.dt-chip{padding:8px 14px;border:1px solid var(--line);border-radius:999px;background:var(--panel2);color:var(--ink);font:inherit;font-size:.9rem;cursor:pointer}
+button.dt-chip:hover{border-color:var(--green);color:var(--green)}
+span.dt-chip{cursor:default}
+.dt-cta-box{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:20px 16px;text-align:center}
+.dt-cta-box h2{margin:0 0 8px;font-size:1.3rem}
+.dt-cta-box p{color:var(--muted);margin:0 0 14px;line-height:1.9}
+.dt-cta-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.dt-cta-row a{flex:1;min-width:150px;text-align:center;padding:13px 10px;border-radius:12px;font-weight:800;text-decoration:none}
+.dt-cta-row .wa1{background:var(--wa);color:#fff}
+.dt-cta-row .wa2{border:1.5px solid var(--wa);color:var(--green-deep)}
+[data-theme="dark"] .dt-cta-row .wa2{color:var(--mint-bright)}
+.dt-cta-row .tel{border:1.5px solid var(--line);color:var(--ink)}
+.dt-sticky{display:flex;gap:10px;padding:12px 16px;background:var(--panel);border-top:1px solid var(--line)}
+.dt-sticky a{flex:1;text-align:center;padding:12px 8px;border-radius:12px;font-weight:800;text-decoration:none;background:var(--wa);color:#fff}
+.dt-sticky a.tel{background:var(--green)}
+.vw{position:fixed;inset:0;z-index:340;background:rgba(4,10,6,.95);display:none;align-items:center;justify-content:center;flex-direction:column}
+.vw.open{display:flex}
+.vw img{max-width:94vw;max-height:82vh;border-radius:12px;object-fit:contain}
+.vw .vw-cap{color:#e8f2e8;margin-top:12px;font-size:.9rem;max-width:90vw;text-align:center;line-height:1.7}
+.vw button{position:absolute;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.08);color:#fff;border-radius:10px;cursor:pointer;font:inherit}
+.vw .vw-x{top:14px;inset-inline-end:14px;padding:9px 15px;font-weight:800}
+.vw .vw-p,.vw .vw-n{top:50%;transform:translateY(-50%);width:44px;height:52px;font-size:1.3rem}
+.vw .vw-p{inset-inline-start:10px}
+.vw .vw-n{inset-inline-end:10px}
+.vw .vw-count{position:absolute;bottom:16px;color:#cfe3cf;font-size:.85rem}
+@media (prefers-reduced-motion:reduce){.dr,.dr-scrim,.dt,.dr-sub{transition:none}}
+
+</style>
+</head>
 <body>
 
 <header>
@@ -895,8 +997,43 @@
       <svg class="ic-moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.1 22c-5.5 0-10-4.5-10-10 0-4.4 2.9-8.2 6.9-9.5.5-.2 1 .1 1.2.6.1.4 0 .9-.4 1.1A8.4 8.4 0 0 0 5.6 12c0 3.6 2.9 6.5 6.5 6.5 2.9 0 5.5-1.9 6.3-4.6.1-.5.6-.8 1.1-.7.5.1.8.6.7 1.1-.9 4.4-4.9 7.7-9.1 7.7z"/></svg>
       <svg class="ic-sun" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 17a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-15l1.2 2.6h-2.4L12 2zM12 22l-1.2-2.6h2.4L12 22zM2 12l2.6-1.2v2.4L2 12zm20 0l-2.6 1.2v-2.4L22 12zM4.9 4.9l2.5 1-1.5 2-1-3zm14.2 14.2l-2.5-1 1.5-2 1 3zm0-14.2l-1 3-2-1.5 2.5-1 .5.5zm-14.2 14.2l1-3 2 1.5-2.5 1-.5-.5z"/></svg>
     </button>
+    <button class="menu-btn" id="menuBtn" type="button" aria-label="فتح القائمة الجانبية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg></button>
   </div>
 </header>
+<div class="dr-scrim" id="drScrim"></div>
+<aside class="dr" id="drDrawer" aria-label="القائمة الجانبية" aria-hidden="true">
+  <div class="dr-head">
+    <div>
+      <span class="dr-title">عالم التشطيب</span>
+      <span class="dr-sub">أبو فهد وشركاه — الهفوف، الأحساء</span>
+    </div>
+    <button class="dr-close" id="drClose" type="button" aria-label="إغلاق القائمة">✕</button>
+  </div>
+  <nav class="dr-list" aria-label="روابط الموقع">
+    <button class="dr-link" type="button" data-go="#top">الرئيسية</button>
+    <button class="dr-link" type="button" data-go="#why">من نحن</button>
+    <div class="dr-group" id="drGrpSvc">
+      <button class="dr-link" type="button" data-grp="drGrpSvc" aria-expanded="false">خدماتنا <span class="chev">‹</span></button>
+      <div class="dr-sub">
+        <div id="drSvcList"></div>
+        <button class="dr-svc" type="button" data-go="#services">— كل الخدمات</button>
+      </div>
+    </div>
+    <div class="dr-group" id="drGrpArea">
+      <button class="dr-link" type="button" data-grp="drGrpArea" aria-expanded="false">مناطق الخدمة <span class="chev">‹</span></button>
+      <div class="dr-sub"><div id="drAreaList" style="padding:6px 4px"></div></div>
+    </div>
+    <button class="dr-link" type="button" data-go="#gallery">من أعمالنا</button>
+    <button class="dr-link" type="button" data-go="#videos">الفيديوهات</button>
+    <button class="dr-link" type="button" data-go="#faq">الأسئلة الشائعة</button>
+    <button class="dr-link" type="button" data-go="#contact">تواصل معنا</button>
+  </nav>
+  <div class="dr-cta">
+    <a class="call" href="tel:+966541679046">اتصل الآن</a>
+    <a class="wa" href="https://wa.me/966541679046?text=%D9%85%D8%B1%D8%AD%D8%A8%D9%8B%D8%A7%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%B7%D9%84%D8%A8%20%D9%85%D8%B9%D8%A7%D9%8A%D9%86%D8%A9" target="_blank" rel="noopener">واتساب</a>
+  </div>
+</aside>
+
 
 <main id="top">
 
@@ -999,6 +1136,7 @@
             
             
             <a class="order" href="https://wa.me/966541679046?text=%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%AA%D9%86%D8%B3%D9%8A%D9%82%20%D8%AD%D8%AF%D8%A7%D8%A6%D9%82" target="_blank" rel="noopener">احصل على عرض سعر</a>
+            <button class="dtl-btn" type="button" data-detail="svc-1">تفاصيل الخدمة وأعمالها ‹</button>
           </div>
         </article>
 
@@ -1009,6 +1147,7 @@
             <p>تشطيبات وديكورات داخلية متكاملة للمجالس والصالات والفلل: أسقف، جدران، إضاءة مخفية، وغرف زجاجية — بذوق راقٍ وتفاصيل مدروسة.</p>
             
             <a class="order" href="https://wa.me/966541679046?text=%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%AF%D9%8A%D9%83%D9%88%D8%B1%D8%A7%D8%AA%20%D8%AF%D8%A7%D8%AE%D9%84%D9%8A%D8%A9" target="_blank" rel="noopener">احصل على عرض سعر</a>
+            <button class="dtl-btn" type="button" data-detail="svc-2">تفاصيل الخدمة وأعمالها ‹</button>
           </div>
         </article>
 
@@ -1020,6 +1159,7 @@
             
             
             <a class="order" href="https://wa.me/966541679046?text=%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%AC%D8%A8%D8%B3%20%D8%A8%D9%88%D8%B1%D8%AF" target="_blank" rel="noopener">احصل على عرض سعر</a>
+            <button class="dtl-btn" type="button" data-detail="svc-3">تفاصيل الخدمة وأعمالها ‹</button>
           </div>
         </article>
 
@@ -1030,6 +1170,7 @@
             <p>ألواح بديل الخشب (WPC) للجدران والأسقف وواجهات التلفاز: مظهر الخشب الطبيعي الفاخر، بمقاومة كاملة للماء والرطوبة وبدون صيانة.</p>
             
             <a class="order" href="https://wa.me/966541679046?text=%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%A8%D8%AF%D9%8A%D9%84%20%D8%A7%D9%84%D8%AE%D8%B4%D8%A8" target="_blank" rel="noopener">احصل على عرض سعر</a>
+            <button class="dtl-btn" type="button" data-detail="svc-4">تفاصيل الخدمة وأعمالها ‹</button>
           </div>
         </article>
 
@@ -1040,6 +1181,7 @@
             <p>ألواح بديل الرخام بعروق طبيعية المظهر للجدران وواجهات التلفاز والمداخل: فخامة الرخام بوزن أخف وتكلفة أقل وتركيب أسرع.</p>
             
             <a class="order" href="https://wa.me/966541679046?text=%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%A8%D8%AF%D9%8A%D9%84%20%D8%A7%D9%84%D8%B1%D8%AE%D8%A7%D9%85" target="_blank" rel="noopener">احصل على عرض سعر</a>
+            <button class="dtl-btn" type="button" data-detail="svc-5">تفاصيل الخدمة وأعمالها ‹</button>
           </div>
         </article>
 
@@ -1051,6 +1193,7 @@
             
             
             <a class="order" href="https://wa.me/966541679046?text=%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%B4%D9%84%D8%A7%D9%84%D8%A7%D8%AA%20%D9%88%D9%86%D9%88%D8%A7%D9%81%D9%8A%D8%B1" target="_blank" rel="noopener">احصل على عرض سعر</a>
+            <button class="dtl-btn" type="button" data-detail="svc-6">تفاصيل الخدمة وأعمالها ‹</button>
           </div>
         </article>
 
@@ -1062,6 +1205,7 @@
             
             
             <a class="order" href="https://wa.me/966541679046?text=%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D9%85%D8%B8%D9%84%D8%A7%D8%AA" target="_blank" rel="noopener">احصل على عرض سعر</a>
+            <button class="dtl-btn" type="button" data-detail="svc-7">تفاصيل الخدمة وأعمالها ‹</button>
           </div>
         </article>
 
@@ -1072,6 +1216,7 @@
             <p>تكسيات جدارية داخلية وخارجية بألواح وشرائح حديثة تخفي عيوب الجدران وتمنح أي فراغ هوية فاخرة — للمجالس والواجهات والمداخل.</p>
             
             <a class="order" href="https://wa.me/966541679046?text=%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%AA%D9%83%D8%B3%D9%8A%D8%A7%D8%AA%20%D8%AC%D8%AF%D8%A7%D8%B1%D9%8A%D8%A9" target="_blank" rel="noopener">احصل على عرض سعر</a>
+            <button class="dtl-btn" type="button" data-detail="svc-8">تفاصيل الخدمة وأعمالها ‹</button>
           </div>
         </article>
 
@@ -1082,6 +1227,7 @@
             <p>توريد وتركيب العشب الصناعي الأرضي بكثافات وارتفاعات متعددة للحدائق والملاعب والأسطح، مع طبقات تصريف وتثبيت تدوم سنوات.</p>
             
             <a class="order" href="https://wa.me/966541679046?text=%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%B9%D8%B4%D8%A8%20%D8%A3%D8%B1%D8%B6%D9%8A" target="_blank" rel="noopener">احصل على عرض سعر</a>
+            <button class="dtl-btn" type="button" data-detail="svc-9">تفاصيل الخدمة وأعمالها ‹</button>
           </div>
         </article>
 
@@ -1092,6 +1238,7 @@
             <p>جدران خضراء بالعشب الصناعي الجداري للواجهات والمحلات والمقاهي والمنازل: خضرة دائمة بلا ريّ ولا قصّ، وبكثافة طبيعية المظهر.</p>
             
             <a class="order" href="https://wa.me/966541679046?text=%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%B9%D8%B4%D8%A8%20%D8%AC%D8%AF%D8%A7%D8%B1%D9%8A" target="_blank" rel="noopener">احصل على عرض سعر</a>
+            <button class="dtl-btn" type="button" data-detail="svc-10">تفاصيل الخدمة وأعمالها ‹</button>
           </div>
         </article>
 
@@ -1103,6 +1250,7 @@
             
             
             <a class="order" href="https://wa.me/966541679046?text=%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%AE%D8%AF%D9%85%D8%A7%D8%AA%20%D8%A7%D9%84%D9%86%D8%AE%D9%8A%D9%84" target="_blank" rel="noopener">احصل على عرض سعر</a>
+            <button class="dtl-btn" type="button" data-detail="svc-11">تفاصيل الخدمة وأعمالها ‹</button>
           </div>
         </article>
 
@@ -1114,6 +1262,7 @@
             
             
             <a class="order" href="https://wa.me/966541679046?text=%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%A7%D9%84%D9%88%D8%B1%D9%88%D8%AF%20%D9%88%D8%A7%D9%84%D8%B2%D9%87%D9%88%D8%B1" target="_blank" rel="noopener">احصل على عرض سعر</a>
+            <button class="dtl-btn" type="button" data-detail="svc-12">تفاصيل الخدمة وأعمالها ‹</button>
           </div>
         </article>
 
@@ -1125,6 +1274,7 @@
             
             
             <a class="order" href="https://wa.me/966541679046?text=%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%A7%D9%84%D8%A8%D8%B1%D8%AC%D9%88%D9%84%D8%A7%D8%AA" target="_blank" rel="noopener">احصل على عرض سعر</a>
+            <button class="dtl-btn" type="button" data-detail="svc-13">تفاصيل الخدمة وأعمالها ‹</button>
           </div>
         </article>
 
@@ -1136,6 +1286,7 @@
             
             
             <a class="order" href="https://wa.me/966541679046?text=%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%BA%D8%B1%D9%81%20%D8%B2%D8%AC%D8%A7%D8%AC%D9%8A%D8%A9" target="_blank" rel="noopener">احصل على عرض سعر</a>
+            <button class="dtl-btn" type="button" data-detail="svc-15">تفاصيل الخدمة وأعمالها ‹</button>
           </div>
         </article>
 
@@ -1147,6 +1298,7 @@
             
             
             <a class="order" href="https://wa.me/966541679046?text=%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%B3%D9%88%D8%A7%D8%AA%D8%B1" target="_blank" rel="noopener">احصل على عرض سعر</a>
+            <button class="dtl-btn" type="button" data-detail="svc-16">تفاصيل الخدمة وأعمالها ‹</button>
           </div>
         </article>
 
@@ -1158,6 +1310,7 @@
             
             
             <a class="order" href="https://wa.me/966541679046?text=%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%B4%D8%A8%D9%83%D8%A7%D8%AA%20%D8%A7%D9%84%D8%B1%D9%8A%20%D8%A7%D9%84%D8%A3%D9%88%D8%AA%D9%88%D9%85%D8%A7%D8%AA%D9%8A%D9%83%D9%8A%D8%A9" target="_blank" rel="noopener">احصل على عرض سعر</a>
+            <button class="dtl-btn" type="button" data-detail="svc-17">تفاصيل الخدمة وأعمالها ‹</button>
           </div>
         </article>
 
@@ -1169,6 +1322,7 @@
             
             
             <a class="order" href="https://wa.me/966541679046?text=%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%A5%D8%B6%D8%A7%D8%A1%D8%A9%20%D8%A7%D9%84%D8%AD%D8%AF%D8%A7%D8%A6%D9%82%20%D9%88%D8%A7%D9%84%D9%85%D9%85%D8%B1%D8%A7%D8%AA" target="_blank" rel="noopener">احصل على عرض سعر</a>
+            <button class="dtl-btn" type="button" data-detail="svc-18">تفاصيل الخدمة وأعمالها ‹</button>
           </div>
         </article>
 
@@ -1180,6 +1334,7 @@
             
             
             <a class="order" href="https://wa.me/966541679046?text=%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%A8%D8%A7%D8%B1%D9%83%D9%8A%D9%87" target="_blank" rel="noopener">احصل على عرض سعر</a>
+            <button class="dtl-btn" type="button" data-detail="svc-23">تفاصيل الخدمة وأعمالها ‹</button>
           </div>
         </article>
 
@@ -1191,6 +1346,7 @@
             
             
             <a class="order" href="https://wa.me/966541679046?text=%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%AC%D9%84%D8%B3%D8%A7%D8%AA%20%D8%AE%D8%A7%D8%B1%D8%AC%D9%8A%D8%A9" target="_blank" rel="noopener">احصل على عرض سعر</a>
+            <button class="dtl-btn" type="button" data-detail="svc-20">تفاصيل الخدمة وأعمالها ‹</button>
           </div>
         </article>
 
@@ -1202,6 +1358,7 @@
             
             
             <a class="order" href="https://wa.me/966541679046?text=%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%AA%D9%88%D8%B1%D9%8A%D8%AF%20%D9%88%D8%B2%D8%B1%D8%A7%D8%B9%D8%A9%20%D8%A7%D9%84%D8%A3%D8%B4%D8%AC%D8%A7%D8%B1" target="_blank" rel="noopener">احصل على عرض سعر</a>
+            <button class="dtl-btn" type="button" data-detail="svc-21">تفاصيل الخدمة وأعمالها ‹</button>
           </div>
         </article>
 
@@ -1213,6 +1370,7 @@
             
             
             <a class="order" href="https://wa.me/966541679046?text=%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%B5%D9%8A%D8%A7%D9%86%D8%A9%20%D8%A7%D9%84%D8%AD%D8%AF%D8%A7%D8%A6%D9%82%20%D8%A7%D9%84%D8%AF%D9%88%D8%B1%D9%8A%D8%A9" target="_blank" rel="noopener">احصل على عرض سعر</a>
+            <button class="dtl-btn" type="button" data-detail="svc-22">تفاصيل الخدمة وأعمالها ‹</button>
           </div>
         </article>
 
@@ -1339,7 +1497,7 @@
   </section>
 
   <!-- Coverage areas -->
-  <div class="areas-band rv">
+  <div class="areas-band rv" id="areas">
     <div class="areas-in">
       <span class="orn"><i></i></span>
       <h2>نغطي <span class="accent">الأحساء والمنطقة الشرقية</span> كاملة</h2>
@@ -2259,5 +2417,250 @@
   });
 })();
 </script>
-<script src="a1.js"></script><script src="a2.js"></script><script src="a3.js"></script><script src="a4.js"></script><script src="a5.js"></script><script src="a6.js"></script><script src="a7.js"></script><script src="a8.js"></script><script src="a9.js"></script><script src="a10.js"></script><script src="a11.js"></script><script src="a12.js"></script><script src="a13.js"></script><script src="bot-media.js"></script></body>
+<script src="a1.js"></script><script src="a2.js"></script><script src="a3.js"></script><script src="a4.js"></script><script src="a5.js"></script><script src="a6.js"></script><script src="a7.js"></script><script src="a8.js"></script><script src="a9.js"></script><script src="a10.js"></script><script src="a11.js"></script><script src="a12.js"></script><script src="a13.js"></script><script src="bot-media.js"></script><section class="dt" id="svcDetail" aria-hidden="true" aria-label="تفاصيل الخدمة">
+  <div class="dt-bar">
+    <button class="dt-back" id="dtBack" type="button">→ عودة للخدمات</button>
+    <span class="dt-name" id="dtName"></span>
+    <span class="sp"></span>
+    <button class="dt-x" id="dtClose" type="button" aria-label="إغلاق التفاصيل">✕</button>
+  </div>
+  <div class="dt-scroll" id="dtScroll"><div class="dt-wrap" id="dtBody"></div></div>
+  <div class="dt-sticky" id="dtSticky" style="display:none">
+    <a class="wa" id="dtWa" href="#" target="_blank" rel="noopener">💬 اطلب معاينة عبر واتساب</a>
+    <a class="tel" href="tel:+966541679046">📞 اتصال</a>
+  </div>
+</section>
+<div class="vw" id="dtViewer" aria-hidden="true">
+  <img id="vwImg" src="" alt="">
+  <div class="vw-cap" id="vwCap"></div>
+  <button class="vw-x" id="vwClose" type="button">إغلاق ✕</button>
+  <button class="vw-p" id="vwPrev" type="button" aria-label="السابق">‹</button>
+  <button class="vw-n" id="vwNext" type="button" aria-label="التالي">›</button>
+  <div class="vw-count" id="vwCount"></div>
+</div>
+
+<script type="application/json" id="svcDetails">{"svc-1":{"intro":"تصميم وتنفيذ حدائق الفلل والاستراحات والقصور من الصفر حتى التسليم: مسطحات خضراء وممرات وإضاءة وعناصر مائية متكاملة في تصميم واحد، مع صيانة دورية تحافظ على جمال حديقتك طوال العام.","about":"تنسيق الحدائق هو التخطيط الكامل لمساحتك الخارجية وتحويلها إلى حديقة متوازنة: توزيع المسطحات الخضراء والممرات والجلسات والعناصر المائية والإضاءة بحسب شكل الأرض واتجاه الشمس وطريقة استخدام أسرتك للمكان. تناسبك الخدمة إذا كان لديك حوش أو حديقة خام تريد تأسيسها من الصفر، أو حديقة قديمة تحتاج إعادة تصميم شاملة بدل الترقيع الجزئي.","typesTitle":"عناصر يشملها التنفيذ غالبًا","types":[{"n":"المسطحات الخضراء","d":"عشب صناعي أرضي أو زراعة طبيعية بحسب الشمس والاستخدام وميزانية الماء."},{"n":"الممرات والمسارات","d":"مسارات حجرية أو مرصوفة تربط المداخل بالجلسات دون دوس على الزرع."},{"n":"الجلسات والبرجولات","d":"أركان جلوس مظللة موزعة بحسب حركة الشمس طوال اليوم."},{"n":"العناصر المائية","d":"شلالات ونوافير ومسابح مدمجة في التصميم منذ البداية لا إضافات لاحقة."},{"n":"شبكات الري والإضاءة","d":"ري أوتوماتيكي وإضاءة ليلية مدروسة جزء من المخطط لا مرحلة أخيرة."},{"n":"الأشجار والنخيل والورود","d":"تشجير وتوزيع نباتات بحسب التربة والمناخ ونقاط الظل."}],"cost":["مساحة الحديقة وشكل الأرض وعدد العناصر المطلوبة (مائية، جلسات، ممرات).","نوع المسطحات: عشب صناعي بكثافات مختلفة أو زراعة طبيعية مع تجهيز تربة.","أعمال التأسيس المطلوبة: تسوية، شبكة ري، تمديدات إضاءة وصرف.","أنواع الأشجار والنخيل وأحجامها عند الزراعة.","لا نعطي سعرًا ثابتًا من الهاتف — السعر النهائي عرض مكتوب ومفصّل بالبنود بعد المعاينة والقياس المجاني."],"steps":[{"n":"تواصل ومعاينة","d":"راسلنا واتساب، نحدد موعدًا لزيارة موقعك ونستمع لفكرتك وميزانيتك."},{"n":"قياس وتصميم","d":"نأخذ المقاسات الدقيقة ونقترح توزيع العناصر والخامات والعينات قبل أي التزام."},{"n":"عرض سعر مكتوب","d":"عرض مفصّل بالبنود والخامات والمدة — بلا مفاجآت أثناء التنفيذ."},{"n":"تنفيذ مرحلي","d":"تأسيس ثم تركيب وزراعة بفريقنا الخاص، مع حماية المكان ونظافته طوال العمل."},{"n":"تسليم ومتابعة","d":"نراجع العمل معك بندًا بندًا، ونبقى على تواصل للصيانة والإضافات."}],"careTitle":"أخطاء شائعة ننبّه عليها","care":["توزيع الجلسات قبل دراسة حركة الشمس، فتصبح أجمل جلسة غير صالحة وقت الاستخدام.","تأجيل شبكة الري والإضاءة لما بعد التنفيذ، فيتطلب تكسيرًا وحفرًا إضافيًا.","اختيار نباتات لا تناسب حرارة ورطوبة المنطقة الشرقية فتذبل بعد أول صيف.","زراعة أشجار كبيرة قرب الأسوار والخزانات دون حساب امتداد الجذور."],"why":["مصدر واحد: نبيع الخامة ونصنّع القطع ونركّبها بفريقنا — مسؤولية واحدة من أول متر حتى التسليم.","معاينة وقياس وعينات خامات قبل أن تدفع ريالًا واحدًا، وعرض سعر مكتوب بالبنود.","خامات مجرّبة ضد حرارة ورطوبة المنطقة الشرقية، وضمان على الخامة والتركيب."],"faq":[{"q":"كم تستغرق مدة تنفيذ حديقة فيلا؟","a":"تختلف حسب المساحة والعناصر: الأعمال البسيطة أيام، والمشاريع التي تشمل عناصر مائية وإنشائية أطول. نحدد المدة صراحة في عرض السعر قبل البدء."},{"q":"هل تصممون الحديقة قبل التنفيذ؟","a":"نعم، نعرض عليك توزيع العناصر والخامات والعينات في المعاينة، ولا يبدأ التنفيذ إلا بعد اعتمادك الشكل والبنود."},{"q":"هل تتولون الصيانة بعد التسليم؟","a":"نعم، بعقود صيانة شهرية وسنوية تشمل القص والتشذيب والتسميد وفحص شبكات الري، مع تقارير مصوّرة بعد كل زيارة."}],"related":["svc-9","svc-6","svc-17","svc-22"]},"svc-2":{"intro":"تشطيبات وديكورات داخلية متكاملة للمجالس والصالات والفلل: أسقف وجدران وإضاءة مخفية وتفاصيل مدروسة تمنح بيتك هوية واحدة متناسقة من المدخل حتى آخر غرفة.","about":"الديكورات الداخلية هي تنسيق كل ما تراه العين داخل البيت — الأسقف والجدران والأرضيات والإضاءة — في لوحة واحدة متناسقة. تناسبك الخدمة عند تشطيب فيلا جديدة، أو تجديد مجلس أو صالة قائمة، أو توحيد طابع بيت كامل بدل تنفيذ كل غرفة بذوق مختلف.","typesTitle":"بنود ننفّذها داخل الخدمة","types":[{"n":"أسقف جبس بورد","d":"مستويات وإضاءة مخفية وتصاميم عصرية وكلاسيكية."},{"n":"تكسيات وبدائل","d":"بديل خشب وبديل رخام وتكسيات جدارية للجدران وواجهات التلفاز."},{"n":"إضاءة مخفية وسبوتات","d":"توزيع إضاءة دافئة وباردة بحسب وظيفة كل فراغ."},{"n":"غرف زجاجية داخلية","d":"فواصل ومكاتب زجاجية بنفس طابع التشطيب."},{"n":"أرضيات باركيه SPC","d":"أرضيات مقاومة للماء بتنسيق لوني مع الجدران والأسقف."}],"cost":["مساحة الفراغ وعدد الغرف المشمولة بالتشطيب.","عدد بنود العمل: أسقف فقط أم أسقف وجدران وأرضيات وإضاءة معًا.","أنواع الخامات المختارة ودرجاتها (جبس، ألواح بدائل، باركيه).","حالة الجدران والأسقف الحالية وحاجتها لمعالجة قبل التركيب.","السعر النهائي عرض مكتوب بعد المعاينة والقياس المجاني — لا أسعار هاتفية ثابتة."],"steps":[{"n":"معاينة واستماع","d":"نزور الموقع ونفهم ذوقك وطابع البيت والميزانية المتاحة."},{"n":"قياس وعينات","d":"مقاسات دقيقة وعينات خامات وألوان تراها على الطبيعة في إضاءة بيتك."},{"n":"عرض سعر بالبنود","d":"كل بند بسعره وخامته ومدته — تعرف ما تدفع مقابله بالضبط."},{"n":"تنفيذ نظيف","d":"فريقنا ينفّذ مع حماية الأرضيات والأثاث القائم ونظافة يومية للموقع."},{"n":"تسليم ومراجعة","d":"مراجعة نهائية معك لكل بند قبل إغلاق المشروع."}],"careTitle":"أخطاء شائعة ننبّه عليها","care":["اختيار خامة من صورة على الإنترنت دون رؤية عينة حقيقية في إضاءة المكان.","تنفيذ كل غرفة بذوق مستقل فيفقد البيت طابعه الواحد.","إهمال توزيع الإضاءة والاكتفاء بإضاءة سقفية واحدة قاسية.","بدء التشطيب قبل حسم أماكن الشاشات والنقاط الكهربائية، فيظهر التمديد خارجيًا لاحقًا."],"why":["نبيع الخامات ونركّبها بأنفسنا، فتأخذ سعر المصدر وجودة التركيب بمسؤولية واحدة.","عينات حقيقية في المعاينة المجانية قبل أي دفع، وعرض سعر مكتوب بالبنود.","خامات مختارة تتحمل أجواء المنطقة ولا تتقشر أو تبهت بعد أول صيف."],"faq":[{"q":"هل تنفّذون غرفة واحدة أم البيت كاملًا فقط؟","a":"ننفّذ الاثنين: مجلسًا أو صالة واحدة ببنود محددة، أو تشطيب بيت كامل بطابع موحّد."},{"q":"هل يمكن التجديد ونحن ساكنون في البيت؟","a":"نعم، ننظّم العمل على مراحل ونحمي الأرضيات والأثاث ونحافظ على نظافة المكان طوال التنفيذ."},{"q":"كيف أحدد الميزانية المناسبة؟","a":"في المعاينة المجانية نعرض بدائل خامات بدرجات سعرية مختلفة لنفس الشكل تقريبًا، وتختار ما يناسب ميزانيتك بعرض مكتوب."}],"related":["svc-3","svc-4","svc-5","svc-23"]},"svc-3":{"intro":"خدمتنا الأكثر طلبًا في الديكورات الداخلية: أسقف وديكورات جبس بورد بتصاميم عصرية وكلاسيكية، بإضاءة مخفية موزعة بعناية وتشطيب نظيف يدوم.","about":"الجبس بورد ألواح جبسية تُركّب على هيكل معدني خفيف لتشكيل أسقف مستعارة وديكورات جدارية وقواطع، مع إخفاء التمديدات وتوزيع الإضاءة داخل التصميم. يناسبك إذا أردت تجديد سقف صالة أو مجلس بإضاءة مخفية، أو إخفاء تمديدات التكييف والأسلاك، أو تقسيم فراغ كبير دون بناء جدران ثقيلة.","typesTitle":"أنواع وأشكال ننفّذها","types":[{"n":"أسقف متدرجة المستويات","d":"مستويان أو ثلاثة بإضاءة مخفية محيطية وسبوتات موزعة."},{"n":"أسقف بخطوط LED هندسية","d":"خطوط إضاءة متقاطعة أو محيطية بطابع عصري للصالات الحديثة."},{"n":"جبس مغربي وزخارف","d":"زخارف نجمية ومنحوتات جبسية فاخرة للمجالس الكلاسيكية."},{"n":"كرانيش وإطارات","d":"كورنيش جبسي عند التقاء السقف بالجدران وإطارات للجدران والشاشات."},{"n":"قواطع وجدران جبسية","d":"تقسيم الفراغات بألواح جبس بورد على هيكل معدني."},{"n":"ألواح مقاومة للرطوبة","d":"ألواح خضراء مقاومة للرطوبة للمطابخ ودورات المياه."}],"cost":["مساحة السقف بالمتر وعدد المستويات وتعقيد التصميم.","طول الإضاءة المخفية وعدد السبوتات والنقاط الكهربائية.","وجود زخارف أو منحنيات أو كرانيش يزيد زمن التنفيذ.","ارتفاع السقف وحاجته لسقالات أو معالجة للسقف الأصلي.","السعر عرض مكتوب بعد المعاينة والقياس المجاني، محسوبًا بالبنود لا تقديرًا هاتفيًا."],"steps":[{"n":"معاينة وقياس","d":"قياس السقف والارتفاع ومراجعة أماكن التكييف والإضاءة القائمة."},{"n":"اختيار التصميم","d":"نعرض أشكالًا تناسب فراغك وارتفاع سقفك وذوقك قبل التنفيذ."},{"n":"تركيب الهيكل والألواح","d":"هيكل معدني مستوٍ مضبوط بالليزر ثم تثبيت الألواح والمعجون والصنفرة."},{"n":"الدهان والإضاءة","d":"تشطيب الدهان وتركيب الإضاءة المخفية والسبوتات واختبارها معك."}],"careTitle":"أخطاء شائعة ننبّه عليها","care":["تصميم مستويات كثيرة في سقف منخفض فيضغط الفراغ بصريًا.","هيكل معدني ضعيف أو غير مستوٍ يظهر تشققات عند الفواصل بعد أشهر.","توزيع سبوتات عشوائي يخلق إضاءة قاسية وظلالًا مزعجة.","استخدام ألواح عادية في أماكن رطبة بدل المقاومة للرطوبة."],"why":["الأكثر طلبًا عندنا في الديكورات الداخلية — خبرة متراكمة في المجالس والصالات والفلل.","ضبط الاستواء بالليزر وهيكل معدني محكم يقلل التشققات لاحقًا.","معاينة وقياس مجاني وعرض سعر مكتوب، وضمان على الخامة والتركيب."],"faq":[{"q":"هل يتحمل الجبس بورد ثريا ثقيلة؟","a":"الثريات الثقيلة تُعلّق على السقف الخرساني الأصلي بنقاط تثبيت مستقلة نخطط لها قبل إغلاق السقف، لا على الألواح نفسها."},{"q":"كم يومًا يستغرق سقف صالة؟","a":"غالبًا أيام قليلة بحسب المساحة والمستويات والزخارف، ونحدد المدة في عرض السعر قبل البدء."},{"q":"هل يمكن تركيبه فوق سقف قديم متهالك؟","a":"نفحص السقف في المعاينة؛ غالبًا نعالج أو نزيل الأجزاء المتهالكة ثم نركّب هيكلنا المستقل بأمان."}],"related":["svc-2","svc-8","svc-4","svc-5"]},"svc-4":{"intro":"ألواح بديل الخشب (WPC) للجدران والأسقف وواجهات التلفاز: مظهر الخشب الطبيعي الفاخر بمقاومة كاملة للماء والرطوبة وبدون صيانة دورية.","about":"بديل الخشب ألواح مصنوعة من خليط الخشب والبلاستيك (WPC) تأخذ نقشة الخشب ولونه، لكنها لا تتأثر بالماء ولا تحتاج دهانًا أو معالجة ضد الحشرات. تناسبك إذا أعجبك دفء الخشب في المجالس وواجهات التلفاز والمداخل، وتريد خامة تعيش في أجواء المنطقة الرطبة دون تقشّر أو بهتان.","typesTitle":"أشكال واستخدامات","types":[{"n":"شرائح جدارية (فلوتد)","d":"شرائح طولية بارزة لواجهات التلفاز والمجالس والمداخل — الأكثر طلبًا."},{"n":"ألواح مسطحة","d":"تكسية ناعمة بمظهر خشبي للجدران كاملة أو أجزاء منها."},{"n":"أسقف بديل خشب","d":"شرائح سقفية تمنح الصالات دفئًا بصريًا مع الإضاءة المخفية."},{"n":"خارجي مقاوم","d":"درجات مخصصة للواجهات والجلسات الخارجية تتحمل الشمس والمطر."},{"n":"دمج مع بديل الرخام","d":"تنسيق الشرائح حول ألواح بديل الرخام في واجهات الشاشات الفاخرة."}],"cost":["المساحة المكسوة بالمتر ونوع اللوح (داخلي أو خارجي) وسماكته.","وجود إضاءة مخفية خلف الشرائح أو حولها.","حالة الجدار الأصلي وحاجته لتسوية أو هيكل تثبيت.","الزوايا والفتحات والأعمدة التي تتطلب قصًا وتشطيبًا إضافيًا.","السعر النهائي عرض مكتوب بعد معاينة وقياس مجانيين."],"steps":[{"n":"معاينة وعينات","d":"نعرض درجات الألوان والنقشات على جدارك وفي إضاءة مكانك."},{"n":"قياس وتجهيز الجدار","d":"معالجة الجدار وتثبيت الهيكل أو اللصق المباشر بحسب الحالة."},{"n":"قص وتركيب الألواح","d":"قص دقيق على المقاس وتركيب متعامد المستوى مع فواصل متناسقة."},{"n":"تشطيب الزوايا والإضاءة","d":"زوايا ونعلات وتركيب الإضاءة المخفية إن وُجدت، ثم مراجعة معك."}],"careTitle":"العناية بعد التنفيذ","care":["تنظيف بقطعة قماش رطبة فقط — لا يحتاج دهانًا ولا ورنيشًا ولا معالجات دورية.","تجنّب المذيبات القوية والفرش الخشنة على السطح.","في الاستخدام الخارجي اختر الدرجة المخصصة للأشعة منذ البداية، فالألواح الداخلية تبهت تحت الشمس المباشرة.","أي لوح تضرر ميكانيكيًا يمكن فكّه واستبداله منفردًا دون هدم الجدار كله."],"why":["نبيع الألواح ونركّبها، فتأخذ سعر المصدر وتركيبًا مضمونًا من جهة واحدة.","درجات مختارة لأجواء المنطقة الشرقية: لا تقشّر ولا بهتان سريع.","تركيب بخطوط مستقيمة وفواصل متناسقة يليق بواجهات الشاشات والمجالس."],"faq":[{"q":"هل يتحمل بديل الخشب الماء والرطوبة فعلًا؟","a":"نعم، ألواح WPC مقاومة للماء والرطوبة بطبيعة تركيبها، وتصلح حتى قرب المغاسل والمطابخ، بخلاف الخشب الطبيعي."},{"q":"هل يصلح للواجهات الخارجية؟","a":"بشرط اختيار الدرجة الخارجية المقاومة للأشعة — نرشحها لك في المعاينة بحسب تعرّض الجدار للشمس."},{"q":"هل يمكن تركيبه فوق سيراميك أو دهان قديم؟","a":"غالبًا نعم بعد فحص ثبات السطح في المعاينة؛ فإما لصق مباشر أو هيكل خفيف بحسب الحالة."}],"related":["svc-5","svc-8","svc-2","svc-3"]},"svc-5":{"intro":"ألواح بديل الرخام بعروق طبيعية المظهر للجدران وواجهات التلفاز والمداخل: فخامة الرخام بوزن أخف وتكلفة أقل وتركيب أسرع، ودون فواصل معجون ظاهرة.","about":"بديل الرخام ألواح خفيفة مطبوعة ومعالجة بعروق تحاكي الرخام الطبيعي، تُركّب على الجدران مباشرة لتمنح فخامة الحجر دون وزنه وتكلفته وصعوبة قصّه. تناسبك لواجهات التلفاز الكبيرة، ومداخل الفلل، وجدران المجالس، وأي سطح تريد له حضور الرخام بتركيب نظيف وسريع.","typesTitle":"أشكال واستخدامات","types":[{"n":"ألواح بعروق كلاسيكية","d":"أبيض بعروق رمادية وذهبية لواجهات الشاشات والمداخل."},{"n":"ألواح داكنة فاخرة","d":"درجات سوداء وخضراء عميقة لجدران مميزة في المجالس."},{"n":"ألواح كبيرة متواصلة","d":"قطع واسعة تقلل الفواصل وتُظهر العروق ممتدة كالرخام الطبيعي."},{"n":"دمج مع شرائح بديل الخشب","d":"إطار شرائحي مضيء حول اللوح — التشكيلة الأكثر طلبًا لواجهات التلفاز."},{"n":"تكسية أعمدة ومداخل","d":"تغليف الأعمدة والممرات بنفس خامة الجدار لطابع موحّد."}],"cost":["المساحة المكسوة وعدد الألواح وحجم القطع المطلوبة.","وجود دمج مع بديل خشب أو إضاءة مخفية يزيد بنود العمل.","حالة الجدار وحاجته لتسوية قبل اللصق.","القصّات الخاصة حول الشاشات والأعمدة والفتحات.","السعر عرض مكتوب بعد المعاينة والقياس المجاني — بلا تقدير هاتفي."],"steps":[{"n":"معاينة واختيار العروق","d":"نعرض العينات واتجاه العروق المناسب لحجم جدارك وإضاءته."},{"n":"قياس وتسوية الجدار","d":"مقاسات دقيقة ومعالجة أي تموّج يظهر خلف الألواح اللامعة."},{"n":"قص وتركيب","d":"قص على المقاس ولصق محكم بمحاذاة عروق متصلة بين الألواح."},{"n":"تشطيب ومراجعة","d":"معالجة الفواصل والزوايا وتنظيف السطح ومراجعته معك."}],"careTitle":"العناية بعد التنفيذ","care":["تنظيف بقطعة ناعمة رطبة — السطح لا يحتاج تلميعًا خاصًا كالرخام الطبيعي.","تجنّب الأحماض والمذيبات القوية التي قد تؤثر في طبقة السطح.","لا تُعلّق أحمالًا ثقيلة على اللوح مباشرة؛ التثبيت الثقيل يكون في الجدار الأصلي.","محاذاة العروق بين الألواح علامة التركيب الصحيح — لاحظها عند الاستلام."],"why":["نركّب بمحاذاة عروق متصلة فلا يبدو الجدار قطعًا منفصلة.","خامة خفيفة لا تُحمّل الجدار وزن الرخام ولا تحتاج هياكل تقوية.","معاينة وعينات مجانية وعرض سعر مكتوب، وضمان على الخامة والتركيب."],"faq":[{"q":"هل يبدو مثل الرخام الطبيعي فعلًا؟","a":"على الجدران وواجهات الشاشات يصعب تمييزه بصريًا بفضل العروق الممتدة واللمعة، وهو خيار الجدران لا الأرضيات أو أسطح العمل."},{"q":"هل يصلح حول الشاشات مع الحرارة؟","a":"نعم، يُركّب بمسافة أمان من مصادر الحرارة المباشرة، وهو الاستخدام الأكثر شيوعًا له عندنا."},{"q":"ما الفرق بينه وبين الرخام الطبيعي في السعر؟","a":"عادة أقل بكثير بعد احتساب القص والنقل والتركيب، والفرق الدقيق يظهر في عرض السعر المكتوب لمساحتك."}],"related":["svc-4","svc-8","svc-2","svc-3"]},"svc-6":{"intro":"نصمّم وننفّذ الشلالات والنوافير للحدائق والمداخل والصالات: صوت ماء يبعث الهدوء، وشكل يليق بواجهة بيتك، وتشغيل نظيف بلا رذاذ ولا روائح.","about":"الشلال والنافورة عنصر مائي يُبنى على هيكل مقاوم للماء مع مضخة تدوير وإضاءة مائية غالبًا. يناسبك إذا أردت نقطة جذب في حديقتك أو مدخلك، أو صوت ماء يغطي ضجيج الشارع، أو ركنًا باردًا بصريًا في صيف الأحساء. الفرق بين النوعين: الشلال ماء منساب على سطح أو صخور، والنافورة ماء مقذوف من فوهات في حوض.","typesTitle":"أنواع ننفّذها","types":[{"n":"شلالات صخرية طبيعية","d":"تدرّجات صخرية تنساب بجوار المسابح والحدائق بمظهر طبيعي."},{"n":"شلالات جدارية","d":"ماء منساب على تكسية حجرية إلى حوض — للمداخل والصالات والجدران الفاصلة."},{"n":"نوافير أحواض","d":"فوهات مفردة أو متعددة بإضاءة مائية في أحواض دائرية أو مستطيلة."},{"n":"شلالات زجاجية داخلية","d":"ستارة ماء على زجاج أو ستانلس للصالات والمداخل الداخلية."},{"n":"برك وقنوات مائية","d":"مسطحات مائية هادئة مدمجة في تصميم الحديقة."}],"cost":["حجم العنصر المائي وارتفاع الانسياب وطول الحوض.","نوع التشطيب: صخر طبيعي أم تكسية حجرية أم زجاج.","المضخات والفلترة والإضاءة المائية المختارة.","أعمال العزل والتمديدات من نقطة الماء والكهرباء إلى الموقع.","السعر عرض مكتوب بالبنود بعد المعاينة المجانية — لا سعر ثابتًا قبل رؤية الموقع."],"steps":[{"n":"معاينة واختيار النوع","d":"نحدد الموقع واتجاه الرذاذ المتوقع ونوع العنصر المناسب لمساحتك."},{"n":"بناء الهيكل والعزل","d":"حوض وهيكل معزول بالكامل ضد التسرب قبل أي تشطيب."},{"n":"التشطيب والمضخات","d":"تركيب الصخور أو التكسية والمضخة والفلتر والإضاءة المائية."},{"n":"تشغيل تجريبي وتسليم","d":"نشغّل العنصر معك ونضبط الانسياب والرذاذ ونسلّمك طريقة التشغيل والتنظيف."}],"careTitle":"العناية بعد التنفيذ","care":["تنظيف الفلتر دوريًا يحافظ على صفاء الماء وقوة المضخة.","تعويض ماء الحوض بانتظام في الصيف بسبب التبخر.","تشغيل المضخة يوميًا ولو لفترة قصيرة يمنع ركود الماء والروائح.","أي تسرب حول الحوض يُعالج فورًا — العزل الصحيح من البداية يمنع أغلب المشاكل."],"why":["ننفّذ العزل والتمديدات بأنفسنا قبل التشطيب، فالماء يبقى داخل الحوض لا داخل الجدار.","نوازن قوة المضخة مع حجم الحوض فلا رذاذ خارجيًا ولا صوت مزعج.","عنصر مائي جزء من تصميم الحديقة كله، لا قطعة مركّبة بمعزل عن محيطها."],"faq":[{"q":"هل يستهلك الشلال ماءً كثيرًا؟","a":"لا، الماء يدور في حلقة مغلقة بالمضخة، والفقد فقط بالتبخر والرذاذ ونعوّضه كل فترة — لا استهلاك جارٍ كالصنبور المفتوح."},{"q":"هل يجذب الحشرات أو يسبب روائح؟","a":"مع الفلترة والتشغيل اليومي يبقى الماء متحركًا ونظيفًا، والركود هو سبب الروائح فنصمّم الدورة لمنعه."},{"q":"هل يمكن تنفيذه داخل صالة؟","a":"نعم، الشلالات الجدارية والزجاجية مصممة للداخل مع عزل كامل وضبط للرذاذ، ونقيّم الموقع في المعاينة."}],"related":["svc-1","svc-18","svc-15","svc-9"]},"svc-7":{"intro":"مظلات عملية تتحمّل شمس الأحساء وتظلّل سيارتك وجلستك: شدّ إنشائي وشراعية وحديد، بهيكل ثابت وضمان على التثبيت.","about":"المظلة هيكل مغطى يوفّر الظل للسيارات والجلسات والمداخل دون بناء غرفة كاملة. تناسبك إذا كانت سيارتك تقف تحت الشمس، أو لديك جلسة خارجية لا تُستخدم ظهرًا، أو مدخل يحتاج حماية من الشمس والمطر الخفيف. نختار النوع بحسب المساحة واتجاه الشمس والرياح في موقعك.","typesTitle":"أنواع المظلات","types":[{"n":"مظلات شدّ إنشائي","d":"أغشية مشدودة على أعمدة — تغطي مواقف كاملة بمظهر حديث (الأكثر طلبًا للمواقف)."},{"n":"مظلات شراعية قماشية","d":"أشرعة مثلثة أو مربعة للجلسات والحدائق والمسابح — ظل وجمال معًا."},{"n":"مظلات حديد بأغطية عازلة","d":"هيكل حديد بسقف ساندويتش بانل أو PVC يعزل الحرارة."},{"n":"مظلات خشبية وبديل خشب","d":"طابع دافئ للجلسات الخاصة قرب الحدائق."},{"n":"مظلات مسابح ومداخل","d":"تغطيات جزئية على المقاس لأركان محددة."}],"cost":["مساحة التغطية بالمتر وارتفاع الأعمدة المطلوب.","نوع الغطاء: قماش مشدود، شراعي، أو ألواح عازلة.","عدد الأعمدة والقواعد الخرسانية وطبيعة أرض التثبيت.","وجود إضافات مثل إضاءة أو مراوح أو ساتر جانبي.","السعر النهائي عرض مكتوب بعد المعاينة والقياس المجاني."],"steps":[{"n":"معاينة ودراسة الشمس","d":"نحدد اتجاه الظل المطلوب وساعات التغطية وطبيعة الأرض."},{"n":"تصنيع الهيكل والغطاء","d":"نصنّع على مقاسات موقعك في ورشتنا بخامات مجرّبة."},{"n":"تثبيت القواعد والأعمدة","d":"قواعد خرسانية وتثبيت محكم يتحمّل رياح المنطقة."},{"n":"شدّ الغطاء والتسليم","d":"تركيب الغطاء وشدّه بلا ترهّل، ومراجعة الثبات معك."}],"careTitle":"أخطاء شائعة ننبّه عليها","care":["تغطية بلا دراسة لاتجاه الشمس فتُظلَّل المساحة في وقت لا تحتاجه.","أعمدة ضعيفة أو قواعد سطحية تهتز مع أول موجة رياح قوية.","قماش غير مخصص للأشعة فوق البنفسجية يتشقق بعد موسم أو موسمين.","ميلان غير محسوب للغطاء يجمّع ماء المطر بدل تصريفه."],"why":["نصنّع المظلة في ورشتنا على مقاس موقعك لا مقاسات جاهزة تقريبية.","ضمان على هيكل وتثبيت المظلات والسواتر كما هو معلن في ضماناتنا.","خامات مجرّبة تحت شمس المنطقة الشرقية ورياحها الموسمية."],"faq":[{"q":"هل تحتاج المظلة ترخيصًا؟","a":"المظلات داخل حدود الفيلا الخاصة عادة لا تتطلب إجراءات خاصة، ونرشدك في المعاينة إن كان موقعك ضمن مجمع له اشتراطات."},{"q":"كم تخفّض المظلة حرارة السيارة؟","a":"الظل الكامل مع غطاء عازل يخفّض حرارة المقصورة بشكل ملموس مقارنة بالوقوف تحت الشمس المباشرة، خاصة مع أغطية عاكسة للحرارة."},{"q":"هل تتحمّل الرياح القوية؟","a":"نعم متى صُفّت القواعد والأعمدة والشدّ صحيحًا — وهو ما نضمنه في التثبيت ونراجعه معك عند التسليم."}],"related":["svc-13","svc-16","svc-20","svc-1"]},"svc-8":{"intro":"تكسيات جدارية داخلية وخارجية بألواح وشرائح حديثة تُخفي عيوب الجدران وتمنح أي فراغ هوية فاخرة: للمجالس والواجهات والمداخل وواجهات التلفاز.","about":"التكسية الجدارية طبقة تشطيب تُركّب فوق الجدار القائم لتغيير مظهره بالكامل دون هدم أو معالجة ثقيلة، وتخفي في طريقها العيوب والتشققات والتمديدات. تناسبك إذا كان جدارك سليمًا إنشائيًا لكن مظهره قديم، أو تريد جدارًا مميزًا خلف شاشة أو في مدخل، أو واجهة خارجية بهوية جديدة.","typesTitle":"أنواع التكسيات","types":[{"n":"شرائح بديل الخشب","d":"شرائح طولية مضيئة أو سادة — الأشهر لواجهات التلفاز والمجالس."},{"n":"ألواح بديل الرخام","d":"أسطح رخامية المظهر بأحجام كبيرة وفواصل قليلة."},{"n":"تكسية حجرية","d":"حجر طبيعي أو صناعي للواجهات والمداخل والأركان الداخلية."},{"n":"ألواح شيبورد وأسمنتية","d":"ألواح عصرية بملمس خرساني أو ناعم للطابع الحديث."},{"n":"تكسيات خارجية مقاومة","d":"خامات مصنّفة للشمس والمطر للواجهات والأحواش."}],"cost":["مساحة الجدار ونوع التكسية المختارة.","حالة الجدار الأصلي وحاجته لهيكل تثبيت أو تسوية.","دمج إضاءة مخفية أو ألواح متعددة الخامات في جدار واحد.","عدد الزوايا والأعمدة والفتحات داخل الجدار.","السعر عرض مكتوب بعد المعاينة والقياس المجاني."],"steps":[{"n":"معاينة الجدار","d":"فحص الاستواء والرطوبة وثبات السطح القائم."},{"n":"اختيار الخامة والنمط","d":"عينات واتجاه تركيب يناسب حجم الجدار وإضاءته."},{"n":"تجهيز وتركيب","d":"هيكل أو لصق مباشر بحسب الخامة، بتركيب مستوٍ ومتناسق الفواصل."},{"n":"تشطيب نهائي","d":"زوايا ونعلات وإضاءة إن وجدت، ثم مراجعة معك."}],"careTitle":"أخطاء شائعة ننبّه عليها","care":["تركيب تكسية فوق جدار رطب دون معالجة مصدر الرطوبة أولًا.","اختيار خامة داخلية لواجهة خارجية مشمسة فتتدهور سريعًا.","فواصل غير متناسقة الاتجاه تفسد مظهر أغلى الخامات.","إخفاء نقاط كهرباء أو سباكة تحت التكسية دون تحديد أماكنها للصيانة لاحقًا."],"why":["نكسي ونصنّع ونركّب من مصدر واحد، ونرشّح الخامة بحسب موقع الجدار لا بحسب هامش البيع.","عينات حقيقية على جدارك في المعاينة المجانية قبل القرار.","تشطيب زوايا ونعلات متناسق يجعل التكسية تبدو جزءًا من البناء الأصلي."],"faq":[{"q":"هل تخفي التكسية تشققات الجدار؟","a":"نعم بصريًا وكثير من العيوب السطحية، لكن التشقق الإنشائي أو الرطوبة النشطة نعالج سببهما أولًا ثم نكسي."},{"q":"هل تقلّل التكسية مساحة الغرفة؟","a":"بمقدار سماكة اللوح والهيكل (سنتمترات قليلة غالبًا) — تأثير لا يُذكر مقابل تغيير شكل الجدار كاملًا."},{"q":"هل تصلح للواجهات الخارجية؟","a":"نعم بأنواع مخصصة للخارج نقترحها بحسب تعرّض واجهتك للشمس والمطر."}],"related":["svc-4","svc-5","svc-2","svc-3"]},"svc-9":{"intro":"توريد وتركيب العشب الصناعي الأرضي بكثافات وارتفاعات متعددة للحدائق والملاعب والأسطح، مع طبقات تصريف وتثبيت تدوم سنوات — خضرة دائمة بلا ريّ ولا قصّ.","about":"العشب الصناعي فرش من ألياف صناعية يحاكي العشب الطبيعي في الشكل والملمس، يُركّب فوق قاعدة مجهزة بطبقات تصريف وتثبيت. يناسبك إذا أردت مسطحًا أخضر طوال العام دون فواتير ماء وقصّ أسبوعي، أو منطقة مظللة لا يعيش فيها العشب الطبيعي، أو سطحًا وملعبًا منزليًا سريع الاستخدام.","typesTitle":"درجات واستخدامات","types":[{"n":"عشب حدائق كثيف (35–45مم)","d":"ملمس ناعم ومظهر طبيعي فاخر لحدائق الفلل والجلسات."},{"n":"عشب متوسط (25–30مم)","d":"توازن بين الشكل والمتانة للأحواش والممرات الجانبية."},{"n":"عشب ملاعب","d":"ألياف أقصر وأمتن لملاعب الكرة والاستخدام الكثيف."},{"n":"عشب أسطح وتراسات","d":"تركيب خفيف مع تصريف مناسب فوق الأسطح."},{"n":"حشوات ورمال تثبيت","d":"رمل سيليكا وحشوات تثبّت الألياف منتصبة وتمتص الصدمات."}],"cost":["المساحة بالمتر ودرجة العشب (الكثافة وارتفاع الألياف وبلد الصنع).","تجهيز القاعدة: تسوية ورمل وحصى وطبقة تصريف بحسب حالة الأرض.","القصّات حول الأشجار والممرات والأشكال المنحنية.","إضافات مثل الحواف الحجرية أو مناطق لعب الأطفال.","السعر عرض مكتوب بعد معاينة وقياس مجانيين — لا سعر متر موحّد لكل الحالات."],"steps":[{"n":"معاينة واختيار الدرجة","d":"عينات بكثافات مختلفة تراها على أرضك وفي شمس موقعك."},{"n":"تجهيز القاعدة","d":"تسوية ودكّ وطبقات تصريف وتثبيت حواف — أساس عمر العشب كله."},{"n":"فرش وقصّ العشب","d":"فرد اللفائف باتجاه ألياف موحّد ولصق الوصلات بشريط ولاصق مخصص."},{"n":"حشو وتشطيب","d":"نثر رمل التثبيت وتمشيط الألياف وتسليم مسطح جاهز للاستخدام فورًا."}],"careTitle":"العناية بعد التنفيذ","care":["كنس أو نفخ الأوراق والأتربة دوريًا، وغسلة ماء خفيفة عند الحاجة.","تمشيط الألياف عكس اتجاه الرقاد في مناطق الجلوس يعيد انتصابها.","تجنّب الجمر والشواء المباشر فوق العشب — الحرارة العالية تذيب الألياف.","وصلات غير ملصوقة جيدًا أول علامات التركيب الرخيص؛ افحصها عند الاستلام."],"why":["نجهّز القاعدة بطبقات تصريف وتثبيت كاملة — العشب الرخيص يفشل من تحت لا من فوق.","درجات مجرّبة تحت شمس المنطقة لا تبهت ولا تتفتت سريعًا.","توريد وتركيب منّا مباشرة بضمان على الخامة والتركيب."],"faq":[{"q":"هل يسخن العشب الصناعي تحت الشمس؟","a":"يسخن أكثر من الطبيعي ظهرًا، والدرجات الفاتحة والحشوات المناسبة تخفف ذلك؛ وللجلسات ننصح بظل جزئي فوق مناطق الجلوس."},{"q":"هل هو آمن للأطفال والحيوانات؟","a":"نعم، درجات الحدائق خالية من الرصاص وتُغسل بالماء بسهولة، ولهذا تُستخدم في مناطق لعب الأطفال."},{"q":"كم عمره الافتراضي؟","a":"مع قاعدة صحيحة وخامة جيدة يعيش سنوات طويلة (غالبًا 8–15 سنة بحسب الاستخدام والشمس)، ونوضح درجة كل خيار في المعاينة."}],"related":["svc-1","svc-10","svc-17","svc-22"]},"svc-10":{"intro":"جدران خضراء بالعشب الصناعي الجداري للواجهات والمحلات والمقاهي والمنازل: خضرة دائمة بلا ريّ ولا قصّ، وبكثافة طبيعية المظهر تخفي أي جدار باهت.","about":"العشب الجداري ألواح من نباتات صناعية متنوعة تُثبّت على الجدران والسواتر لتصنع جدارًا أخضر كثيفًا. يناسبك إذا أردت إخفاء سور أو جدار غير جميل، أو خلفية خضراء للتصوير في محل أو مقهى، أو لمسة طبيعية في ركن داخلي لا تصله الشمس ولا يناسبه الزرع الحي.","typesTitle":"أشكال واستخدامات","types":[{"n":"ألواح أوراق متنوعة","d":"خليط أوراق وألوان بمظهر النبات الطبيعي المتداخل — الأكثر واقعية."},{"n":"ألواح عشب موحّد","d":"خضرة متجانسة للواجهات الكبيرة والأسوار الطويلة."},{"n":"جدران شعارات ومحلات","d":"خلفية خضراء حول شعار أو اسم المحل للواجهات التجارية."},{"n":"تغطية أسوار وأحواش","d":"إخفاء الأسوار الخرسانية ومنح الخصوصية بمظهر نباتي."},{"n":"أركان داخلية وبلكونات","d":"جدران صغيرة داخل الصالات والبلكونات والمكاتب."}],"cost":["مساحة الجدار ونوع اللوح وكثافة أوراقه.","حالة سطح التثبيت (دهان، سيراميك، سور خشن) وحاجته لشبك أو هيكل.","الارتفاع وصعوبة الوصول والحاجة لسقالات.","قصّات حول النوافذ والإضاءة واللوحات.","السعر عرض مكتوب بعد المعاينة والقياس المجاني."],"steps":[{"n":"معاينة وعينات","d":"نعرض أنواع الألواح وكثافتها على جدارك قبل القرار."},{"n":"تجهيز السطح","d":"شبك تثبيت أو هيكل خفيف بحسب نوع الجدار."},{"n":"تركيب الألواح","d":"تثبيت متداخل بلا فواصل ظاهرة واتجاه أوراق متناسق."},{"n":"تنسيق نهائي","d":"فرد الأوراق يدويًا لكثافة طبيعية ومراجعة من مسافة المشاهدة."}],"careTitle":"العناية بعد التنفيذ","care":["نفض الغبار أو رش ماء خفيف كل فترة يحافظ على لون الخضرة.","في الخارج اختر ألواحًا معالجة ضد الأشعة منذ البداية حتى لا تبهت.","تثبيت الحواف العلوية جيدًا أهم نقطة ضد الرياح في الأسوار المكشوفة.","لوح تالف يُستبدل منفردًا دون فك الجدار كله."],"why":["نركّب بتداخل يخفي الفواصل فلا يظهر الجدار شبكة ألواح منفصلة.","ألواح خارجية معالجة ضد أشعة الشمس لأجواء المنطقة الشرقية.","حل سريع بلا ريّ ولا صيانة زراعية وبنتيجة فورية يوم التركيب."],"faq":[{"q":"هل يبهت تحت الشمس مع الوقت؟","a":"الألواح المعالجة ضد الأشعة تقاوم البهتان سنوات؛ الرخيصة غير المعالجة تبهت خلال موسم — لهذا نعرض عليك النوعين بفرق واضح في المعاينة."},{"q":"هل يثبت على سور خارجي مكشوف للرياح؟","a":"نعم مع شبك وتثبيت ميكانيكي محكم لا لصق فقط، ونحدد الطريقة بحسب ارتفاع السور وتعرّضه."},{"q":"هل يصلح داخل البيت؟","a":"نعم، وهو شائع في الصالات والمكاتب والمقاهي، ولا يحتاج أي إضاءة أو ريّ."}],"related":["svc-9","svc-16","svc-8","svc-1"]},"svc-11":{"intro":"متخصصون في النخيل بكل أنواعه وعلى رأسه نخيل واشنطون (الواشنطونيا) سريع النمو وطويل الجذع: توريد ونقل وزراعة وتقليم ورعاية كاملة.","about":"خدمات النخيل تشمل اختيار النخلة المناسبة ونقلها وزراعتها وتقليمها ورعايتها حتى تثبت. تناسبك إذا أردت نخلة واجهة تليق بمدخل فيلتك، أو تقليم نخيل قائم أصبح سعفه خطرًا على المارة والسيارات، أو نقل نخلة من مكان لآخر داخل موقعك أو إلى موقع جديد.","typesTitle":"بنود الخدمة","types":[{"n":"توريد وزراعة الواشنطونيا","d":"نخيل واشنطون بأطوال مختلفة — سريع النمو ومثالي للواجهات والمداخل."},{"n":"نخيل التمر والزينة","d":"أنواع مثمرة وزينة بحسب هدفك: ثمر أم ظل ومظهر."},{"n":"نقل النخيل الكبير","d":"قلع برافعات متخصصة ونقل وغرس مع تثبيت وشدّات حتى الثبات."},{"n":"التقليم والتكريب","d":"قص السعف الجاف وتنظيف الجذع وتكريب احترافي آمن."},{"n":"رعاية وتسميد","d":"برامج تسميد ومتابعة نمو وعلاج إصابات شائعة مثل سوسة النخيل بالكشف المبكر."}],"cost":["نوع النخلة وطول جذعها وعددها.","حاجة النقل لرافعة ومسافة النقل وصعوبة الوصول للموقع.","تجهيز حفرة الغرس والتربة والدعامات.","بنود الرعاية اللاحقة إن طلبتها (تسميد ومتابعة).","السعر عرض مكتوب بعد معاينة النخلة والموقع — لا سعر موحّد لكل نخلة."],"steps":[{"n":"معاينة واختيار","d":"نفحص النخلة والموقع ونرشّح النوع والطول المناسبين لهدفك."},{"n":"النقل الآمن","d":"ربط وحماية القلب (الجمارة) ونقل برافعة متخصصة دون إصابة الجذع."},{"n":"الغرس والتثبيت","d":"حفرة بأبعاد صحيحة وتربة مجهزة ودعامات وريّ تأسيسي غزير."},{"n":"متابعة الثبات","d":"نتابع الريّ والنمو في الأسابيع الأولى — ويثبت عندنا بضمان التأقلم المعلن."}],"careTitle":"أخطاء شائعة ننبّه عليها","care":["زراعة نخلة كبيرة دون دعامات فتميل مع أول رياح قبل ثبات الجذور.","الريّ السطحي الخفيف — النخلة المغروسة حديثًا تحتاج ريًّا عميقًا منتظمًا أول موسم.","تقليم جائر يقص السعف الأخضر الحامل فيضعف النخلة ويشوّه تاجها.","إهمال فحص سوسة النخيل الحمراء؛ الكشف المبكر ينقذ النخلة والمزرعة كلها."],"why":["تخصص فعلي في النخيل والواشنطون تحديدًا — نعرف أطوالها ومعدلات نموها واحتياجها.","ضمان استبدال للأشجار والنخيل التي لا تتأقلم خلال فترة الضمان كما هو معلن عندنا.","نقل برافعات متخصصة وفريق يجيد التكريب والتقليم الآمن على الارتفاعات."],"faq":[{"q":"لماذا تشتهر الواشنطونيا للواجهات؟","a":"لأنها سريعة النمو وطويلة الجذع بتاج مروحي أنيق، فتمنح الواجهة ارتفاعًا وحضورًا خلال سنوات قليلة مقارنة بغيرها."},{"q":"هل يمكن نقل نخلة كبيرة دون أن تموت؟","a":"نعم بنسبة نجاح عالية إذا نُقلت في موسم مناسب وبجذور محفوظة وحماية للقلب وريّ تأسيسي صحيح — ونقيّم كل حالة في المعاينة."},{"q":"كم مرة يحتاج النخيل للتقليم؟","a":"غالبًا مرة سنويًا لقص السعف الجاف وتنظيف الجذع، وأكثر للنخيل فوق الممرات والمواقف لأسباب السلامة."}],"related":["svc-21","svc-1","svc-22","svc-12"]},"svc-12":{"intro":"لون الحديقة وروحها: نزرع وننسّق الورود والزهور بحيث لا تخلو حديقتك من الإزهار في أي شهر — أحواض مدروسة التتابع والألوان.","about":"خدمة الورود والزهور هي اختيار الأنواع المزهرة المناسبة لمناخ المنطقة وتوزيعها في أحواض ومداخل وممرات بحيث تتتابع مواسم إزهارها على مدار العام. تناسبك إذا كانت حديقتك خضراء «صامتة» بلا لون، أو أردت مدخلًا يستقبل ضيوفك بالإزهار، أو أحواضًا موسمية متجددة حول الجلسات والممرات.","typesTitle":"بنود الخدمة","types":[{"n":"أحواض زهور موسمية","d":"تشكيلات ملونة تتجدد بالموسم حول المداخل والممرات."},{"n":"ورود وشجيرات مزهرة","d":"ورود وجهنمية وياسمين وغيرها من المزهرات المعمّرة."},{"n":"متسلقات مزهرة","d":"جهنمية ومتسلقات على الأسوار والبرجولات والمداخل المقوسة."},{"n":"أحواض مداخل وواجهات","d":"تنسيقات مركّزة حيث تقع العين أولًا: المدخل والواجهة."},{"n":"تجديد أحواض قائمة","d":"إعادة توزيع وتكثيف أحواض موجودة بتربة وتسميد جديد."}],"cost":["مساحة الأحواض وعدد الشتلات وأنواعها وأحجامها.","تجهيز التربة والتسميد الأساسي وطبقة النشارة.","ربط الأحواض بشبكة ري بالتنقيط إن لم تكن موجودة.","الموسم: بعض الأنواع تتوفر وتزهر بجودة أفضل في أوقات محددة.","السعر عرض مكتوب بعد المعاينة — تكلفة الشتلات تختلف كثيرًا بحسب النوع والحجم."],"steps":[{"n":"معاينة الشمس والتربة","d":"نحدد ساعات الشمس لكل حوض ونوع تربته قبل اختيار أي نبات."},{"n":"اختيار لوحة الألوان","d":"أنواع تتتابع إزهارًا وتتناسق ألوانها مع بيتك وبقية الحديقة."},{"n":"تجهيز وزراعة","d":"تربة مخصبة ومسافات نمو صحيحة ونشارة تحفظ الرطوبة."},{"n":"ريّ تأسيسي ومتابعة","d":"جدول ريّ أولي وإرشادات عناية بسيطة لكل نوع."}],"careTitle":"العناية بعد التنفيذ","care":["الريّ عند الجذور صباحًا لا على الأزهار ظهرًا في عز الشمس.","إزالة الأزهار الذابلة أولًا بأول يطيل موسم الإزهار ويجدده.","تسميد خفيف دوري في مواسم النمو — الإفراط يحرق الجذور.","اختيار نبات محب للشمس في ركن ظليل أكثر أسباب فشل الأحواض شيوعًا — نضبطه لك من المعاينة."],"why":["نرشّح فقط ما يعيش ويزهر في حرارة ورطوبة المنطقة الشرقية فعلًا.","توزيع بمواسم إزهار متتابعة — حديقتك ملونة طوال العام لا شهرًا واحدًا.","ضمان استبدال للشتلات التي لا تتأقلم خلال فترة الضمان."],"faq":[{"q":"ما أفضل وقت لزراعة الزهور الموسمية؟","a":"أغلب الموسميات الملونة تُزرع مع اعتدال الجو من أكتوبر تقريبًا، والمعمّرات المزهرة تُزرع معظم العام مع عناية ريّ أولية."},{"q":"هل تحتاج الأحواض ريًّا يوميًا؟","a":"في التأسيس الأول نعم غالبًا، ثم بحسب النوع والموسم — والأفضل ربطها بتنقيط أوتوماتيكي نركّبه لك إن أردت."},{"q":"أريد لونًا واحدًا موحّدًا، هل يمكن؟","a":"نعم، نصمّم الحوض بلوحة لونية واحدة أو متدرجة بحسب ذوقك ونعرض البدائل في المعاينة."}],"related":["svc-21","svc-11","svc-1","svc-17"]},"svc-13":{"intro":"برجولة مصمّمة على مقاس جلستك تحوّل ركنًا مشمسًا إلى مجلسك المفضل صيفًا وشتاءً: هيكل ثابت، ظل محسوب، وإضاءة مخفية للجلسات الليلية.","about":"البرجولة هيكل مفتوح الجوانب بسقف شرائحي أو مغطى جزئيًا، يُبنى فوق الجلسات الخارجية ليمنح ظلًا مريحًا دون إغلاق المكان. تناسبك إذا كان لديك ركن حديقة أو سطح غير مستخدم بسبب الشمس، أو تريد مجلسًا خارجيًا بهويته الخاصة قرب مسبح أو حديقة.","typesTitle":"أنواع البرجولات","types":[{"n":"برجولات ألمنيوم حديثة","d":"شرائح قابلة للتعديل أحيانًا، بلا صيانة وبلا صدأ — الخيار العملي الأول."},{"n":"برجولات خشبية","d":"طابع طبيعي دافئ بأخشاب معالجة للخارج."},{"n":"برجولات بديل خشب","d":"مظهر الخشب بمتانة WPC ومقاومة للرطوبة والحشرات."},{"n":"برجولات بسقف مغطى","d":"تغطية جزئية أو كاملة للحماية من المطر الخفيف وشمس الظهيرة."},{"n":"إضافات الجلسة","d":"إضاءة مخفية وستائر جانبية ونقاط كهرباء ضمن التصميم."}],"cost":["أبعاد البرجولة وارتفاعها وخامة الهيكل المختارة.","نوع السقف: شرائح مكشوفة أم مغطاة جزئيًا أو كليًا.","طبيعة أرض التثبيت والحاجة لقواعد خرسانية.","إضافات الإضاءة والستائر والتأسيسات الكهربائية.","تصنيع على المقاس — السعر عرض مكتوب بعد المعاينة والقياس المجاني."],"steps":[{"n":"معاينة الركن والشمس","d":"ندرس اتجاه الظل المطلوب في أوقات جلوسك الفعلية."},{"n":"تصميم وقياس","d":"أبعاد وخامة وتشطيب يتناسق مع بيتك وحديقتك."},{"n":"تصنيع وتثبيت","d":"نصنّع في ورشتنا ونثبّت بقواعد محكمة تتحمل الرياح."},{"n":"تشطيب الجلسة","d":"إضاءة وإضافات ومراجعة نهائية معك قبل التسليم."}],"careTitle":"أخطاء شائعة ننبّه عليها","care":["شرائح باتجاه لا يحجب شمس العصر — أكثر أخطاء البرجولات شيوعًا.","هيكل جاهز بمقاسات تقريبية يترك فراغات ويهتز مع الرياح.","خشب غير معالج للخارج يتشقق ويتغير لونه خلال موسم.","نسيان نقاط الكهرباء والإضاءة فيُمدَّد السلك خارجيًا بعد التنفيذ."],"why":["نصنّع على مقاس ركنك بالضبط ونحسب اتجاه الشرائح على شمس موقعك.","تثبيت بقواعد خرسانية وهيكل يتحمل رياح المنطقة.","إضاءة مخفية وتجهيزات الجلسة من ضمن التنفيذ لا إضافات مرتجلة."],"faq":[{"q":"هل تحمي البرجولة من المطر؟","a":"الشرائحية تحمي جزئيًا، ولحماية كاملة نركّب سقفًا مغطى فوقها أو بجانبها — نعرض الخيارين في المعاينة."},{"q":"أيهما أفضل: ألمنيوم أم خشب؟","a":"الألمنيوم أطول عمرًا وبلا صيانة، والخشب أدفأ مظهرًا ويحتاج معالجة دورية؛ نرشّح بحسب موقعك وذوقك."},{"q":"هل يمكن بناؤها فوق بلاط قائم؟","a":"نعم غالبًا، مع تثبيت مناسب لنوع الأرضية نحدده في المعاينة دون تكسير واسع."}],"related":["svc-7","svc-20","svc-16","svc-1"]},"svc-15":{"intro":"غرفة شمسية (Sunroom) تعيش فيها الحديقة طوال العام: ضوء طبيعي كامل، وإطلالة مفتوحة، وجوّ معزول عن حرّ الصيف وغبار الموسم.","about":"الغرفة الزجاجية إلحاق معماري بهيكل ألمنيوم وجدران وسقف زجاجيين يُبنى ملاصقًا للبيت أو مستقلًا في الحديقة، لتصبح جلستك داخل الطبيعة دون حرارتها وغبارها. تناسبك إذا أردت مجلسًا أو مكتبًا أو ركن قهوة بإطلالة حديقة تستخدمه ظهرًا في أغسطس كما تستخدمه في يناير.","typesTitle":"بنود وأنواع","types":[{"n":"غرف ملحقة بالواجهة","d":"امتداد للصالة أو المجلس بباب منزلق على الحديقة."},{"n":"غرف مستقلة في الحديقة","d":"جناح زجاجي منفصل للجلسات الخاصة أو المكتب المنزلي."},{"n":"زجاج مزدوج عازل","d":"طبقتان بعازل هوائي يخفف الحرارة والضجيج — أساسي في أجوائنا."},{"n":"أسقف زجاجية أو مختلطة","d":"سقف زجاجي مظلل جزئيًا أو بانل معزول بفتحات إضاءة."},{"n":"تجهيزات داخلية","d":"تأسيس تكييف وإضاءة وستائر ضمن التنفيذ."}],"cost":["مساحة الغرفة وارتفاعها وشكل السقف.","نوع الزجاج (مزدوج/ثلاثي، ملون، منخفض الانبعاث) وسماكته.","نظام الهيكل والأبواب المنزلقة أو المفصلية.","أعمال الأساس والأرضية والتأسيسات (تكييف وكهرباء).","مشروع إنشائي — سعره عرض مكتوب مفصّل بعد معاينة وقياس دقيقين."],"steps":[{"n":"معاينة ودراسة اتجاه الشمس","d":"نحدد الواجهة والزجاج المناسب لاتجاه الغرفة وحرارتها."},{"n":"تصميم واعتماد","d":"أبعاد وهيكل وفتحات وزجاج — تعتمد الشكل قبل أي تصنيع."},{"n":"أساس وهيكل","d":"قاعدة وأرضية ثم هيكل ألمنيوم محكم الإغلاق."},{"n":"زجاج وتشطيبات","d":"تركيب الزجاج والعزل والتجهيزات الداخلية وتسليم بعد اختبار الإحكام."}],"careTitle":"أخطاء شائعة ننبّه عليها","care":["زجاج مفرد في واجهة غربية يحوّل الغرفة إلى فرن ظهرًا — العزل والاتجاه أولًا.","هيكل ضعيف التسريب يسرّب الغبار والماء عند أول مطر.","إهمال الستائر أو التظليل الداخلي منذ التصميم فيُضاف لاحقًا بشكل مرتجل.","بناء دون تأسيس تكييف مناسب لمساحة زجاجية كاملة."],"why":["ننفّذ الهيكل والزجاج والتشطيبات بمسؤولية واحدة من الأساس حتى الستائر.","نرشّح نوع الزجاج بحسب اتجاه واجهتك لا الأرخص ولا الأغلى عشوائيًا.","إحكام ضد الغبار والماء مختبر قبل التسليم — مهم في أجواء المنطقة الشرقية."],"faq":[{"q":"هل تصبح الغرفة حارة صيفًا؟","a":"مع زجاج مزدوج منخفض الانبعاث وتظليل مدروس وتكييف مناسب تبقى مريحة؛ ونحسب ذلك في التصميم بحسب اتجاهها."},{"q":"هل تحتاج ترخيص بناء؟","a":"الإلحاقات المعمارية قد تخضع لاشتراطات البلدية أو المجمع السكني — نرشدك في المعاينة لما ينطبق على موقعك قبل البدء."},{"q":"هل يمكن فتحها بالكامل على الحديقة؟","a":"نعم بأنظمة أبواب منزلقة أو قابلة للطي تفتح واجهة كاملة عند اعتدال الجو."}],"related":["svc-1","svc-2","svc-13","svc-20"]},"svc-16":{"intro":"خصوصيتك كاملة وراحتك محفوظة: سواتر أحواش وفلل تحجب الرؤية وتصدّ الرياح المحمّلة بالأتربة، دون أن تحجب الهواء والضوء عن جلستك وحديقتك.","about":"الساتر حاجز يُركّب فوق سور الحوش أو حول الجلسات والمسبح ليمنح الخصوصية من الجيران والشارع ويخفف الرياح والغبار. يناسبك إذا كان حوشك مكشوفًا على الجيران أو الشارع، أو مسبحك بلا خصوصية، أو جلستك الخارجية تتأثر برياح محمّلة بالأتربة.","typesTitle":"أنواع السواتر","types":[{"n":"سواتر شرائح حديدية","d":"شرائح مائلة تحجب الرؤية وتسمح بمرور الهواء — الأكثر طلبًا للأحواش."},{"n":"سواتر قصّ ليزر مزخرفة","d":"نقوش زخرفية تجمع الخصوصية والجمال للواجهات والجلسات."},{"n":"سواتر بديل خشب","d":"مظهر خشبي دافئ بمتانة WPC للجلسات الخاصة."},{"n":"سواتر قماشية (PVC)","d":"حل اقتصادي سريع التركيب للمحيطات الطويلة."},{"n":"سواتر خشبية معالجة","d":"ألواح خشبية خارجية لمن يفضّل الخامة الطبيعية."}],"cost":["طول الساتر وارتفاعه ونوع خامته.","حالة السور القائم وحاجته لتقوية أو أعمدة إضافية.","الزخرفة بالقصّ الليزري تزيد كلفة التصنيع بحسب كثافة النقش.","بوابات وفتحات ضمن خط الساتر.","السعر عرض مكتوب بعد المعاينة والقياس المجاني."],"steps":[{"n":"معاينة خط النظر","d":"نحدد الارتفاع اللازم فعليًا لحجب الرؤية من نقاط الجيران والشارع."},{"n":"تصنيع على المقاس","d":"نصنّع الشرائح أو الألواح في ورشتنا بخامات مجرّبة."},{"n":"تثبيت الأعمدة والألواح","d":"تثبيت محكم في السور أو بقواعد مستقلة يتحمل الرياح."},{"n":"تشطيب ومراجعة","d":"دهان أو تشطيب نهائي ومراجعة الخصوصية والثبات معك."}],"careTitle":"أخطاء شائعة ننبّه عليها","care":["ارتفاع زائد عن الحاجة يجعل الساتر شراعًا يضغط على السور مع الرياح.","تثبيت سطحي في سور ضعيف — الساتر ينقل حمل الرياح إلى قاعدته.","شرائح باتجاه خاطئ تسمح بالرؤية من زاوية الجار الفعلية.","خامات غير معالجة ضد الصدأ في أجواء ساحلية رطبة كأجوائنا."],"why":["نحسب الارتفاع من خط نظر جيرانك الحقيقي لا رقمًا موحّدًا للجميع.","ضمان على هيكل وتثبيت المظلات والسواتر كما هو معلن عندنا.","تصنيع ورشة على المقاس وتثبيت يتحمّل رياح المنطقة الموسمية."],"faq":[{"q":"هل يحجب الساتر الهواء تمامًا؟","a":"الشرائح المائلة تحجب الرؤية وتخفف الرياح مع بقاء تهوية جيدة؛ الألواح المغلقة تحجب أكثر هواءً — نختار بحسب موقعك."},{"q":"ما الارتفاع المناسب فوق السور؟","a":"يعتمد على ارتفاع منازل الجيران ومواضع نوافذهم؛ نحدده بمعاينة خط النظر من موقعك لا بتقدير عام."},{"q":"هل يتحمّل الغبار والرطوبة الساحلية؟","a":"نعم بالخامات والدهانات المقاومة للصدأ التي نرشّحها لأجواء المنطقة الشرقية تحديدًا."}],"related":["svc-7","svc-10","svc-13","svc-20"]},"svc-17":{"intro":"ريّ ذكي بلا هدر: حديقتك تُروى في موعدها حتى وأنت مسافر — شبكات ريّ أوتوماتيكية بالتنقيط والرشّ مصمّمة على مساحتك ومصادر مائك.","about":"شبكة الري الأوتوماتيكية نظام أنابيب ونقّاطات ورشاشات تديره وحدة تحكم بجدولة زمنية، فيصل الماء لكل منطقة بالكمية والوقت المناسبين لنوع نباتها. تناسبك إذا كنت تسقي يدويًا وتضيّع وقتك، أو تسافر وتذبل حديقتك، أو تدفع فواتير ماء عالية على ريّ غير منتظم يغرق أماكن ويعطّش أخرى.","typesTitle":"مكوّنات وأنظمة","types":[{"n":"ريّ بالتنقيط","d":"نقّاطات عند جذور الأشجار والأحواض — الأقل هدرًا والأدق."},{"n":"رشاشات منبثقة (بوب أب)","d":"تختفي في المسطح وتظهر وقت الريّ للعشب والمساحات المفتوحة."},{"n":"رشاشات دوّارة","d":"تغطية واسعة للمسطحات الكبيرة والملاعب."},{"n":"وحدات تحكم ذكية","d":"برمجة بالجوال وحساسات مطر ورطوبة توقف الريّ عند عدم الحاجة."},{"n":"فلاتر ومنظّمات ضغط","d":"حماية للنقّاطات من الانسداد وتوزيع متساوٍ على الخطوط."}],"cost":["مساحة الحديقة وعدد مناطق الريّ المستقلة (زونات).","نوع التغطية: تنقيط أم رشاشات أم خليط بحسب نباتاتك.","مصدر الماء وضغطه وحاجة الشبكة لمضخة إضافية.","نوع وحدة التحكم (عادية أو ذكية بحساسات).","السعر عرض مكتوب بعد معاينة وقياس الضغط والمساحات — مجانًا."],"steps":[{"n":"معاينة وقراءة الضغط","d":"نقيس ضغط الماء ونطابق مناطق الريّ مع أنواع النباتات."},{"n":"تخطيط الزونات","d":"كل منطقة بجدولها: العشب غير الأحواض غير الأشجار."},{"n":"التمديد والتركيب","d":"أنابيب ونقّاطات ورشاشات بحفر محدود ومنظّم."},{"n":"برمجة وتشغيل تجريبي","d":"نبرمج الجداول ونشغّل كل منطقة أمامك ونعلّمك التعديل من الجوال."}],"careTitle":"أخطاء شائعة ننبّه عليها","care":["منطقة ريّ واحدة للعشب والأشجار معًا — احتياجهما مختلف تمامًا فيغرق أحدهما أو يعطش.","شبكة بلا فلتر تنسد نقّاطاتها بأملاح الماء خلال أشهر.","رشاشات تغطي الممرات والسور بدل المسطح فتهدر الماء وتبلّل الجدران.","ريّ منتصف النهار صيفًا يتبخر قبل أن يصل للجذور — الجدولة الصحيحة فجرًا أو مساءً."],"why":["نصمّم الزونات على نباتات حديقتك الفعلية لا قالبًا واحدًا لكل الحدائق.","فلاتر ومنظّمات ضغط ضمن التصميم الأساسي لا إضافات لاحقة.","نوصلها بعقود صيانتنا إن أردت: فحص دوري للشبكة ضمن زيارات الصيانة."],"faq":[{"q":"هل تعمل الشبكة وأنا مسافر؟","a":"نعم، هذا هدفها الأول: جدولة تلقائية كاملة، والوحدات الذكية ترسل تنبيهات وتتوقف عند المطر."},{"q":"هل توفّر فعلًا في فاتورة الماء؟","a":"التنقيط والجدولة الصحيحة يقللان الهدر بشكل كبير مقارنة بالريّ اليدوي العشوائي، خصوصًا بإيقاف الريّ عن المناطق التي لا تحتاجه."},{"q":"هل يمكن تركيبها في حديقة قائمة مزروعة؟","a":"نعم، نمدّ الخطوط بحفر سطحي محدود ونعيد تغطيتها، دون إتلاف المسطحات إلا في أضيق الحدود."}],"related":["svc-1","svc-9","svc-22","svc-21"]},"svc-18":{"intro":"حين يحلّ الليل تبدأ حديقتك من جديد: إضاءة مدروسة للأمان والجمال معًا — ممرات آمنة، وأشجار تتوهج، وواجهة تُرى من آخر الشارع.","about":"إضاءة الحدائق والممرات توزيع مدروس لوحدات إضاءة خارجية مقاومة للماء على الممرات والأشجار والواجهات والعناصر المائية، بخطوط كهرباء آمنة ومخفيّة. تناسبك إذا كانت حديقتك تنطفئ فائدتها بعد المغرب، أو ممراتك مظلمة غير آمنة، أو تريد إبراز نخلة أو واجهة أو شلال ليلًا كما يليق به نهارًا.","typesTitle":"أنواع الإضاءة","types":[{"n":"إضاءة ممرات أرضية","d":"وحدات منخفضة على جانبي المسارات — أمان وخط ضوئي جميل."},{"n":"كشافات أشجار ونخيل","d":"إبراز صاعد لتاج النخلة أو الشجرة — توقيع الحدائق الليلية الفاخرة."},{"n":"إضاءة جدارية وواجهات","d":"غسيل ضوئي للجدران والتكسيات يبرز ملمس الخامة."},{"n":"إضاءة عناصر مائية","d":"وحدات غاطسة للشلالات والنوافير والمسابح بألوان دافئة."},{"n":"إضاءة شمسية وذكية","d":"وحدات بالطاقة الشمسية للأركان البعيدة، وتحكم ذكي بالتوقيت والجوال."}],"cost":["عدد النقاط ونوع الوحدات المختارة (أرضية، كشافات، غاطسة).","طول التمديدات من أقرب نقطة كهرباء وحفر مساراتها.","نظام التحكم: مفاتيح عادية أو مؤقّت أو تحكم ذكي.","وجود عناصر مائية تحتاج وحدات غاطسة مقاومة بالكامل.","السعر عرض مكتوب بعد معاينة ليلية أو دراسة للموقع — مجانًا."],"steps":[{"n":"دراسة الموقع ليلًا ونهارًا","d":"نحدد ما يستحق الإبراز وما يحتاج أمانًا قبل أي تمديد."},{"n":"تخطيط النقاط والخطوط","d":"توزيع حراري اللون وشدة متوازنة بلا بقع عمياء ولا إبهار."},{"n":"تمديد آمن وتركيب","d":"كابلات خارجية مخصصة مدفونة أو مخفية ووحدات بدرجة حماية مناسبة."},{"n":"تشغيل وتعديل ليلي","d":"نشغّل الإضاءة ليلًا معك ونضبط زوايا الكشافات على الطبيعة."}],"careTitle":"أخطاء شائعة ننبّه عليها","care":["إضاءة بيضاء قاسية واحدة لكل الحديقة تقتل الأجواء وتُبهر العين.","وحدات داخلية أو ضعيفة الحماية في الخارج تتلف مع أول رطوبة.","كشاف موجّه نحو جلسة أو نافذة بدل هدفه فيعمي الجالسين.","تمديدات سطحية مكشوفة فوق الممرات خطرًا وشكلًا."],"why":["نضبط الزوايا والشدة في زيارة ليلية فعلية لا من المخطط فقط.","وحدات خارجية بدرجات حماية تناسب رطوبة وغبار المنطقة الشرقية.","إضاءة جزء من تصميم الحديقة منذ البداية عند تنفيذنا مشاريع كاملة."],"faq":[{"q":"هل تستهلك إضاءة LED كثيرًا من الكهرباء؟","a":"وحدات LED الخارجية حديثًا تستهلك القليل جدًا مقارنة بالإضاءة القديمة، وتعمل بمؤقّت فيقتصر تشغيلها على ساعات الليل المطلوبة."},{"q":"هل تتحمّل الوحدات ماء الريّ والمطر؟","a":"نختار درجات حماية (IP) مناسبة لكل موقع: أعلى للغاطسة في الماء، وعالية للمكشوفة للمطر والرشاشات."},{"q":"هل يمكن التحكم بها من الجوال؟","a":"نعم بأنظمة تحكم ذكية اختيارية: جدولة وتشغيل وإطفاء عن بُعد، نعرضها ضمن خيارات المعاينة."}],"related":["svc-1","svc-6","svc-13","svc-17"]},"svc-23":{"intro":"أرضيات باركيه وبديل خشب SPC للفلل والشقق والمحلات: توريد وتركيب بخامات مقاومة للماء، على أرضية مستوية بصريًا وصوتيًا، مع نعلات متناسقة تكمل المشهد.","about":"الباركيه هنا أرضيات ألواح بمظهر الخشب — وفي مقدمتها SPC الصلب المقاوم للماء تمامًا — تُركّب بنظام التعشيق (كليك) فوق الأرضية القائمة غالبًا دون تكسير. تناسبك إذا أردت دفء الخشب في صالة أو غرف دون حساسية الخشب الطبيعي للماء والرطوبة، أو تجديد أرضية شقة بسرعة ونظافة.","typesTitle":"أنواع واستخدامات","types":[{"n":"باركيه SPC مقاوم للماء","d":"قلب حجري صلب — خيارنا الأول للمطابخ القريبة والمداخل وكثرة الاستخدام."},{"n":"باركيه HDF كلاسيك","d":"ألواح ألياف عالية الكثافة لغرف النوم والمجالس الجافة."},{"n":"ألوان ودرجات واسعة","d":"من البلوط الفاتح إلى الجوز الداكن، وبعرض ألواح وأطوال مختلفة."},{"n":"نعلات (سكّلو) متناسقة","d":"نعلات بيضاء أو بلون الأرضية بارتفاعات مختلفة — تفصيلة تُكمل الشكل."},{"n":"طبقات عزل صوتي","d":"أندرلاي يخفف صوت الخطوات ويعزل الرطوبة الصاعدة."}],"cost":["مساحة الأرضية ونوع الباركيه وسماكته ودرجة مقاومته للخدش.","حالة الأرضية القائمة وحاجتها لتسوية أو إزالة بلاط.","طول النعلات وعدد الأبواب والفواصل والعتبات.","نقل الأثاث القائم وإعادته إن احتاج الأمر.","توريد وتركيب — السعر عرض مكتوب بعد المعاينة والقياس المجاني."],"steps":[{"n":"معاينة الأرضية وعينات","d":"نفحص الاستواء والرطوبة ونعرض الدرجات في إضاءة غرفتك."},{"n":"تجهيز الأرضية","d":"تسوية ومعالجة أي تفاوت وعزل رطوبة عند الحاجة."},{"n":"تركيب الألواح","d":"تعشيق باتجاه مدروس وفواصل تمدد محسوبة عند الجدران."},{"n":"نعلات وتشطيب","d":"تركيب النعلات وعتبات الأبواب ومراجعة نهائية معك."}],"careTitle":"العناية بعد التنفيذ","care":["مسح رطب خفيف يكفي — تجنّب غمر الأرضية بالماء حتى مع SPC.","وسادات لبّاد تحت أرجل الأثاث الثقيل تمنع الخدوش والانبعاج.","فواصل التمدد عند الجدران ضرورة لا عيب — إغلاقها يسبب انتفاخ الألواح صيفًا.","إصلاح لوح متضرر يكون بفك جزئي حتى موضعه — احتفظ ببضع ألواح احتياطية من نفس الدفعة."],"why":["نورّد ونركّب من مصدر واحد فتطابق درجة اللون والدفعة مسؤوليتنا.","فحص استواء ورطوبة الأرضية قبل التركيب — سبب أغلب مشاكل الباركيه يُعالج عندنا أولًا.","نعلات وتشطيبات متناسقة اللون مع الأرضية والأبواب، كما ترى في أعمالنا."],"faq":[{"q":"هل يصلح SPC للمطابخ والمداخل فعلًا؟","a":"نعم، قلبه الحجري مقاوم للماء تمامًا ولا ينتفخ كالأخشاب المصنعة العادية، ولهذا نرشّحه للمناطق الرطبة وكثيرة الاستخدام."},{"q":"هل يُركّب فوق سيراميك قائم؟","a":"غالبًا نعم إذا كان ثابتًا ومستويًا — نتحقق في المعاينة، فيوفّر عليك التكسير والغبار والوقت."},{"q":"كم تستغرق غرفة أو شقة؟","a":"الغرفة عادة يوم واحد، والشقة بحسب مساحتها أيام قليلة، ونحدد المدة في العرض قبل البدء."}],"related":["svc-4","svc-2","svc-5","svc-8"]},"svc-20":{"intro":"مجلس حديقة يجمع الأهل والضيوف في الهواء الطلق: جلسات ثابتة مريحة وتشطيب كامل من الأرضية إلى الظل والإضاءة — ركن جاهز للاستضافة لا مشروع نصف منتهٍ.","about":"الجلسات الخارجية تنفيذ متكامل لركن الجلوس في الحديقة أو الحوش: أرضية مناسبة، مقاعد ثابتة مبنية أو أثاث مختار، ظل من برجولة أو مظلة، وإضاءة ليلية. تناسبك إذا كانت حديقتك جميلة لكن بلا مكان فعلي للجلوس والاستضافة، أو عندك مجلس خارجي قائم يحتاج إعادة تأهيل شاملة.","typesTitle":"مكوّنات الجلسة","types":[{"n":"جلسات مبنية ثابتة","d":"مقاعد حجرية أو مبنية مكسوة بخامات مريحة تتحمل الخارج."},{"n":"أرضيات جلسات","d":"رصف حجري أو بلاط خارجي أو عشب صناعي بحدود واضحة للركن."},{"n":"ظل متكامل","d":"برجولة أو مظلة محسوبة على شمس وقت جلوسك."},{"n":"إضاءة ليلية دافئة","d":"إضاءة مخفية وأرضية تجعل الجلسة أجمل ليلًا منها نهارًا."},{"n":"أحواض ونباتات محيطة","d":"تشجير حول الجلسة للخصوصية والرائحة واللون."}],"cost":["مساحة الركن وعدد أمتار الجلسات المبنية.","مواد الأرضية والكسوة المختارة.","نوع الظل المرافق: برجولة أو مظلة أو كليهما.","إضافات الإضاءة ونقاط الكهرباء والماء القريبة.","السعر عرض مكتوب بالبنود بعد المعاينة والقياس المجاني."],"steps":[{"n":"معاينة الركن","d":"ندرس الشمس والرياح والخصوصية وعدد الجالسين المعتاد."},{"n":"تصميم التوزيع","d":"شكل الجلسة واتجاهها وموادها بما يناسب حديقتك وبيتك."},{"n":"تنفيذ الأساس والبناء","d":"أرضية وبناء الجلسات والظل بفريقنا."},{"n":"تشطيبات وإضاءة","d":"كسوة وإضاءة ونباتات محيطة وتسليم ركن جاهز للاستضافة."}],"careTitle":"أخطاء شائعة ننبّه عليها","care":["جلسة بلا حساب لشمس العصر تصبح غير صالحة في أهم أوقات الاستضافة.","مقاعد ثابتة بأبعاد غير مريحة (عمق وارتفاع) تُبنى ثم تُهجر.","أرضية زلقة عند البلل حول المسابح ومناطق الريّ.","نسيان نقاط الكهرباء للإضاءة والضيافة فيُمدَّد سلك خارجي لاحقًا."],"why":["ننفّذ الركن كاملًا — بناءً وظلًا وإضاءة وتشجيرًا — بمسؤولية واحدة.","أبعاد جلوس مجرّبة مريحة لفترات طويلة، لا مقاسات عشوائية.","خامات خارجية مجرّبة ضد شمس ورطوبة المنطقة الشرقية."],"faq":[{"q":"هل الجلسات المبنية مريحة فعلًا؟","a":"نعم بعمق وارتفاع ومساند مدروسة وتُستكمل بوسائد خارجية — جرّب أبعادها معنا في المعاينة قبل التنفيذ."},{"q":"هل يمكن تأهيل جلسة قائمة بدل بناء جديد؟","a":"غالبًا نعم: نقيّم البناء القائم ونطوّر الكسوة والظل والإضاءة، ويظهر الفرق كاملًا في العرض المكتوب."},{"q":"كم شخصًا تستوعب الجلسة عادة؟","a":"نصمّم على عدد ضيوفك المعتاد الذي تخبرنا به، من ركن عائلي صغير إلى مجلس استضافة واسع."}],"related":["svc-13","svc-7","svc-18","svc-1"]},"svc-21":{"intro":"شجرة اليوم ظلّ الغد وثمار الموسم: نورد الشجرة الصحيحة لمكانها الصحيح ونغرسها بضمان تأقلم — مثمرة وظل وزينة، بأحجام من الشتلة إلى الشجرة القائمة.","about":"خدمة توريد وزراعة الأشجار تشمل اختيار النوع المناسب لهدفك وتربتك ومساحتك، ونقل الشجرة وغرسها بعناية وتثبيتها ومتابعتها حتى تستقر. تناسبك إذا أردت ظلًا سريعًا فوق جلسة، أو أشجارًا مثمرة لحديقة بيتك، أو صف أشجار لواجهة أو مزرعة استراحة.","typesTitle":"أنواع نوفرها ونزرعها","types":[{"n":"أشجار مثمرة","d":"ليمون ومانجو وتين ورمان وغيرها مما يثمر في مناخ المنطقة."},{"n":"أشجار ظل سريعة","d":"أنواع سريعة النمو لتظليل الجلسات والمواقف خلال مواسم قليلة."},{"n":"أشجار زينة وواجهات","d":"تشكيلات رسمية للمداخل والواجهات والأسيجة المرتفعة."},{"n":"أشجار كبيرة منقولة","d":"أحجام قائمة تُنقل برافعات لمن يريد ظلًا فوريًا لا بعد سنوات."},{"n":"شتلات اقتصادية","d":"بداية صغيرة بكلفة أقل لمن يملك وقت النمو."}],"cost":["نوع الشجرة وحجمها عند الزراعة — العامل الأكبر في السعر.","العدد: صفوف ومجموعات تختلف عن شجرة مفردة.","تجهيز التربة وأحواض الغرس وربطها بالريّ.","نقل الأحجام الكبيرة بالرافعات ومسافة النقل.","السعر عرض مكتوب بعد معاينة الموقع والتربة — مجانًا."],"steps":[{"n":"معاينة الموقع والهدف","d":"ظل أم ثمر أم زينة؟ نطابق النوع مع الشمس والتربة والمساحة."},{"n":"اختيار الشجرة","d":"نعرض الأحجام والأنواع المتوفرة وحالتها الصحية قبل الشراء."},{"n":"غرس صحيح","d":"حفرة واسعة وتربة مجهزة وغرس بعمق الجذر الصحيح وتثبيت."},{"n":"ريّ تأسيسي ومتابعة","d":"جدول ريّ أول موسم ومتابعة استقرار — وبضمان التأقلم المعلن."}],"careTitle":"أخطاء شائعة ننبّه عليها","care":["غرس عميق يخنق عنق الجذر — أكثر أسباب موت الأشجار الجديدة شيوعًا.","شجرة كبيرة النمو مستقبلًا في مساحة ضيقة قرب سور أو خزان.","ريّ سطحي متكرر بدل ريّ عميق متباعد يبني جذورًا قوية.","شراء شتلة مريضة أو ضعيفة الجذور لأنها الأرخص — فحص الحالة عندنا قبل التوريد."],"why":["ضمان استبدال للأشجار التي لا تتأقلم خلال فترة الضمان كما هو معلن في ضماناتنا.","نطابق النوع مع تربتك وشمسك — لا نبيعك ما سيموت بعد شهر.","غرس بعمق وتربة صحيحين ومتابعة أول موسم، لا بيع وتسليم فقط."],"faq":[{"q":"ما أفضل موسم لزراعة الأشجار؟","a":"مع اعتدال الجو من أكتوبر إلى مارس غالبًا، لكن كثيرًا من الأنواع تُزرع طوال العام مع ريّ تأسيسي منضبط."},{"q":"كم تحتاج الشجرة لتظلّل جلستي؟","a":"بحسب النوع والحجم عند الزراعة: الشتلات سنوات، والأحجام المنقولة الكبيرة ظل فوري من أول موسم."},{"q":"هل تزرعون في أرض مالحة أو رملية؟","a":"نعم بعد تجهيز حفرة الغرس بتربة محسّنة واختيار أنواع تتحمل ملوحة المنطقة — نقيّم تربتك في المعاينة."}],"related":["svc-11","svc-12","svc-17","svc-1"]},"svc-22":{"intro":"حديقتك تبقى كيوم تسليمها طوال السنة بعقود صيانة مرنة للفلل والاستراحات والمجمعات: قصّ وتشذيب وتسميد وفحص ريّ — مع تقارير مصوّرة بعد كل زيارة.","about":"الصيانة الدورية زيارات مجدولة لفريقنا يعتني بكل ما ينمو في حديقتك ويعمل فيها: المسطحات والأشجار والنخيل والأحواض وشبكة الري والإضاءة. تناسبك إذا نفّذت حديقة جميلة وتريد بقاءها كذلك دون إدارة عمال بنفسك، أو حديقتك الحالية تتراجع موسمًا بعد موسم لغياب العناية المنتظمة.","typesTitle":"بنود تشملها الزيارة","types":[{"n":"قصّ وتشذيب","d":"قص المسطحات وتشذيب الأسيجة والشجيرات وتقليم الأشجار والنخيل."},{"n":"تسميد وعلاج","d":"برامج تسميد موسمية ومعالجة آفات وأمراض عند ظهورها."},{"n":"فحص شبكة الريّ","d":"ضبط النقّاطات والرشاشات والجدولة بحسب الموسم."},{"n":"عناية الأحواض والزهور","d":"تجديد الموسميات وتنظيف الأحواض وإزالة الحشائش."},{"n":"تنظيف عام وتقارير","d":"تنظيف الممرات والعناصر المائية، وتقرير مصوّر بعد كل زيارة."}],"cost":["مساحة الحديقة وعدد عناصرها (نخيل، أحواض، عناصر مائية).","عدد الزيارات شهريًا ونوع العقد (شهري أو سنوي).","حالة الحديقة الحالية وحاجتها لتأهيل أولي قبل الانتظام.","شمول قطع الغيار والأسمدة أو احتسابها عند الاستهلاك.","عرض العقد مكتوب ببنود واضحة بعد معاينة الحديقة — مجانًا."],"steps":[{"n":"معاينة وتقييم","d":"نفحص الحديقة ونحدد احتياجها الفعلي وعدد الزيارات المناسب."},{"n":"تأهيل أولي إن لزم","d":"نعيد الحديقة لحالة جيدة أولًا إذا كانت متراجعة."},{"n":"زيارات مجدولة","d":"فريق ثابت يعرف حديقتك يزور بمواعيد منتظمة معلنة."},{"n":"تقارير مصوّرة","d":"صور قبل وبعد كل زيارة تصلك واتساب لترى العمل أينما كنت."}],"careTitle":"أخطاء شائعة ننبّه عليها","care":["الاكتفاء بالقصّ وإهمال التسميد وفحص الريّ — الحديقة تخضر شكلًا وتضعف أصلًا.","تقليم في توقيت خاطئ يفقد الأشجار موسم إزهارها أو ثمرها.","تغيير العامل كل مرة — الحديقة تحتاج من يعرف تاريخها ومشاكلها.","اكتشاف عطل الريّ بعد ذبول النباتات بدل الفحص الدوري للشبكة."],"why":["فريق واحد يعرف حديقتك وتاريخها، لا عمالة متغيرة كل زيارة.","تقارير مصوّرة بعد كل زيارة — ترى النتيجة حتى لو كنت مسافرًا.","صيانة تشمل الريّ والإضاءة والعناصر المائية لا القصّ فقط، وبعقود مرنة شهرية وسنوية."],"faq":[{"q":"كم زيارة تحتاج حديقتي شهريًا؟","a":"غالبًا زيارتان إلى أربع بحسب المساحة وكثافة الزراعة والموسم — نحددها في المعاينة ونعدّلها مع التجربة."},{"q":"هل الصيانة متاحة لحدائق لم تنفّذوها؟","a":"نعم، نبدأ بمعاينة وتأهيل أولي إن احتاجت، ثم تنتظم الزيارات كأي حديقة نفّذناها."},{"q":"هل يشمل العقد الأسمدة وقطع الغيار؟","a":"يُحدَّد ذلك صراحة في عقدك: بنود مشمولة وأخرى عند الاستهلاك — كل شيء مكتوب قبل التوقيع."}],"related":["svc-1","svc-17","svc-11","svc-12"]}}</script>
+<script id="dtl-js">
+(function(){
+  "use strict";
+  var DATA = {};
+  try { DATA = JSON.parse(document.getElementById("svcDetails").textContent || "{}"); } catch(e){ DATA = {}; }
+  var AREAS = ["الهفوف — المقر الرئيسي","المبرز","العيون","الجفر","العمران","الطرف","الخبر","الدمام","الظهران","القطيف","الجبيل","رأس تنورة","بقيق"];
+  var AR_DIG = "٠١٢٣٤٥٦٧٨٩";
+  function arNum(n){ return String(n).replace(/\d/g, function(d){ return AR_DIG[+d]; }); }
+  function esc(s){ return String(s == null ? "" : s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
+  function waNumbers(){
+    var seen = {}, order = [];
+    document.querySelectorAll('a[href*="wa.me/"]').forEach(function(a){
+      var m = /wa\.me\/(\d+)/.exec(a.getAttribute("href") || "");
+      if (m){ if (!(m[1] in seen)){ seen[m[1]] = 0; order.push(m[1]); } seen[m[1]]++; }
+    });
+    order.sort(function(a,b){ return seen[b]-seen[a]; });
+    return { primary: order[0] || "966541679046", secondary: order[1] || "" };
+  }
+  var WA = waNumbers();
+
+  /* ---------- side drawer ---------- */
+  var dr = document.getElementById("drDrawer"),
+      scrim = document.getElementById("drScrim"),
+      menuBtn = document.getElementById("menuBtn");
+  function openDr(){
+    buildDrServices();
+    dr.classList.add("open"); scrim.classList.add("open");
+    dr.setAttribute("aria-hidden","false"); document.body.classList.add("dt-lock");
+  }
+  function closeDr(){
+    dr.classList.remove("open"); scrim.classList.remove("open");
+    dr.setAttribute("aria-hidden","true");
+    if (!dt.classList.contains("open")) document.body.classList.remove("dt-lock");
+  }
+  var drBuilt = false;
+  function buildDrServices(){
+    if (drBuilt) return; drBuilt = true;
+    var list = document.getElementById("drSvcList");
+    document.querySelectorAll('article[id^="svc-"]').forEach(function(a){
+      if (a.hasAttribute("hidden")) return;
+      var h = a.querySelector("h3"); if (!h) return;
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "dr-svc"; b.textContent = h.textContent.trim();
+      b.setAttribute("data-open-svc", a.id);
+      list.appendChild(b);
+    });
+    var al = document.getElementById("drAreaList");
+    AREAS.forEach(function(name){
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "dr-area"; b.textContent = name;
+      b.setAttribute("data-go", "#areas");
+      al.appendChild(b);
+    });
+  }
+  function goTo(sel){
+    closeDr();
+    var t = document.querySelector(sel) || document.querySelector("#contact");
+    if (t) setTimeout(function(){ t.scrollIntoView({behavior:"smooth", block:"start"}); }, 60);
+  }
+  if (menuBtn) menuBtn.addEventListener("click", openDr);
+  document.getElementById("drClose").addEventListener("click", closeDr);
+  scrim.addEventListener("click", closeDr);
+  dr.addEventListener("click", function(e){
+    var grp = e.target.closest("[data-grp]");
+    if (grp){
+      var g = document.getElementById(grp.getAttribute("data-grp"));
+      var open = g.classList.toggle("open");
+      grp.setAttribute("aria-expanded", open ? "true" : "false");
+      return;
+    }
+    var go = e.target.closest("[data-go]");
+    if (go){ goTo(go.getAttribute("data-go")); return; }
+    var op = e.target.closest("[data-open-svc]");
+    if (op){ closeDr(); openSvc(op.getAttribute("data-open-svc")); }
+  });
+
+  /* ---------- service detail view ---------- */
+  var dt = document.getElementById("svcDetail"),
+      dtBody = document.getElementById("dtBody"),
+      dtScroll = document.getElementById("dtScroll"),
+      dtName = document.getElementById("dtName"),
+      dtSticky = document.getElementById("dtSticky"),
+      dtWa = document.getElementById("dtWa"),
+      curPhotos = [], curId = null;
+
+  function svcMedia(id){
+    var art = document.getElementById(id), photos = [], videos = [];
+    if (!art) return {photos:photos, videos:videos};
+    art.querySelectorAll(".s-track .s-slide").forEach(function(sl){
+      var vid = sl.querySelector("video");
+      if (vid){
+        var cov = sl.querySelector("img[data-a]");
+        videos.push({ src: vid.getAttribute("src") || "",
+                      cover: cov ? (window.__A && window.__A[cov.getAttribute("data-a")] || "") : "",
+                      label: vid.getAttribute("aria-label") || "" });
+        return;
+      }
+      var img = sl.querySelector("img[data-a]");
+      if (img){
+        var k = img.getAttribute("data-a");
+        photos.push({ key:k, src:(window.__A && window.__A[k]) || img.getAttribute("src") || "", alt: img.getAttribute("alt") || "" });
+      }
+    });
+    return {photos:photos, videos:videos};
+  }
+  function svcTitle(id){
+    var art = document.getElementById(id);
+    var h = art && art.querySelector("h3");
+    return h ? h.textContent.trim() : id;
+  }
+  function svcOrderHref(id){
+    var art = document.getElementById(id);
+    var a = art && art.querySelector("a.order");
+    return a ? a.getAttribute("href") : ("https://wa.me/" + WA.primary);
+  }
+  function sec(title, inner){ return '<div class="dt-sec"><h2>' + esc(title) + "</h2>" + inner + "</div>"; }
+  function ul(items){ return '<ul class="dt-ul">' + items.map(function(x){ return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>"; }
+
+  function openSvc(id){
+    var d = DATA[id]; if (!d) return;
+    var title = svcTitle(id), media = svcMedia(id);
+    curPhotos = media.photos; curId = id;
+    dtName.textContent = title;
+    var h = "";
+    if (media.photos.length)
+      h += '<img class="dt-hero" src="' + media.photos[0].src + '" alt="' + esc(media.photos[0].alt || title) + '">';
+    h += "<h1>" + esc(title) + "</h1>";
+    h += '<p class="dt-intro">' + esc(d.intro) + "</p>";
+    h += sec("ما هي الخدمة، ومتى تناسبك؟", '<p class="txt">' + esc(d.about) + "</p>");
+    if (media.photos.length > 1)
+      h += '<img class="dt-hero" style="aspect-ratio:16/8" src="' + media.photos[1].src + '" alt="' + esc(media.photos[1].alt || title) + '">';
+    h += sec(d.typesTitle || "الأنواع والبنود", '<div class="dt-types">' + d.types.map(function(t){
+      return '<div class="dt-type"><b>' + esc(t.n) + "</b><span>" + esc(t.d) + "</span></div>";
+    }).join("") + "</div>");
+    h += sec("ما الذي يحدد التكلفة؟", ul(d.cost));
+    h += sec("خطوات التنفيذ", '<div class="dt-steps">' + d.steps.map(function(s, i){
+      return '<div class="dt-step"><span class="num">' + arNum(i + 1) + "</span><div><b>" + esc(s.n) + "</b><span>" + esc(s.d) + "</span></div></div>";
+    }).join("") + "</div>");
+    if (d.care && d.care.length) h += sec(d.careTitle || "أخطاء شائعة ننبّه عليها", ul(d.care));
+    h += sec("لماذا يتعامل معنا العملاء في هذه الخدمة؟", ul(d.why));
+    if (media.photos.length || media.videos.length){
+      var g = '<div class="dt-gal">';
+      media.photos.forEach(function(p, i){
+        g += '<figure><img loading="lazy" data-vw="' + i + '" src="' + p.src + '" alt="' + esc(p.alt) + '"><figcaption>' + esc(p.alt) + "</figcaption></figure>";
+      });
+      media.videos.forEach(function(v){
+        g += '<div class="dt-vid"><video controls preload="none" poster="' + v.cover + '" src="' + v.src + '"></video><span>' + esc(v.label) + "</span></div>";
+      });
+      g += "</div>";
+      h += sec("من أعمالنا في " + title, g);
+    }
+    h += sec("أسئلة شائعة عن " + title, '<div class="dt-faq">' + d.faq.map(function(f){
+      return "<details><summary>" + esc(f.q) + "</summary><p>" + esc(f.a) + "</p></details>";
+    }).join("") + "</div>");
+    if (d.related && d.related.length)
+      h += sec("خدمات مرتبطة", '<div class="dt-chips">' + d.related.map(function(r){
+        return '<button type="button" class="dt-chip" data-open-svc="' + r + '">' + esc(svcTitle(r)) + "</button>";
+      }).join("") + "</div>");
+    h += sec("نقدّم الخدمة في", '<div class="dt-chips">' + AREAS.map(function(a){ return '<span class="dt-chip">' + esc(a) + "</span>"; }).join("") + "</div>");
+    var wa2 = WA.secondary ? ('<a class="wa2" href="https://wa.me/' + WA.secondary + '" target="_blank" rel="noopener">واتساب — الرقم الإضافي</a>') : "";
+    h += '<div class="dt-sec"><div class="dt-cta-box"><h2>اطلب معاينة: ' + esc(title) + '</h2>'
+       + "<p>المعاينة والقياس مجانًا داخل الأحساء والمنطقة الشرقية — راسلنا واتساب وسنحدد موعدًا، ثم يصلك عرض سعر مكتوب ومفصّل قبل أن تدفع أي مبلغ.</p>"
+       + '<div class="dt-cta-row"><a class="wa1" href="' + svcOrderHref(id) + '" target="_blank" rel="noopener">💬 واتساب — الرقم الأساسي</a>'
+       + wa2 + '<a class="tel" href="tel:+966541679046">📞 اتصال مباشر</a></div></div></div>';
+    dtBody.innerHTML = h;
+    dtWa.setAttribute("href", svcOrderHref(id));
+    dtSticky.style.display = "flex";
+    dt.classList.add("open"); dt.setAttribute("aria-hidden","false");
+    dtScroll.scrollTop = 0;
+    document.body.classList.add("dt-lock");
+  }
+  function closeSvc(){
+    dt.classList.remove("open"); dt.setAttribute("aria-hidden","true");
+    dtSticky.style.display = "none";
+    dtBody.querySelectorAll("video").forEach(function(v){ try { v.pause(); } catch(e){} });
+    if (!dr.classList.contains("open")) document.body.classList.remove("dt-lock");
+  }
+  document.getElementById("dtClose").addEventListener("click", closeSvc);
+  document.getElementById("dtBack").addEventListener("click", function(){
+    closeSvc();
+    var t = document.querySelector("#services");
+    if (t) t.scrollIntoView({behavior:"smooth"});
+  });
+  dtBody.addEventListener("click", function(e){
+    var op = e.target.closest("[data-open-svc]");
+    if (op){ openSvc(op.getAttribute("data-open-svc")); return; }
+    var im = e.target.closest("img[data-vw]");
+    if (im) openViewer(+im.getAttribute("data-vw"));
+  });
+  document.querySelectorAll('article[id^="svc-"]').forEach(function(a){
+    var btn = a.querySelector("[data-detail]");
+    if (btn) btn.addEventListener("click", function(){ openSvc(a.id); });
+    var h3 = a.querySelector("h3");
+    if (h3) h3.addEventListener("click", function(){ openSvc(a.id); });
+  });
+
+  /* ---------- photo viewer ---------- */
+  var vw = document.getElementById("dtViewer"), vwImg = document.getElementById("vwImg"),
+      vwCap = document.getElementById("vwCap"), vwCount = document.getElementById("vwCount"), vwIdx = 0;
+  function vwRender(){
+    var p = curPhotos[vwIdx]; if (!p) return;
+    vwImg.src = p.src; vwImg.alt = p.alt || "";
+    vwCap.textContent = p.alt || "";
+    vwCount.textContent = arNum(vwIdx + 1) + " / " + arNum(curPhotos.length);
+  }
+  function openViewer(i){ if (!curPhotos.length) return; vwIdx = i || 0; vwRender(); vw.classList.add("open"); vw.setAttribute("aria-hidden","false"); }
+  function closeViewer(){ vw.classList.remove("open"); vw.setAttribute("aria-hidden","true"); }
+  function vwGo(d){ vwIdx = (vwIdx + d + curPhotos.length) % curPhotos.length; vwRender(); }
+  document.getElementById("vwClose").addEventListener("click", closeViewer);
+  document.getElementById("vwPrev").addEventListener("click", function(){ vwGo(-1); });
+  document.getElementById("vwNext").addEventListener("click", function(){ vwGo(1); });
+  vw.addEventListener("click", function(e){ if (e.target === vw) closeViewer(); });
+
+  document.addEventListener("keydown", function(e){
+    if (e.key !== "Escape") return;
+    if (vw.classList.contains("open")) closeViewer();
+    else if (dt.classList.contains("open")) closeSvc();
+    else if (dr.classList.contains("open")) closeDr();
+  });
+})();
+
+</script>
+</body>
 </html>
