@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://alam-altashteeb.github.io/sitemap.xml
