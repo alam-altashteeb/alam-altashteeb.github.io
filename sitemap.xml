@@ -169,6 +169,36 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://alam-altashteeb.github.io/cities/dammam.html</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://alam-altashteeb.github.io/cities/khobar.html</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://alam-altashteeb.github.io/cities/dhahran.html</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://alam-altashteeb.github.io/cities/qatif.html</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://alam-altashteeb.github.io/cities/jubail.html</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://alam-altashteeb.github.io/guides/dalil-ikhtiyar-aloshb-alsinaei.html</loc>
     <lastmod>2026-11-13</lastmod>
     <changefreq>monthly</changefreq>
@@ -182,6 +212,24 @@
   </url>
   <url>
     <loc>https://alam-altashteeb.github.io/guides/mazallat-am-barjulat.html</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://alam-altashteeb.github.io/guides/awamil-taklifat-tansiq-hadiqat-fila.html</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://alam-altashteeb.github.io/guides/sianat-aloshb-alsinaei.html</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://alam-altashteeb.github.io/guides/badeel-khashab-wpc-mumayzat-wa-oyub.html</loc>
     <lastmod>2026-11-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
