@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://alam-altashteeb.github.io/sitemap.xml
+Sitemap: https://alam-altashteeb.github.io/sitemap.txt
