@@ -2803,5 +2803,23 @@ a{color:#0274be}
   check();
 })();
 </script>
-<script src="bot-media-2.js" defer></script></body>
+<script src="bot-media-2.js" defer></script><script>
+/* صور إضافية من لوحة الإدارة */
+(function(){try{fetch('/images/manifest.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(m){
+if(!m||!m.extra_gallery||!m.extra_gallery.length)return;
+function fig(it){var f=document.createElement('figure');f.style.margin='0';
+var img=document.createElement('img');img.src='/images/'+encodeURIComponent(it.file);
+img.alt=it.alt||'من أعمال عالم التشطيب';img.loading='lazy';
+img.style.cssText='width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;display:block;background:#eafaf0';
+f.appendChild(img);if(it.alt){var c=document.createElement('figcaption');
+c.style.cssText='font-size:13.5px;color:#51645a;padding:6px 2px';c.textContent=it.alt;f.appendChild(c);}return f;}
+var grid=document.querySelector('.pgrid');
+if(grid){m.extra_gallery.forEach(function(it){if(it&&it.file)grid.appendChild(fig(it));});return;}
+var gs=document.querySelector('.gslider');
+if(gs&&gs.parentNode){var wrap=document.createElement('div');wrap.id='extra-gallery';
+wrap.style.cssText='display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin:16px 0';
+m.extra_gallery.forEach(function(it){if(it&&it.file)wrap.appendChild(fig(it));});
+gs.parentNode.insertBefore(wrap,gs.nextSibling);}
+}).catch(function(){});}catch(e){}})();
+</script></body>
 </html>
