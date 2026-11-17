@@ -1057,6 +1057,14 @@ footer a{color:#0B9C1F}
 .float .f-call,.floats .ftel{background:#23A455}
 a{color:#0274be}
 .svc a,.foot a,nav.main a,.hero a,header a{color:inherit}
+#about{background:#ffffff}
+.about-body{max-width:920px;margin:0 auto;font-size:17px;line-height:2.05;color:#2f3f50}
+.about-body p{margin:0 0 14px}
+.about-body h3{color:#0B9C1F;font-size:21px;font-weight:800;margin:26px 0 8px}
+.about-list{margin:0 0 6px;padding-inline-start:24px;line-height:2.05}
+.about-list li{margin:3px 0}
+.counters-title{text-align:center;color:#ffffff;font-size:clamp(22px,3vw,28px);font-weight:800;margin:0 0 24px}
+.why-sub{text-align:center;color:#0B9C1F;font-size:clamp(20px,2.6vw,24px);font-weight:800;margin:4px 0 18px}
 </style></head>
 <body>
 
@@ -1184,31 +1192,12 @@ a{color:#0274be}
     </div>
   </div>
 
-  <!-- Stats band — real, verifiable numbers only -->
-  <div class="stats-band" aria-label="أرقام عالم التشطيب">
-    <div class="stats-in">
-      <div class="stat">
-        <span class="stat-numrow"><span class="stat-num" data-count="370">370</span><span class="stat-plus">+</span></span>
-        <span class="stat-cap">مشروع منفذ في الفلل والمنازل والحدائق</span>
-      </div>
-      <div class="stat">
-        <span class="stat-numrow"><span class="stat-num" data-count="13">13</span><span class="stat-plus">+</span></span>
-        <span class="stat-cap">سنة من العمل في المجال، منذ 2012</span>
-      </div>
-      <div class="stat">
-        <span class="stat-numrow"><span class="stat-num" data-count="13">13</span></span>
-        <span class="stat-cap">منطقة نصل إليها في الأحساء والمنطقة الشرقية</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Services -->
   <section id="services">
     <div class="wrap">
       <div class="sec-head rv">
         <span class="orn"><i></i></span>
-        <h2>خدماتنا — <span class="accent">ثلاثة وعشرون تخصصًا</span> تحت سقف واحد</h2>
-        <p>لا تحتاج للتعامل مع أكثر من جهة: الخامة عندنا، والتصنيع عندنا، والتركيب علينا — للحدائق والديكورات الداخلية على حدّ سواء.</p>
+        <h2>خدماتنا</h2>
+        <p>ثلاثة وعشرون تخصصًا تحت سقف واحد — لا تحتاج للتعامل مع أكثر من جهة: الخامة عندنا، والتصنيع عندنا، والتركيب علينا، للحدائق والديكورات الداخلية على حدّ سواء.</p>
       </div>
       <!-- وسائط كل خدمة موجودة فعليًا داخل بطاقتها بالأسفل: شرائح .s-slide داخل .s-track هي مصدر الحقيقة الوحيد — للإضافة أو الحذف أو الاستبدال عدّل شرائح البطاقة نفسها (بحد أقصى ٢٠ عنصرًا في القسم)، وسيبني السلايدر وعارض ملء الشاشة فهرسهما منها وقت التشغيل. -->
       <div class="svc-grid">
@@ -1495,7 +1484,7 @@ a{color:#0274be}
     <div class="wrap">
       <div class="sec-head rv">
         <span class="orn"><i></i></span>
-        <h2>من <span class="accent">أعمالنا</span></h2>
+        <h2><span class="accent">أعمالنا</span></h2>
         <p>تصاميم ونماذج ملهمة لما ننفّذه في الحدائق والديكورات الداخلية، تتخللها صور توضيحية لمراحل العمل أثناء التنفيذ — والصورة الموسومة «من أعمالنا» تنفيذ حقيقي لفريقنا. اسحب يمينًا ويسارًا لتصفّح الصور، واضغط أي صورة لتكبيرها، واطلب تنفيذًا مثلها عبر واتساب.</p>
       </div>
       </div>
@@ -1528,23 +1517,33 @@ a{color:#0274be}
       </div>
     </div>
   </section>
-<section id="videos">
+<section class="counters-band" id="counters" aria-label="أرقام عالم التشطيب"><div class="wrap"><h2 class="counters-title">أرقام عالم التشطيب</h2><div class="counters"><div class="counter"><b>370+</b><span>مشروع منفذ</span></div><div class="counter"><b>23</b><span>خدمة متخصصة</span></div><div class="counter"><b>13</b><span>مدينة ومنطقة نغطيها</span></div><div class="counter"><b>2012</b><span>نخدمكم منذ عام</span></div></div></div></section>
+
+  <section id="about">
     <div class="wrap">
       <div class="sec-head rv">
         <span class="orn"><i></i></span>
-        <h2>معرض <span class="accent">الفيديوهات</span></h2>
-        <p>مقاطع توضيحية قصيرة بطابع خليجي حديث من مكتبات مرخّصة — لكل خدمة مقطعها هنا وداخل بطاقتها في قسم خدماتنا، وتشتغل مباشرة داخل الصفحة. شارك أي صورة أو مقطع يعجبك بزر المشاركة، أما فيديوهات أعمالنا الحقيقية أثناء التنفيذ وبعده فتُشاهد كاملة على حسابنا في تيك توك.</p>
+        <h2>عن <span class="accent">عالم التشطيب</span></h2>
+        <p>من عام 2012 ونحن ننفّذ الحدائق والديكورات الداخلية في الأحساء والمنطقة الشرقية — بيعًا وتصنيعًا وتركيبًا من مصدر واحد، وبفريق واحد من المعاينة حتى التسليم.</p>
       </div>
-      <div class="vid-top rv">
-        <a class="btn btn-gold" href="https://www.tiktok.com/@hassnltfyltfy" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
-          فيديوهات أعمالنا على تيك توك
-        </a>
+      <div class="about-body rv">
+        <p>«عالم التشطيب — أبو فهد وشركاه» اسمٌ يعرفه أهل الأحساء في تنسيق الحدائق والتشطيبات الداخلية؛ نفّذنا أكثر من 370 مشروعًا بين حدائق فلل واستراحات ومجالس وجلسات خارجية وديكورات داخلية، وما زال مقياس نجاحنا الأول أن يخرج العميل راضيًا ويعيد التعامل معنا ويرشّحنا لأهله وجيرانه.</p>
+        <p>وسرّ ثقة عملائنا أن الخامة عندنا: نبيع الخامات ونصنّعها في مشغلنا ونركّبها بفريقنا، فلا تتوزّع المسؤولية بين تاجر ومقاول، وتأخذ سعر المصدر وضمانًا واحدًا واضحًا على الشغل كله — من أول قطعة حتى آخر لمسة.</p>
+        <h3>خدمات عالم التشطيب تشمل:</h3>
+        <ol class="about-list">
+          <li>تصميم وتنسيق الحدائق المنزلية وحدائق الفلل والاستراحات</li>
+          <li>تركيب العشب الطبيعي والصناعي الأرضي والجداري، وشبكات الري الأوتوماتيكية</li>
+          <li>تصميم وتنفيذ الشلالات والنوافير ومصبّات المياه</li>
+          <li>البرجولات والمظلات والسواتر والجلسات الخارجية</li>
+          <li>الغرف الزجاجية وأحواض الزرع، وتوريد وزراعة الأشجار وخدمات النخيل</li>
+          <li>إضاءة الحدائق والممرات بأنظمة مخفية موفّرة للطاقة</li>
+          <li>الديكورات الداخلية: جبس بورد، وبديل خشب، وبديل رخام، وتكسيات جدارية، وشيبورد، وباركيه</li>
+          <li>صيانة حدائق دورية تحافظ على شغلك طوال العام</li>
+        </ol>
+        <p>مقرّنا الرئيسي في الهفوف — حي الرقيقة، ونغطي الأحساء كلها ونصل بخاماتنا ومعدّاتنا إلى مدن المنطقة الشرقية — الخبر والدمام والظهران والقطيف والجبيل وغيرها — بمعاينة وقياس مجاني وعرض سعر واضح ومكتوب قبل أي تنفيذ.</p>
       </div>
     </div>
-    <div class="slider vslider" data-slider data-autoplay="5600" role="group" aria-label="معرض الفيديوهات"><div class="s-track"><div class="s-slide v-slide"><video src="https://videos.pexels.com/video-files/11157345/11157345-sd_960_540_30fps.mp4" muted loop playsinline preload="none" aria-label="فيديو نموذجي توضيحي: عمارة خليجية ببرج هواء ونخيل حول قناة مائية مشمسة"></video><img class="v-cover" src="images/عمارة-خليجية-ببرج-هواء-ونخيل.webp" alt="عمارة خليجية ببرج هواء ونخيل حول قناة مائية مشمسة" loading="lazy" / data-a="k12" decoding="async"><span class="demo-chip">نموذج توضيحي</span><span class="vslide-cap"><small>تنسيق حدائق</small>عمارة خليجية ونخيل حول قناة مائية — طابع فلل منطقتنا</span></div><div class="s-slide v-slide"><video src="https://videos.pexels.com/video-files/39342344/16744492_960_540_60fps.mp4" muted loop playsinline preload="none" aria-label="فيديو نموذجي توضيحي: نافورة حجرية تتدفق وسط حديقة خضراء"></video><img class="v-cover" src="images/نافورة-حجرية-تتدفق-وسط-حديقة.webp" alt="نافورة حجرية تتدفق وسط حديقة خضراء" loading="lazy" / data-a="k112" decoding="async"><span class="demo-chip">نموذج توضيحي</span><span class="vslide-cap"><small>شلالات ونوافير ومصبات مياه</small>نافورة حجرية تتدفق بهدوء وسط خضرة الحديقة</span></div><div class="s-slide v-slide"><video src="https://videos.pexels.com/video-files/6616372/6616372-sd_640_360_25fps.mp4" muted loop playsinline preload="none" aria-label="فيديو نموذجي توضيحي: شلال جداري حديث ينساب من فتحة حجرية إلى مسبح داخلي"></video><img class="v-cover" src="images/شلال-جداري-حديث-ينساب-فتحة.webp" alt="شلال جداري حديث ينساب من فتحة حجرية إلى مسبح داخلي" loading="lazy" / data-a="k38" decoding="async"><span class="demo-chip">نموذج توضيحي</span><span class="vslide-cap"><small>شلالات ونوافير ومصبات مياه</small>شلال جداري حديث ينساب إلى مسبح بتكسيات حجرية</span></div><div class="s-slide v-slide"><video src="https://videos.pexels.com/video-files/13023865/13023865-sd_640_360_30fps.mp4" muted loop playsinline preload="none" aria-label="فيديو نموذجي توضيحي: جلسة خارجية تحت برجولا شرائحية"></video><img class="v-cover" src="images/جلسة-خارجية-تحت-برجولا-شرائحية.webp" alt="جلسة خارجية تحت برجولا شرائحية" loading="lazy" / data-a="k65" decoding="async"><span class="demo-chip">نموذج توضيحي</span><span class="vslide-cap"><small>برجولات وجلسات خارجية</small>جلسة خارجية تحت برجولا شرائحية تحيط بها أحواض النباتات</span></div><div class="s-slide v-slide"><video src="https://videos.pexels.com/video-files/4025913/4025913-sd_640_360_25fps.mp4" muted loop playsinline preload="none" aria-label="فيديو نموذجي توضيحي: سعف نخيل أخضر يتمايل تحت سماء زرقاء صافية"></video><img class="v-cover" src="images/سعف-نخيل-أخضر-تحت-سماء.webp" alt="سعف نخيل أخضر يتمايل تحت سماء زرقاء صافية" loading="lazy" / data-a="k59" decoding="async"><span class="demo-chip">نموذج توضيحي</span><span class="vslide-cap"><small>خدمات النخيل</small>نخيل يتمايل تحت سماء صافية — توريد وزراعة وتقليم</span></div><div class="s-slide v-slide"><video src="https://videos.pexels.com/video-files/5492766/5492766-sd_960_540_30fps.mp4" muted loop playsinline preload="none" aria-label="فيديو نموذجي توضيحي: عامل يفرش رولات العشب الأخضر على تربة مجهزة أثناء التركيب"></video><img class="v-cover" src="images/عامل-يفرش-رولات-العشب-تربة.webp" alt="عامل يفرش رولات العشب على تربة مجهزة أثناء التركيب" loading="lazy" / data-a="k51" decoding="async"><span class="demo-chip">نموذج توضيحي</span><span class="vslide-cap"><small>عشب أرضي</small>فرش رولات العشب على طبقات مجهزة أثناء التركيب</span></div><div class="s-slide v-slide"><video src="https://videos.pexels.com/video-files/13212740/13212740-sd_640_360_25fps.mp4" muted loop playsinline preload="none" aria-label="فيديو نموذجي توضيحي: رشاش شبكة ري أوتوماتيكية يروي المسطحات الخضراء"></video><img class="v-cover" src="images/رشاش-ري-منبثق-يرش-الماء.webp" alt="رشاش ري دوّار يرش الماء على المسطحات الخضراء" loading="lazy" / data-a="k83" decoding="async"><span class="demo-chip">نموذج توضيحي</span><span class="vslide-cap"><small>شبكات ريّ أوتوماتيكية</small>رشّاش ريّ يوزّع الماء بدقة على المسطحات الخضراء</span></div><div class="s-slide v-slide"><video src="https://videos.pexels.com/video-files/6149546/6149546-sd_640_360_30fps.mp4" muted loop playsinline preload="none" aria-label="فيديو نموذجي توضيحي: سقف جبسي أبيض وذهبي بزخارف هندسية متناسقة"></video><img class="v-cover" src="images/سقف-جبسي-أبيض-وذهبي-بزخارف.webp" alt="سقف جبسي أبيض وذهبي بزخارف هندسية متناسقة" loading="lazy" / data-a="k26" decoding="async"><span class="demo-chip">نموذج توضيحي</span><span class="vslide-cap"><small>جبس بورد</small>أسقف جبسية بزخارف هندسية وإضاءة معلّقة</span></div><div class="s-slide v-slide"><video src="https://videos.pexels.com/video-files/17224730/17224730-sd_960_540_30fps.mp4" muted loop playsinline preload="none" aria-label="فيديو نموذجي توضيحي: فيلا حديثة بتكسيات حجرية تتوهج بإضاءة جدارية دافئة عند الغروب"></video><img class="v-cover" src="images/فيلا-حديثة-بتكسيات-حجرية-تتوهج.webp" alt="فيلا حديثة بتكسيات حجرية تتوهج بإضاءة جدارية دافئة عند الغروب" loading="lazy" / data-a="k85" decoding="async"><span class="demo-chip">نموذج توضيحي</span><span class="vslide-cap"><small>إضاءة حدائق وواجهات</small>إضاءة جدارية دافئة تبرز تكسيات الفيلا عند الغروب</span></div></div><button class="s-nav s-prev" type="button" aria-label="الفيديو السابق"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button><button class="s-nav s-next" type="button" aria-label="الفيديو التالي"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><div class="s-count" aria-hidden="true"></div></div>
   </section>
-<section class="counters-band" id="counters" aria-label="أرقام عالم التشطيب"><div class="wrap"><div class="counters"><div class="counter"><b>370+</b><span>مشروع منفذ</span></div><div class="counter"><b>23</b><span>خدمة متخصصة</span></div><div class="counter"><b>13</b><span>مدينة ومنطقة نغطيها</span></div><div class="counter"><b>2012</b><span>نخدمكم منذ عام</span></div></div></div></section>
 
   <!-- Cinematic banner -->
   <div class="banner rv">
@@ -1562,10 +1561,11 @@ a{color:#0274be}
     <div class="wrap">
       <div class="sec-head rv">
         <span class="orn"><i></i></span>
-        <h2>لماذا <span class="brand-gold">عالم التشطيب</span>؟</h2>
+        <h2>مميزات التعامل مع <span class="brand-gold">عالم التشطيب</span></h2>
         <p>لأننا لا نركّب خامات غيرنا — نبيعها ونصنّعها ونركّبها، فتأخذ السعر الأفضل والجودة المضمونة من مصدر واحد.</p>
       </div>
       </div>
+      <h3 class="why-sub rv">لماذا تختار عالم التشطيب؟</h3>
       <figure class="why-photo rv"><div class="ph"><div class="slider" data-slider data-autoplay="5000" ><div class="s-track"><figure class="s-slide"><img src="images/تنسيق-حديقة-منزل-أعمال-عالم.webp" alt="مظلة برجولا بإضاءة مخفية فوق جلسة خارجية بجوار مسبح مضاء ليلًا" loading="lazy" / data-a="k6" decoding="async"><figcaption>برجولا بإضاءة مخفية ومسبح ليلي — من تصاميمنا</figcaption></figure><figure class="s-slide"><img src="images/ساحة-حديقة-منجزة-بعشب-صناعي.webp" alt="جلسة خارجية بمظلة وعشب أرضي وإضاءة ليلية من تنفيذ عالم التشطيب" loading="lazy" / data-a="k104" decoding="async"><span class="real-badge">من أعمالنا</span><figcaption><b>من أعمالنا</b> — جلسة خارجية بمظلة وعشب أرضي وإضاءة مخفية</figcaption></figure><figure class="s-slide"><img src="images/مسبح-مضاء-ليلا-كراسي-استرخاء.webp" alt="مسبح فيلا حديث مضاء ليلًا بإضاءة زرقاء" loading="lazy" / data-a="k105" decoding="async"><figcaption>مسابح ليلية بإضاءة مائية — من تصاميمنا</figcaption></figure><figure class="s-slide"><img src="images/مسطح-عشب-صناعي-أخضر-حديقة.webp" alt="حديقة خلفية بعشب أرضي أخضر ومسار حجري" loading="lazy" / data-a="k47" decoding="async"><figcaption>عشب أرضي ومسارات حجرية — من تصاميمنا</figcaption></figure></div><button class="s-nav s-prev" type="button" aria-label="الصورة السابقة"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button><button class="s-nav s-next" type="button" aria-label="الصورة التالية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><div class="s-dots"></div></div></div></figure>
       <div class="wrap">
         <div class="why-list rv">
@@ -1621,6 +1621,23 @@ a{color:#0274be}
         </div>
       </div>
     </div>
+  </section>
+
+  <section id="videos">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <span class="orn"><i></i></span>
+        <h2>معرض <span class="accent">الفيديوهات</span></h2>
+        <p>مقاطع توضيحية قصيرة بطابع خليجي حديث من مكتبات مرخّصة — لكل خدمة مقطعها هنا وداخل بطاقتها في قسم خدماتنا، وتشتغل مباشرة داخل الصفحة. شارك أي صورة أو مقطع يعجبك بزر المشاركة، أما فيديوهات أعمالنا الحقيقية أثناء التنفيذ وبعده فتُشاهد كاملة على حسابنا في تيك توك.</p>
+      </div>
+      <div class="vid-top rv">
+        <a class="btn btn-gold" href="https://www.tiktok.com/@hassnltfyltfy" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+          فيديوهات أعمالنا على تيك توك
+        </a>
+      </div>
+    </div>
+    <div class="slider vslider" data-slider data-autoplay="5600" role="group" aria-label="معرض الفيديوهات"><div class="s-track"><div class="s-slide v-slide"><video src="https://videos.pexels.com/video-files/11157345/11157345-sd_960_540_30fps.mp4" muted loop playsinline preload="none" aria-label="فيديو نموذجي توضيحي: عمارة خليجية ببرج هواء ونخيل حول قناة مائية مشمسة"></video><img class="v-cover" src="images/عمارة-خليجية-ببرج-هواء-ونخيل.webp" alt="عمارة خليجية ببرج هواء ونخيل حول قناة مائية مشمسة" loading="lazy" / data-a="k12" decoding="async"><span class="demo-chip">نموذج توضيحي</span><span class="vslide-cap"><small>تنسيق حدائق</small>عمارة خليجية ونخيل حول قناة مائية — طابع فلل منطقتنا</span></div><div class="s-slide v-slide"><video src="https://videos.pexels.com/video-files/39342344/16744492_960_540_60fps.mp4" muted loop playsinline preload="none" aria-label="فيديو نموذجي توضيحي: نافورة حجرية تتدفق وسط حديقة خضراء"></video><img class="v-cover" src="images/نافورة-حجرية-تتدفق-وسط-حديقة.webp" alt="نافورة حجرية تتدفق وسط حديقة خضراء" loading="lazy" / data-a="k112" decoding="async"><span class="demo-chip">نموذج توضيحي</span><span class="vslide-cap"><small>شلالات ونوافير ومصبات مياه</small>نافورة حجرية تتدفق بهدوء وسط خضرة الحديقة</span></div><div class="s-slide v-slide"><video src="https://videos.pexels.com/video-files/6616372/6616372-sd_640_360_25fps.mp4" muted loop playsinline preload="none" aria-label="فيديو نموذجي توضيحي: شلال جداري حديث ينساب من فتحة حجرية إلى مسبح داخلي"></video><img class="v-cover" src="images/شلال-جداري-حديث-ينساب-فتحة.webp" alt="شلال جداري حديث ينساب من فتحة حجرية إلى مسبح داخلي" loading="lazy" / data-a="k38" decoding="async"><span class="demo-chip">نموذج توضيحي</span><span class="vslide-cap"><small>شلالات ونوافير ومصبات مياه</small>شلال جداري حديث ينساب إلى مسبح بتكسيات حجرية</span></div><div class="s-slide v-slide"><video src="https://videos.pexels.com/video-files/13023865/13023865-sd_640_360_30fps.mp4" muted loop playsinline preload="none" aria-label="فيديو نموذجي توضيحي: جلسة خارجية تحت برجولا شرائحية"></video><img class="v-cover" src="images/جلسة-خارجية-تحت-برجولا-شرائحية.webp" alt="جلسة خارجية تحت برجولا شرائحية" loading="lazy" / data-a="k65" decoding="async"><span class="demo-chip">نموذج توضيحي</span><span class="vslide-cap"><small>برجولات وجلسات خارجية</small>جلسة خارجية تحت برجولا شرائحية تحيط بها أحواض النباتات</span></div><div class="s-slide v-slide"><video src="https://videos.pexels.com/video-files/4025913/4025913-sd_640_360_25fps.mp4" muted loop playsinline preload="none" aria-label="فيديو نموذجي توضيحي: سعف نخيل أخضر يتمايل تحت سماء زرقاء صافية"></video><img class="v-cover" src="images/سعف-نخيل-أخضر-تحت-سماء.webp" alt="سعف نخيل أخضر يتمايل تحت سماء زرقاء صافية" loading="lazy" / data-a="k59" decoding="async"><span class="demo-chip">نموذج توضيحي</span><span class="vslide-cap"><small>خدمات النخيل</small>نخيل يتمايل تحت سماء صافية — توريد وزراعة وتقليم</span></div><div class="s-slide v-slide"><video src="https://videos.pexels.com/video-files/5492766/5492766-sd_960_540_30fps.mp4" muted loop playsinline preload="none" aria-label="فيديو نموذجي توضيحي: عامل يفرش رولات العشب الأخضر على تربة مجهزة أثناء التركيب"></video><img class="v-cover" src="images/عامل-يفرش-رولات-العشب-تربة.webp" alt="عامل يفرش رولات العشب على تربة مجهزة أثناء التركيب" loading="lazy" / data-a="k51" decoding="async"><span class="demo-chip">نموذج توضيحي</span><span class="vslide-cap"><small>عشب أرضي</small>فرش رولات العشب على طبقات مجهزة أثناء التركيب</span></div><div class="s-slide v-slide"><video src="https://videos.pexels.com/video-files/13212740/13212740-sd_640_360_25fps.mp4" muted loop playsinline preload="none" aria-label="فيديو نموذجي توضيحي: رشاش شبكة ري أوتوماتيكية يروي المسطحات الخضراء"></video><img class="v-cover" src="images/رشاش-ري-منبثق-يرش-الماء.webp" alt="رشاش ري دوّار يرش الماء على المسطحات الخضراء" loading="lazy" / data-a="k83" decoding="async"><span class="demo-chip">نموذج توضيحي</span><span class="vslide-cap"><small>شبكات ريّ أوتوماتيكية</small>رشّاش ريّ يوزّع الماء بدقة على المسطحات الخضراء</span></div><div class="s-slide v-slide"><video src="https://videos.pexels.com/video-files/6149546/6149546-sd_640_360_30fps.mp4" muted loop playsinline preload="none" aria-label="فيديو نموذجي توضيحي: سقف جبسي أبيض وذهبي بزخارف هندسية متناسقة"></video><img class="v-cover" src="images/سقف-جبسي-أبيض-وذهبي-بزخارف.webp" alt="سقف جبسي أبيض وذهبي بزخارف هندسية متناسقة" loading="lazy" / data-a="k26" decoding="async"><span class="demo-chip">نموذج توضيحي</span><span class="vslide-cap"><small>جبس بورد</small>أسقف جبسية بزخارف هندسية وإضاءة معلّقة</span></div><div class="s-slide v-slide"><video src="https://videos.pexels.com/video-files/17224730/17224730-sd_960_540_30fps.mp4" muted loop playsinline preload="none" aria-label="فيديو نموذجي توضيحي: فيلا حديثة بتكسيات حجرية تتوهج بإضاءة جدارية دافئة عند الغروب"></video><img class="v-cover" src="images/فيلا-حديثة-بتكسيات-حجرية-تتوهج.webp" alt="فيلا حديثة بتكسيات حجرية تتوهج بإضاءة جدارية دافئة عند الغروب" loading="lazy" / data-a="k85" decoding="async"><span class="demo-chip">نموذج توضيحي</span><span class="vslide-cap"><small>إضاءة حدائق وواجهات</small>إضاءة جدارية دافئة تبرز تكسيات الفيلا عند الغروب</span></div></div><button class="s-nav s-prev" type="button" aria-label="الفيديو السابق"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button><button class="s-nav s-next" type="button" aria-label="الفيديو التالي"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><div class="s-count" aria-hidden="true"></div></div>
   </section>
 
   <!-- Coverage areas -->
