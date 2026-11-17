@@ -1018,24 +1018,25 @@ filter:none;animation:none}
 nav.main a:hover{color:#0B9C1F}
 nav.main a::after{background:#23A455}
 .hero::after{background:none}
-.hero-in{background:rgba(255,255,255,.94);border-radius:20px;
-padding:44px 36px 38px;box-shadow:0 24px 60px rgba(11,60,25,.35);
+.hero-in{background:transparent;border-radius:0;
+padding:44px 36px 38px;box-shadow:none;
 max-width:880px;margin-top:104px;margin-bottom:64px}
-.hero-in h1,.hero-in .hero-subline{color:#0B9C1F}
-.hero-in .tag,.hero-in .lead{color:#2f3f50}
-.hero-eyebrow{color:#0B9C1F}
+.hero-in h1,.hero-in .hero-subline{color:#ffffff;text-shadow:0 4px 34px rgba(0,0,0,.55)}
+.hero-in .tag{color:#ffffff;text-shadow:0 2px 18px rgba(0,0,0,.65)}
+.hero .hero-in p.lead{color:#f7f4ea;text-shadow:0 2px 14px rgba(0,0,0,.7)}
+.hero-eyebrow{color:#eafaf0;text-shadow:0 2px 12px rgba(0,0,0,.65)}
 .hero-eyebrow::before{background:linear-gradient(90deg,transparent,#23A455)}
 .hero-eyebrow::after{background:linear-gradient(90deg,#23A455,transparent)}
-.hero-owner{color:#2f3f50}
-.hero-brand{background:#ffffff;border-color:#23A455;
-box-shadow:0 14px 34px -14px rgba(11,156,31,.35)}
-.hero-brand::before,.hero-brand::after{background:#22bf5b;box-shadow:0 0 8px rgba(34,191,91,.55)}
+.hero-owner{color:#f3d67c}
+.hero-brand{background:transparent;border-color:transparent;
+box-shadow:none}
+.hero-brand::before,.hero-brand::after{background:#ffd94d;box-shadow:0 0 12px rgba(255,217,77,.95)}
 .hero-stats{background:rgba(255,255,255,.94);border-top:1px solid #d9e4d9}
 .hero-stats div + div{border-inline-start-color:#d9e4d9}
 .hero-stats b{color:#0B9C1F}
 .hero-stats span{color:#2f3f50}
-.open-badge{background:#eafaf0;border-color:#23A455;color:#0B9C1F}
-.hero-brand-text{color:#0B9C1F;-webkit-text-fill-color:#0B9C1F}
+.open-badge{background:rgba(10,14,8,.66);border-color:rgba(255,255,255,.35);color:#eafaf0}
+.hero-brand-text{color:transparent;-webkit-text-fill-color:transparent}
 .btn-wa{background:#23A455!important;color:#fff!important}
 .btn-gold{background:#2f3f50!important;color:#fff!important}
 .sec-head h2{color:#0B9C1F}
@@ -1070,7 +1071,7 @@ a{color:#0274be}
 .hero-bg img.on{animation:kbz 2.8s ease-out forwards}
 @keyframes kbz{from{transform:scale(1)}to{transform:scale(1.08)}}
 .hero-bg::after{content:"";position:absolute;inset:0;z-index:1;
-background:linear-gradient(70deg,rgba(0,0,0,.40),rgba(1,37,109,.40));
+background:linear-gradient(70deg,rgba(0,0,0,.55),rgba(1,37,109,.50));
 pointer-events:none}
 .hero-dots{display:none}
 .svc-grid{grid-template-columns:repeat(4,1fr);gap:20px}
@@ -1213,31 +1214,9 @@ position:relative;overflow:hidden}
       </div>
     </div>
     <div class="hero-dots" id="heroDots" role="group" aria-label="صور الواجهة"></div>
-    <div class="hero-stats" aria-label="طبيعة عملنا">
-      <div class="wrap">
-        <div><b>بيع</b><span>خامات أصلية بأسعار الجملة</span></div>
-        <div><b>تصنيع</b><span>تفصيل حسب مقاسات مشروعك</span></div>
-        <div><b>تركيب</b><span>فريق تركيب خاص بنا</span></div>
-        <div><b>ضمان</b><span>على الخامة والتركيب</span></div>
-      </div>
-    </div>
   </div>
 
 
-
-  <!-- Tagline, nav and quick actions (moved below the hero) -->
-  <div class="under-hero">
-    <div class="wrap">
-      <p class="brand-sub" style="margin:0">لتنسيق الحدائق والديكورات الداخلية — الهفوف، الأحساء</p>
-    <nav class="main" aria-label="التنقل الرئيسي"> <a href="#services">خدماتنا</a> <a href="#gallery">أعمالنا</a> <a href="#videos">الفيديوهات</a> <a href="#why">لماذا نحن</a> <a href="#steps">خطوات العمل</a> <a href="#faq">الأسئلة الشائعة</a> <a href="#contact">تواصل معنا</a> <a href="خدماتنا/">كل الخدمات</a> <a href="معرض-أعمالنا/">معرض أعمالنا</a> <a href="مقالاتنا/">مقالاتنا</a> <a href="من-نحن/">من نحن</a> </nav>
-    <div class="bar-actions">
-      <a class="call-btn" href="tel:+966541679046">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24 11.4 11.4 0 0 0 3.57.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2z"/></svg>
-        <span dir="ltr">0541 679 046</span>
-      </a>
-    </div>
-    </div>
-  </div>
 
   <section id="services">
     <div class="wrap">
