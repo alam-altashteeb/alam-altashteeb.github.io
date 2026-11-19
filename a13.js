@@ -1,1 +1,1 @@
-window.__A=window.__A||{};window.__A["k113"]="images/عاملان-يركبان-ألواح-جدار-أخضر.webp";window.__A["k115"]="images/أرضية-باركيه-بلون-بلوط-فاتح.webp";window.__A["k116"]="images/أرضية-باركيه-داكنة-نعلات-بيضاء.webp";
+window.__A=window.__A||{};window.__A["k113"]="images/عاملان-يركبان-ألواح-جدار-أخضر.webp";window.__A["k115"]="images/نافورة-حجرية-شكل-جرة-يتدفق.webp";window.__A["k116"]="images/رأس-رشاش-ري-دوار-يرش.webp";
