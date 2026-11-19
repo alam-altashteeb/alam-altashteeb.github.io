@@ -1074,6 +1074,35 @@ a{color:#0274be}
 background:linear-gradient(70deg,rgba(0,0,0,.55),rgba(1,37,109,.50));
 pointer-events:none}
 .hero-dots{display:none}
+/* ---- hero arrows + logo + bigger brand (2026-11-19) ---- */
+.hero-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:4;
+width:48px;height:48px;min-height:48px;border-radius:50%;padding:0;
+border:1px solid rgba(255,255,255,.65);background:rgba(255,255,255,.85);
+color:#0B9C1F;cursor:pointer;display:flex;align-items:center;justify-content:center;
+box-shadow:0 4px 16px rgba(0,0,0,.30);transition:background .25s ease,color .25s ease}
+.hero-nav:hover{background:#23A455;color:#ffffff}
+.hero-nav svg{width:24px;height:24px;flex:none}
+.hero-nav.prev{right:20px}
+.hero-nav.next{left:20px}
+.hero-logo{display:block;width:88px;height:88px;margin:12px auto 4px;
+border-radius:50%;overflow:hidden;border:2px solid rgba(255,255,255,.85);
+background:rgba(255,255,255,.94);box-shadow:0 10px 26px rgba(0,0,0,.35)}
+.hero-logo img{width:100%;height:100%;object-fit:cover;display:block;
+transform:scale(1.26);transform-origin:50% 43%}
+.hero-owner{font-size:clamp(52px,9vw,110px)}
+.hero-brand-text{font-size:clamp(68px,14.5vw,168px)}
+.hero-phone{display:inline-block;margin-top:12px;direction:ltr;
+font-family:"Cairo","Tajawal",sans-serif;font-weight:900;
+font-size:clamp(28px,4.6vw,42px);letter-spacing:1px;line-height:1.25;
+color:#ffffff;text-decoration:none;text-shadow:0 3px 18px rgba(0,0,0,.75)}
+@media (max-width:640px){
+.hero-nav{width:42px;height:42px;min-height:42px}
+.hero-nav.prev{right:12px}
+.hero-nav.next{left:12px}
+.hero-nav svg{width:20px;height:20px}
+.hero-logo{width:66px;height:66px;margin-top:8px}
+.hero-brand-text{font-size:clamp(50px,14.5vw,94px)}
+}
 .svc-grid{grid-template-columns:repeat(4,1fr);gap:20px}
 @media (max-width:1100px){.svc-grid{grid-template-columns:repeat(2,1fr);
 margin-inline:0}}
@@ -1184,8 +1213,10 @@ position:relative;overflow:hidden}
       <div class="hero-in">
         <span class="open-badge"><span class="open-dot"></span> مفتوح الآن — متوفرون على مدار اليوم</span>
         <p class="hero-eyebrow">الهفوف · الأحساء · المنطقة الشرقية</p>
+        <span class="hero-logo"><img src="images/embedded-a3cfc1dfc7f4.webp" alt="شعار عالم التشطيب" width="88" height="88" decoding="async"></span>
         <span class="hero-owner">أبو فهد وشركاه</span>
         <h1><span class="hero-brand"><span class="hero-brand-text">عالم التشطيب</span></span><span class="hero-subline">لتنسيق الحدائق والديكورات الداخلية في الأحساء والهفوف</span></h1>
+        <a class="hero-phone" href="tel:+966541679046" aria-label="اتصل بنا: 0541679046">0541679046</a>
         <p class="tag">نبيع ونصنّع ونركّب — من الحديقة إلى آخر جدار في بيتك</p>
         <p class="lead">من مقرّنا في الهفوف بمحافظة الأحساء نخدم الأحساء والمنطقة الشرقية كاملة: تنسيق حدائق، جبس بورد، بديل الخشب وبديل الرخام، شلالات ونوافير، مظلات، تكسيات جدارية، وعشب أرضي وجداري — بخامات نبيعها ونصنّعها ونركّبها بأنفسنا.</p>
         <div class="hero-cta">
@@ -1214,6 +1245,8 @@ position:relative;overflow:hidden}
       </div>
     </div>
     <div class="hero-dots" id="heroDots" role="group" aria-label="صور الواجهة"></div>
+    <button class="hero-nav prev" id="heroPrev" type="button" aria-label="الصورة السابقة"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+    <button class="hero-nav next" id="heroNext" type="button" aria-label="الصورة التالية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
   </div>
 
 
@@ -1964,6 +1997,10 @@ position:relative;overflow:hidden}
       dotsWrap.appendChild(b);
       heroDots.push(b);
     });
+    var heroPrev = document.getElementById("heroPrev");
+    var heroNext = document.getElementById("heroNext");
+    if (heroPrev) heroPrev.addEventListener("click", function(){ heroShow(cur - 1); heroAuto(); });
+    if (heroNext) heroNext.addEventListener("click", function(){ heroShow(cur + 1); heroAuto(); });
     heroAuto();
     document.addEventListener("visibilitychange", function(){
       if (document.hidden){ if (heroTimer){ clearInterval(heroTimer); heroTimer = null; } }
